@@ -25,9 +25,6 @@ ___
 
 - The administrator has full CRUD for employee table and adopter table.
 
-## CRUD
-
-
 ## IntelliJ
 
 ### Models
@@ -60,8 +57,6 @@ ___
         - time (LocalTime)      
         - adopterId (int)*
         - animalId (int)*
-        
-
 
 ### Data
     - AdopterRepository (interface)
@@ -130,8 +125,6 @@ ___
     - EmployeeController (1 hour)
     - ScheduleController (1 hour)
 
-
-    - 
 ### Data Testing (time estimates with Data layer)
     - AdopterJdbcRepositoryTest
         - shouldFindAll()
@@ -197,7 +190,6 @@ ___
     - JwtRequestFilter (1 hour)
     - SecurityConfig (1 hour)
 
-
 ## React/Front End
 
 ### Color Palette
@@ -220,7 +212,6 @@ ___
 ### Styles
     - if Bootstrap(1hr)
     - if Material ui (4hrs)
-
 
 ### Context
     -UserContext
@@ -248,17 +239,23 @@ ___
     - fk
     - species_id int, not null
     - past_owner_id int, null
+      
+### UsersTable
+    - user_id
+    - first_name
+    - last_name
+    - address
+    - phone
+    - email
+    - role_id fk
+    
+### Roles
 
-### AdoptersTable
-    - adopter_id pk, int, not null
-    - first_name varchar(50), not null
-    - last_name varchar(50), not null
-    - current_pets varchar(100), null
-    - preferred_species varchar(100), null
-
-    -fk
-    - animal_id int, null
-
+    - Role_id pk
+    - Role_type ( adopter, employee, foster_parent)
+    - Role_description
+    - user_access_level 
+   
 ### ScheduleTable
     - schedule_id, int, not null pk
 
@@ -266,13 +263,6 @@ ___
     - adopter_id, int, not null
     - time(use date/time format), date, not null
     - animal_id int, not null
-
-### Employee_TypeTable
-    - staff_id, int, not null, pk
-    - role, varchar(50), not null
-    - first_name, varchar(50), not null
-    - last_name, varchar(50), not null
-    - role_description, varchar(50), null
 
 ### mySQL Test Data (1 hr)
     - 2 species (cat, dog)
