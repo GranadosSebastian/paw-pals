@@ -1,5 +1,7 @@
 # Paw Pals Animal Rescue
 
+___
+
 ## Mission Statement
 A non-profit grassroots app focused on rescuing your local furry friends.
 
@@ -7,8 +9,23 @@ A non-profit grassroots app focused on rescuing your local furry friends.
 
 ## High Level Requirements
 
-## CRUD
+___
 
+- The application user is an administrator, adopter, or employee.
+
+- The administrator, adopter may view existing appointments for an adopter.
+- The adopter may create an appointment to meet with an available animal.
+- The administrator, adopter may edit existing appointments.
+- The administrator, adopter may cancel a future appointment.
+
+- The administrator, adopter, or employee may view existing animals that are available.
+- The administrator, volunteer may create an animal profile to be available for adoption.
+- The administrator, veterinarian, and volunteer may update an animal profile to be available for adoption.
+- The administrator may delete an animal profile.
+
+- The administrator has full CRUD for employee table and adopter table.
+
+## CRUD
 
 
 ## IntelliJ
@@ -182,6 +199,13 @@ A non-profit grassroots app focused on rescuing your local furry friends.
 
 
 ## React/Front End
+
+### Color Palette
+    - FF9F1C
+    - FFBF69
+    - FFFFFF
+    - CBF3F0
+    - 2EC4B6
 
 ### Components (Skeleton only/ w routes 3hrs)
     - Home.js (1-2 hrs)   
