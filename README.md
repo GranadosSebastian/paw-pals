@@ -5,6 +5,12 @@ A non-profit grassroots app focused on rescuing your local furry friends.
 
 # Project outline
 
+## High Level Requirements
+
+## CRUD
+
+
+
 ## IntelliJ
 
 ### Models
@@ -49,7 +55,7 @@ A non-profit grassroots app focused on rescuing your local furry friends.
         - delete()
 
     - AnimalRepository (interface)
-    - AnimalJdbcTemplateRepository (2hr with Tests)
+    - AnimalJdbcTemplateRepository (3.5hr with Tests)
         - findAll()
         - findBySpecies()
         - add()
@@ -149,30 +155,30 @@ A non-profit grassroots app focused on rescuing your local furry friends.
     - ScheduleJdbcRepositoryDouble  (10 min)
 
 ### Domain Testing
-    - AdopterServiceTest
+    - AdopterServiceTest (1hr)
         - shouldNotAddNull()
         - shouldNotAddNullName()
 
-    - AnimalServiceTest
+    - AnimalServiceTest (1hr)
         - shouldNotAddNull()
         - shouldNotAddNullName()
 
-    - EmployeeServiceTest
+    - EmployeeServiceTest (30min)
         - shouldNotAddNull()
         - shouldNotAddNullName()
 
-    - ScheduleServiceTest
+    - ScheduleServiceTest (45min)
         - shouldNotAddNull()
         - shouldNotAddNullName()
         - shouldNotAddPastDate()
         - shouldNotAddOverlappingDates
 
 ### Security
-    - AppUserService    
-    - CorsConfig
-    - JwtConverter
-    - JwtRequestFilter
-    - SecurityConfig
+    - AppUserService (1 hour)
+    - CorsConfig (1 hour)
+    - JwtConverter (1 hour)
+    - JwtRequestFilter (1 hour)
+    - SecurityConfig (1 hour)
 
 
 ## React/Front End
@@ -187,6 +193,10 @@ A non-profit grassroots app focused on rescuing your local furry friends.
     - Errors.js (2 hrs) 
     - PetForm.js (2-3 hrs)
 
+### Styles
+    - if Bootstrap(1hr)
+    - if Material ui (4hrs)
+
 
 ### Context
     -UserContext
@@ -199,7 +209,7 @@ A non-profit grassroots app focused on rescuing your local furry friends.
     -scheduleApi
 
 
-### MySQL/Database (1hr)
+## MySQL/Database (1.5hr)
 
 ### AnimalsTable
     - animal_id pk, int, not null
@@ -240,7 +250,7 @@ A non-profit grassroots app focused on rescuing your local furry friends.
     - last_name, varchar(50), not null
     - role_description, varchar(50), null
 
-### mySQL Test Data (30 min)
+### mySQL Test Data (1 hr)
     - 2 species (cat, dog)
     - 2 roles (vet, admin)
     - 5 animals (Bella- mixed small, Missy Calico Cat, Zazu European Shorthair cat, Bruno chihuahua, Rocky chihuahua
@@ -248,3 +258,77 @@ A non-profit grassroots app focused on rescuing your local furry friends.
     - 3 employees (Angie, Sebastian, Keri)
     - 3 scheduled appointments ()
     - 
+
+
+~~~
+src
+├───main
+│   └───java
+│       ├───resources
+│       │       application.properties
+│       │
+│       └───learn
+│           └───paw-pals
+│               │   App.java                                  -- app entry point
+│               │
+│               ├───data
+│               │        DataException.java                          -- data layer custom exception
+│               │        AdopterJdbcTemplateRepository.java          -- concrete repository
+│               │        AdopterRepository.java                      -- repository interface
+│               │        AnimalJdbcTemplateRepository.java
+│               │        AnimalRepository.java                        EmployeeJdbcTemplateRepository.java
+│               │        EmployeeRepository.java
+│               │        ScheduleJdbcTemplateRepository.java
+│               │        ScheduleRepository.java
+│               │
+│               ├───domain
+│               │        AdopterService.java                  
+│               │        AnimalService.java                 
+│               │        EmployeeService.java                 
+│               │        ScheduleService.java                 
+│               │        Result.java                  
+│               │        Response.java                 
+│               │
+│               ├───models
+│               │        Adopter.java                        
+│               │        Animal.java
+│               │        Employee.java                       
+│               │        Schedule.java
+│               ├───controllers
+│               │        AnimalController.java                         -- all console input/output
+│               │        AdopterController.java
+│               │        EmployeeController.java
+│               │        ScheduleController.java
+│               │
+│               ├───mappers
+│                        AnimalMapper.java
+│                        AdopterMapper.java
+│                        EmployeeMapper.java
+│                        ScheduleMapper.java
+│                          
+│
+│                        
+│
+│
+└───test
+└───java
+└───learn
+└───paw-pals
+├───data
+│       AdopterJdbcRepositoryTest.java    
+│       AdopterRepositoryTestDouble.java  
+│       AnimalJdbcRepositoryTest.java    
+│       AnimalRepositoryTestDouble.java  
+│       EmployeeJdbcRepositoryTest.java    
+│       EmployeeRepositoryTestDouble.java  
+│       ScheduleJdbcRepositoryTest.java    
+│       ScheduleRepositoryTestDouble.java  
+│
+└───domain
+│       AdopterServiceTest.java  
+│       AnimalServiceTest.java    
+│       EmployeeServiceTest.java  
+│       ScheduleServiceTest.java  
+│
+ 
+~~~
