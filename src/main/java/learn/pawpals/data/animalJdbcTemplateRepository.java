@@ -1,6 +1,6 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.animals;
+import learn.pawpals.models.animal;
 
 import java.util.List;
 
@@ -12,17 +12,17 @@ public class animalJdbcTemplateRepository implements animalRepository {
     //delete
 
     @Override
-    public List<animals> findAll() {
+    public List<animal> findAll() {
         return null;
     }
 
     @Override
-    public List<animals> findBySpecies() {
+    public List<animal> findBySpecies() {
         return null;
     }
 
     @Override
-    public animals add() {
+    public animal add() {
         return null;
     }
 

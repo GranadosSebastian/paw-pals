@@ -2,7 +2,7 @@ package learn.pawpals.models;
 
 import java.time.LocalDate;
 
-public class animals {
+public class animal {
 
     private int animalId;
 
@@ -25,11 +25,11 @@ public class animals {
     private boolean isAvailable;
 
     // empty constructor
-    public animals() {
+    public animal() {
     }
 
     // constructor
-    public animals(int animalId, String animalName, String breed, int age, learn.pawpals.models.size size, LocalDate arrivalDate, String friendliness, int speciesId, user userId, boolean isAvailable) {
+    public animal(int animalId, String animalName, String breed, int age, learn.pawpals.models.size size, LocalDate arrivalDate, String friendliness, int speciesId, user userId, boolean isAvailable) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.breed = breed;

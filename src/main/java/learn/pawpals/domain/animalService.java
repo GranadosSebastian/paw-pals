@@ -1,28 +1,29 @@
 package learn.pawpals.domain;
 
-import learn.pawpals.data.userRepository;
-import learn.pawpals.models.user;
+import learn.pawpals.data.animalRepository;
+import learn.pawpals.models.animal;
 import java.util.List;
 
-public class userService {
+public class animalService {
 
-    private final userRepository userRepository;
+    private final animalRepository animalRepository;
 
-    public userService(userRepository userRepository) {
-        this.userRepository = userRepository;
+
+    public animalService(animalRepository animalRepository) {
+        this.animalRepository = animalRepository;
     }
 
-    //findAll
-    //findByRole
+    // findAll
+    //findBySpecies
     //add
     //update
     //delete
 
-    public List<user> findAll() {
+    public List<animal> findAll() {
         return null;
     }
 
-    public List<user> findByRole(){
+    public animal findBySpecies() {
         return null;
     }
 
@@ -46,5 +47,6 @@ public class userService {
         //if conditions & validations
         //return result
     }
+
 
 }
