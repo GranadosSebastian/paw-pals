@@ -264,6 +264,14 @@ ___
     - time(use date/time format), date, not null
     - animal_id int, not null
 
+### UsernamesTable
+    - username_id, pk
+    - username, varchar(50), not null
+    - password, varchar(50), not null
+    
+    -fk
+    - user_id, int, not null
+
 ### mySQL Test Data (1 hr)
     - 2 species (cat, dog)
     - 2 roles (vet, admin)
