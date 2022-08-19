@@ -278,7 +278,7 @@ ___
     - role_type, varchar(50), not null
     - description, varchar(100)
     - user_access_level, varchar(15), not null
->>>>>>> d227e197f2ceadfed91337ab84b07173b6e58314
+
 
 ### mySQL Test Data (1 hr)
     - 2 species (cat, dog)
@@ -357,3 +357,46 @@ src
 │
  
 ~~~
+
+
+## Deadlines
+
+___
+
+# Monday morning 22nd
+ - Sql tables complete
+ - Java Skeleton complete
+ - React/UI skeleton complete
+ - have list of dependencies needed to download
+
+# Tuesday morning/evening if needed 23rd
+ - Animal Table slice complete from front to back / CRUD
+ - animal form
+ - display pet
+ 
+# Wednesday noon 
+ - User slice / CRUD
+ - user from 
+ - signup
+
+# Friday morning
+ - Security complete
+ - login 
+
+# Monday morning 29th (goal friday afternoon)
+ - Scheduling
+ - schedule form
+
+# Tuesday morning 30th 
+ - Debugging complete
+ - AWS started
+
+# Wednesday morning 31st
+ - deployed on AWS 
+ - presentation practice started
+
+# Thursday morning 1st
+ - project complete/ buffer day 
+ - presentation practice
+
+
