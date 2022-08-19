@@ -7,16 +7,13 @@ A non-profit grassroots app focused on rescuing your local furry friends.
 
 ## Elevator Pitch
 
-Animal shelters are an essential to the community:
-- Shelters provide educational opportunities for the community and families.
-- Shelters eliminate dangerous animals and wildlife from the local streets, keeping both the community and the animals safe.
-- Shelters build floodgates to stem the rising tide of unwanted puppies and kittens.
-
 Most adopters looking for a pet need to go through the local animal shelter and don't have access to fostered pets. 
 
 Paw Pals Animal Rescue goes above and beyond to provide services to the community
 by connecting adopters with foster homes directly. It provides a portal for foster pet parents
 to sign up to care for pets waiting to be adopted and for adopters to find the perfect pet companion.
+
+Paw pals can help alleviate the pressure put on shelters by helping more fosters and adopters connect easily.
 
 # Project outline
 
@@ -39,14 +36,11 @@ ___
 
 - The administrator has full CRUD for employee table and adopter table.
 
-## CRUD
-
-
 ## IntelliJ
 
 ### Models
 
-    - Animal (20 min)
+    - Animal (20 min) **Angela**
         - animalId (int)
         - animalName (String)
         - breed (String)
@@ -58,13 +52,13 @@ ___
         - userId (int)
         - isAvailable (boolean)
 
-    - Schedule (20 min)
+    - Schedule (20 min) **Angela**
         - scheduleId (int)
         - time (LocalTime)      
         - userId (int)*
         - animalId (int)*
 
-    - User (20min)
+    - User (20min) **Angela**
         - userId (int)
         - firstName (String)
         - lastName (String)
@@ -78,7 +72,7 @@ ___
 ### Data
 
     - AnimalRepository (interface)
-    - AnimalJdbcTemplateRepository (3.5hr with Tests)
+    - AnimalJdbcTemplateRepository (Keri 3.5hr with Tests)
         - findAll()
         - findBySpecies()
         - add()
@@ -86,7 +80,7 @@ ___
         - delete()
 
     - UserRepository (interface)
-    - UserJdbcTemplateRepository (2hr with Tests)
+    - UserJdbcTemplateRepository (Keri 2hr with Tests)
         - findAll()
         - findByRole()
         - add()
@@ -94,7 +88,7 @@ ___
         - delete()
 
     - ScheduleRepository (interface)
-    - ScheduleJdbcTemplateRepository (3hr with Tests)
+    - ScheduleJdbcTemplateRepository (Keri 3hr with Tests)
         - findAll()
         - findByDate()
         - findByAnimal()
@@ -104,38 +98,38 @@ ___
         - delete()
 
 ### Mappers
-    -AnimalMapper (30 min)
-    -UserMapper (30 min)
-    -ScheduleMapper (30 min)
+    -AnimalMapper (30 min) **Angela**
+    -UserMapper (30 min) **Angela**
+    -ScheduleMapper (30 min) **Angela**
 
 ### Domain
 
-    - AnimalService (1 hour)
+    - AnimalService (1 hour) **Angela**
         - required info
         - no duplicates
     
-    - UserService (1 hour)
+    - UserService (1 hour) **Angela**
         - required info
     
-    - ScheduleService (1 hour)
+    - ScheduleService (1 hour) **Angela**
         - required info
         - future date
         - no overlapping times
 
-    - ResultType (20 min)
-    - Response (20 min)
+    - ResultType (20 min) **Angela**
+    - Response (20 min) **Angela**
 
 ### Controllers
-    - GlobalExceptionHandler (10 min)
-    - ErrorResponse (10 min)
-    - AuthController   //Security (20-30 min)
-    - AnimalController (1 hour)
-    - UserController (1 hour)
-    - ScheduleController (1 hour)
+    - GlobalExceptionHandler (10 min) **Angela**
+    - ErrorResponse (10 min) **Angela**
+    - AuthController   //Security (20-30 min) **Angela**
+    - AnimalController (1 hour) **Angela**
+    - UserController (1 hour) **Angela**
+    - ScheduleController (1 hour) **Angela**
 
 
     - 
-### Data Testing (time estimates with Data layer)
+### Data Testing (time estimates with Data layer)(Keri )
 
     - AnimalJdbcRepositoryTest
         - shouldFindAll()
@@ -163,32 +157,32 @@ ___
         - shouldUpdate()
         - shouldDelete()
         - shouldNotDelete()
-    - AnimalJdbcRepositoryDouble    (20 min)
-    - UserJdbcRepositoryDouble  (10 min)
-    - ScheduleJdbcRepositoryDouble  (10 min)
+    - AnimalJdbcRepositoryDouble    (Keri 20 min)
+    - UserJdbcRepositoryDouble  (Keri 10 min)
+    - ScheduleJdbcRepositoryDouble  (Keri 10 min)
 
 ### Domain Testing
 
-    - AnimalServiceTest (1hr)
+    - AnimalServiceTest (Keri 1hr)
         - shouldNotAddNull()
         - shouldNotAddNullName()
 
-    - UserServiceTest (30min)
+    - UserServiceTest (Keri 30min)
         - shouldNotAddNull()
         - shouldNotAddNullName()
 
-    - ScheduleServiceTest (45min)
+    - ScheduleServiceTest (Keri 45min)
         - shouldNotAddNull()
         - shouldNotAddNullName()
         - shouldNotAddPastDate()
         - shouldNotAddOverlappingDates
 
 ### Security
-    - AppUserService (1 hour)
-    - CorsConfig (1 hour)
-    - JwtConverter (1 hour)
-    - JwtRequestFilter (1 hour)
-    - SecurityConfig (1 hour)
+    - AppUserService (Sebastian 1 hour)
+    - CorsConfig (Sebastian 1 hour)
+    - JwtConverter (Sebastian 1 hour)
+    - JwtRequestFilter (Sebastian 1 hour)
+    - SecurityConfig (Sebastian 1 hour)
 
 
 ## React/Front End
@@ -201,17 +195,17 @@ ___
     - 2EC4B6
 
 ### Components (Skeleton only/ w routes 3hrs)
-    - Home.js (1-2 hrs)   
-    - Adopt.js (2hrs)
-    - Login.js (30 mins)
-    - UserForm.js (2-3 hrs)
-    - NavBar.js (1.5 hrs)
-    - Errors.js (2 hrs) 
-    - PetForm.js (2-3 hrs)
+    - Home.js (Sebastian 1-2 hrs)   
+    - Adopt.js (Sebastian 2hrs)
+    - Login.js (Sebastian 30 mins)
+    - UserForm.js (Sebastian 2-3 hrs)
+    - NavBar.js (Sebastian 1.5 hrs)
+    - Errors.js (Sebastian 2 hrs) 
+    - PetForm.js (Sebastian 2-3 hrs)
 
 ### Styles
-    - if Bootstrap(1hr)
-    - if Material ui (4hrs)
+    - if Bootstrap(Sebastian 1hr)
+    - if Material ui (Sebastian 4hrs)
 
 
 ### Context
@@ -225,7 +219,7 @@ ___
     -scheduleApi
 
 
-## MySQL/Database (1.5hr)
+## MySQL/Database (Keri 1.5hr)
 
 ### AnimalsTable
     - animal_id pk, int, not null
