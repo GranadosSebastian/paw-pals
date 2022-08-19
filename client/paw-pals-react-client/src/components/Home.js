@@ -1,7 +1,10 @@
 
 function Home() {
     return (
-        <h1>Home</h1>
+        <>
+            <h2>Home</h2>
+            <p>welcome page with Adopt button and a small list of available pets</p>
+        </>
     );
 }
 
