@@ -20,7 +20,7 @@ public class animals {
 
     private int speciesId;
 
-    private int userId;
+    private user userId;
 
     private boolean isAvailable;
 
@@ -28,7 +28,8 @@ public class animals {
     public animals() {
     }
 
-    public animals(int animalId, String animalName, String breed, int age, learn.pawpals.models.size size, LocalDate arrivalDate, String friendliness, int speciesId, int userId, boolean isAvailable) {
+    // constructor
+    public animals(int animalId, String animalName, String breed, int age, learn.pawpals.models.size size, LocalDate arrivalDate, String friendliness, int speciesId, user userId, boolean isAvailable) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.breed = breed;
@@ -74,7 +75,7 @@ public class animals {
         return speciesId;
     }
 
-    public int getUserId() {
+    public user getUserId() {
         return userId;
     }
 
@@ -115,7 +116,7 @@ public class animals {
         this.speciesId = speciesId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(user userId) {
         this.userId = userId;
     }
 
