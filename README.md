@@ -249,6 +249,15 @@ ___
     - adopter_id, int, not null
     - animal_id int, not null
 
+<<<<<<< HEAD
+### UsernamesTable
+    - username_id, pk
+    - username, varchar(50), not null
+    - password, varchar(50), not null
+    
+    -fk
+    - user_id, int, not null
+=======
 ### UserTable
     - user_id, int, not null, pk
     - first_name, varchar(50), not null
@@ -269,6 +278,7 @@ ___
     - role_type, varchar(50), not null
     - description, varchar(100)
     - user_access_level, varchar(15), not null
+>>>>>>> d227e197f2ceadfed91337ab84b07173b6e58314
 
 ### mySQL Test Data (1 hr)
     - 2 species (cat, dog)
