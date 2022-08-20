@@ -244,8 +244,8 @@ ___
     - animal_id int, not null
 
 <<<<<<< HEAD
-### UsernamesTable
-    - username_id, pk
+### LoginTable
+    - login_id, pk
     - username, varchar(50), not null
     - password, varchar(50), not null
     
