@@ -57,4 +57,8 @@ public class schedule {
     public void setUserId(user userId) {
         this.userId = userId;
     }
+
+    // object equals
+    // hash code
+
 }

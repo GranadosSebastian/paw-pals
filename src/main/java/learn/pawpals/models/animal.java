@@ -123,4 +123,8 @@ public class animal {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
+    // object equals
+    // hash code
+
 }
