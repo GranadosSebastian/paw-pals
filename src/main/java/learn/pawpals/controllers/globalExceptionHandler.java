@@ -37,4 +37,4 @@ public class globalExceptionHandler {
         return new ResponseEntity<ErrorResponse>(new ErrorResponse("Something went wrong. Please debug"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
-*/
+ */

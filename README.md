@@ -44,7 +44,7 @@ ___
         - animalId (int)
         - animalName (String)
         - breed (String)
-        - age (String)
+        - age (inti)
         - size (enum)
         - arrivalDate (LocalDate)
         - friendliness (String)
