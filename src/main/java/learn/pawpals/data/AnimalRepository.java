@@ -15,9 +15,9 @@ public interface AnimalRepository {
     List<Animal> findBySpecies(int speciesId);
 
 
-    Animal add();
+    Animal add(Animal animal);
 
-    boolean update();
+    boolean update(Animal animal);
 
-    boolean delete();
+    boolean deleteById(int animalId);
 }
