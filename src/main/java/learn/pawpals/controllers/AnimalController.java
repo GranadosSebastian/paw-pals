@@ -2,10 +2,17 @@ package learn.pawpals.controllers;
 
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.AnimalService;
+import learn.pawpals.domain.Result;
+import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.Animal;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/animal")
 public class AnimalController {
 
     private final AnimalService service;
@@ -13,31 +20,48 @@ public class AnimalController {
         this.service = service;
     }
 
-    //@GetMapping
+    @GetMapping
     public List<Animal> findAll() throws DataAccessException {
         return service.findAll();
     }
 
-    //@GetMapping("/species/{species}")
-    public List<Animal> findBySpecies(int speciesId) throws DataAccessException {
+    @GetMapping("/animal/{speciesId}")
+    public List<Animal> findBySpecies(@PathVariable int speciesId) throws DataAccessException {
         return service.findBySpecies(speciesId);
     }
 
-    //@PostMapping
-    public void add() {
-        //result
-        //return new ResponseEntity
+    @PostMapping
+    public ResponseEntity<?> add(@RequestBody Animal animal) throws DataAccessException {
+        Result<Animal> result = service.add(animal);
+        if (!result.isSuccess()) {
+            return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
     }
 
-    //@PutMapping("/{id}")
-    public void update() {
-        //return new ResponseEntity
+    @PutMapping("/{animalId}")
+    public ResponseEntity<?> update(@PathVariable int animalId, @RequestBody Animal animal) throws DataAccessException {
+        if (animalId != animal.getAnimalId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Result<Animal> result = service.update(animal);
+        if (!result.isSuccess()) {
+            if (result.getResultType() == ResultType.NOT_FOUND) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    //@DeleteMapping("/{id}")
-    public void delete() {
-        //result
-        //return result
+    @DeleteMapping("/{animalId}")
+    public ResponseEntity<Void> delete(@PathVariable int animalId) throws DataAccessException {
+        Result<Animal> result = service.delete((animalId));
+        if (result.getResultType() == ResultType.NOT_FOUND) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
