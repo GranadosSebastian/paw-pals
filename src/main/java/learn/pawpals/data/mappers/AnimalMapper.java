@@ -1,6 +1,7 @@
 package learn.pawpals.data.mappers;
 
 import learn.pawpals.models.Animal;
+
 import learn.pawpals.models.Size;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -26,4 +27,5 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setAvailable(rs.getBoolean(String.valueOf(rs.getBoolean("is_available"))));
         return animal;
     }
+
 }

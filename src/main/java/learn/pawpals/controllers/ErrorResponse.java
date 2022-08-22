@@ -1,5 +1,6 @@
 package learn.pawpals.controllers;
 
+
 /*
 import learn.field_agent.domain.Result;
 import learn.field_agent.domain.ResultType;
@@ -15,6 +16,13 @@ public class errorResponse {
         this.message = message;
     }
 
+
+import java.time.LocalDateTime;
+public class ErrorResponse {
+    private final LocalDateTime timestamp = LocalDateTime.now();
+    private final String message;
+
+
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
@@ -22,6 +30,7 @@ public class errorResponse {
     public String getMessage() {
         return message;
     }
+
     public static <T> ResponseEntity<Object> build(Result<T> result) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         if (result.getType() == null || result.getType() == ResultType.INVALID) {
@@ -33,3 +42,9 @@ public class errorResponse {
     }
 }
 */
+
+    public ErrorResponse(String message) {
+        this.message = message;
+    }
+}
+

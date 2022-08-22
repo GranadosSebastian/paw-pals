@@ -1,8 +1,6 @@
 package learn.pawpals.security;
 
-import java.io.IOException;
-
-public class jwtRequestFilter {
+public class JwtRequestFilter {
     /*
     private final JwtConverter converter;
 

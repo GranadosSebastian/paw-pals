@@ -1,6 +1,6 @@
 package learn.pawpals.security;
 
-public class corsConfig {
+public class CorsConfig {
 
     /*
     @Bean

@@ -1,5 +1,6 @@
 package learn.pawpals.data;
 
+
 import learn.pawpals.data.mappers.AnimalMapper;
 import learn.pawpals.models.Animal;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -38,8 +39,6 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
         return results;
     }
 
-
-
     @Override
     public Animal add() {
         return null;
@@ -54,7 +53,6 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     public boolean delete() {
         return false;
     }
-
 
 
 }
