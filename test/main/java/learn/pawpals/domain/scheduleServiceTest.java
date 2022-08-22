@@ -1,11 +1,28 @@
 package main.java.learn.pawpals.domain;
 
+import org.testng.annotations.Test;
+
 public class scheduleServiceTest {
-        /*
-        - shouldNotAddNull()
-        - shouldNotAddNullName()
-        - shouldNotAddPastDate()
-        - shouldNotAddOverlappingDates
-        */
+    @Test
+    void shouldNotAddNull() {
+
+    }
+
+    @Test
+    void shouldNotAddNullName() {
+
+    }
+
+    @Test
+    void shouldNotAddPastDate() {
+
+    }
+
+    @Test
+    void shouldNotAddOverlappingDates() {
+
+    }
+
+
 
 }
