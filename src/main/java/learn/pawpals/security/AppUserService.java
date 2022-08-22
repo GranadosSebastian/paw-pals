@@ -1,7 +1,16 @@
 package learn.pawpals.security;
 
+import learn.pawpals.data.AppUserRepository;
+import learn.pawpals.domain.Result;
+import learn.pawpals.domain.ResultType;
+import learn.pawpals.models.AppUser;
+import learn.pawpals.models.Credentials;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 public class AppUserService {  //implements UserDetailsService
-   /*
+
     private final AppUserRepository repository;
     private final PasswordEncoder encoder;
 
@@ -15,10 +24,9 @@ public class AppUserService {  //implements UserDetailsService
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = repository.findByUsername(username);
 
-        if (appUser == null || !appUser.isEnabled()) {
+        if (appUser == null) {
             throw new UsernameNotFoundException(username + " not found");
         }
-
         return appUser;
     }
 
@@ -85,5 +93,5 @@ public class AppUserService {  //implements UserDetailsService
 
         return result;
     }
-*/
+
 }

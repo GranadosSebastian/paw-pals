@@ -20,7 +20,7 @@ public class Animal {
 
     private int speciesId;
 
-    private User userId;
+    private int userId;
 
     private boolean isAvailable;
 
@@ -29,7 +29,7 @@ public class Animal {
     }
 
     // constructor
-    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, int speciesId, User userId, boolean isAvailable) {
+    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, int speciesId, int userId, boolean isAvailable) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.breed = breed;
@@ -75,7 +75,7 @@ public class Animal {
         return speciesId;
     }
 
-    public User getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -116,7 +116,7 @@ public class Animal {
         this.speciesId = speciesId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

@@ -2,15 +2,27 @@ package learn.pawpals.data.mappers;
 
 import learn.pawpals.models.Animal;
 
+import learn.pawpals.models.Size;
+import org.springframework.jdbc.core.RowMapper;
 
-public class AnimalMapper {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
-    // implement RowMapper<animal>
-
-    public Animal mapRow() {
+public class AnimalMapper implements RowMapper<Animal> {
+    @Override
+    public Animal mapRow(ResultSet rs, int rowNum) throws SQLException {
         Animal animal = new Animal();
-        // set variables
+        animal.setAnimalId(rs.getInt("animal_id"));
+        animal.setAnimalName(rs.getString("animal_name"));
+        animal.setBreed(rs.getString("breed"));
+        animal.setAge(rs.getInt("age"));
+        animal.setSize(Size.valueOf(rs.getString("size")));
+        animal.setArrivalDate(LocalDate.parse(rs.getString("arrival_date")));
+        animal.setFriendliness(rs.getString("friendliness_level"));
+        animal.setAvailable(rs.getBoolean("is_available"));
+        animal.setSpeciesId(rs.getInt("species_id"));
+        animal.setUserId(rs.getInt("user_id"));
         return animal;
     }
-
 }
