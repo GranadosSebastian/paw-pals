@@ -1,4 +1,4 @@
-package main.java.learn.pawpals.domain;
+package learn.pawpals.domain;
 
 import org.testng.annotations.Test;
 
