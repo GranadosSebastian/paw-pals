@@ -5,6 +5,7 @@ import learn.pawpals.data.AnimalRepository;
 import learn.pawpals.models.Animal;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 @Service
@@ -22,6 +23,17 @@ public class AnimalService {
     }
 
     public List<Animal> findBySpecies(int speciesId) throws DataAccessException {
+
+        return animalRepository.findBySpecies(speciesId);
+    }
+
+
+
+    private void validate() {
+        //result
+        //if conditions & validations
+        //return result
+
         return animalRepository.findBySpecies();
     }
 

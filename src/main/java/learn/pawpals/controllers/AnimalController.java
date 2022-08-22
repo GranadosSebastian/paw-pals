@@ -2,6 +2,7 @@ package learn.pawpals.controllers;
 
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.AnimalService;
+
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.Animal;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/animal")
+
 public class AnimalController {
 
     private final AnimalService service;
@@ -20,10 +22,12 @@ public class AnimalController {
         this.service = service;
     }
 
+
     @GetMapping
     public List<Animal> findAll() throws DataAccessException {
         return service.findAll();
     }
+
 
     @GetMapping("/animal/{speciesId}")
     public List<Animal> findBySpecies(@PathVariable int speciesId) throws DataAccessException {

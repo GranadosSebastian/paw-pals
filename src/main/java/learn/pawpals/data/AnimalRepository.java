@@ -11,7 +11,9 @@ public interface AnimalRepository {
     //delete
     List<Animal> findAll();
 
-    List<Animal> findBySpecies();
+
+    List<Animal> findBySpecies(int speciesId);
+
 
     Animal add();
 
