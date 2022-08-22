@@ -1,10 +1,10 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.schedule;
+import learn.pawpals.models.Schedule;
 
 import java.util.List;
 
-public class scheduleJdbcTemplateRepository implements scheduleRepository {
+public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
     //findAll
     //findByDate
@@ -15,27 +15,27 @@ public class scheduleJdbcTemplateRepository implements scheduleRepository {
     //delete
 
     @Override
-    public List<schedule> findAll() {
+    public List<Schedule> findAll() {
         return null;
     }
 
     @Override
-    public List<schedule> findByDate() {
+    public List<Schedule> findByDate() {
         return null;
     }
 
     @Override
-    public List<schedule> findByAnimal() {
+    public List<Schedule> findByAnimal() {
         return null;
     }
 
     @Override
-    public List<schedule> findByAdopter() {
+    public List<Schedule> findByAdopter() {
         return null;
     }
 
     @Override
-    public schedule add() {
+    public Schedule add() {
         return null;
     }
 

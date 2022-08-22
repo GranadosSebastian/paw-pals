@@ -1,19 +1,19 @@
 package learn.pawpals.domain;
 
 import learn.pawpals.data.DataAccessException;
-import learn.pawpals.data.animalRepository;
-import learn.pawpals.models.animal;
+import learn.pawpals.data.AnimalRepository;
+import learn.pawpals.models.Animal;
 
 
 import java.util.List;
 
 
-public class animalService {
+public class AnimalService {
 
-    private final animalRepository animalRepository;
+    private final AnimalRepository animalRepository;
 
 
-    public animalService(animalRepository animalRepository) {
+    public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
     }
 
@@ -23,12 +23,12 @@ public class animalService {
     //update
     //delete
 
-    public List<animal> findAll() throws DataAccessException {
+    public List<Animal> findAll() throws DataAccessException {
         return animalRepository.findAll();
     }
 
-    public animal findBySpecies() throws DataAccessException {
-        return null;
+    public Animal findBySpecies(int speciesId) throws DataAccessException {
+        return animalRepository.findBySpecies();
     }
 
     public void add() {

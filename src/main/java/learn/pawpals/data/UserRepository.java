@@ -1,10 +1,10 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.user;
+import learn.pawpals.models.User;
 
 import java.util.List;
 
-public interface userRepository {
+public interface UserRepository {
 
     //findAll
     //findByRole
@@ -12,11 +12,11 @@ public interface userRepository {
     //update
     //delete
 
-    List<user> findAll();
+    List<User> findAll();
 
-    List<user> findByRole();
+    List<User> findByRole();
 
-    user add();
+    User add();
 
     boolean update();
 

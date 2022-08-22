@@ -1,8 +1,8 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.appUser;
+import learn.pawpals.models.AppUser;
 
-public class appUserJdbcTemplateRepository implements appUserRepository {
+public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     /*
     private final JdbcTemplate jdbcTemplate;
@@ -13,17 +13,17 @@ public class appUserJdbcTemplateRepository implements appUserRepository {
     */
 
     @Override
-    public appUser findByUsername(String username) {
+    public AppUser findByUsername(String username) {
         return null;
     }
 
     @Override
-    public appUser create(appUser user) {
+    public AppUser create(AppUser user) {
         return null;
     }
 
     @Override
-    public boolean update(appUser user) {
+    public boolean update(AppUser user) {
         return false;
     }
 }

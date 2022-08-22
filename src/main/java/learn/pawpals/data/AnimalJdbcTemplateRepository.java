@@ -1,29 +1,28 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.user;
+import learn.pawpals.models.Animal;
 
 import java.util.List;
 
-public class userJdbcTemplateRepository implements userRepository {
-
-    //findAll
-    //findByRole
+public class AnimalJdbcTemplateRepository implements AnimalRepository {
+    // findAll
+    //findBySpecies
     //add
     //update
     //delete
 
     @Override
-    public List<user> findAll() {
+    public List<Animal> findAll() {
         return null;
     }
 
     @Override
-    public List<user> findByRole() {
+    public List<Animal> findBySpecies() {
         return null;
     }
 
     @Override
-    public user add() {
+    public Animal add() {
         return null;
     }
 

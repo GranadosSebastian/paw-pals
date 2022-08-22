@@ -2,22 +2,22 @@ package learn.pawpals.models;
 
 import java.time.LocalTime;
 
-public class schedule {
+public class Schedule {
 
     private int scheduleId;
     private LocalTime time;
 
     // variables from other models
-    private animal animalId;
+    private Animal animalId;
 
-    private user userId;
+    private User userId;
 
     // empty constructor
-    public schedule() {
+    public Schedule() {
     }
 
     // constructor
-    public schedule(int scheduleId, LocalTime time, animal animalId, user userId) {
+    public Schedule(int scheduleId, LocalTime time, Animal animalId, User userId) {
         this.scheduleId = scheduleId;
         this.time = time;
         this.animalId = animalId;
@@ -33,11 +33,11 @@ public class schedule {
         return time;
     }
 
-    public animal getAnimalId() {
+    public Animal getAnimalId() {
         return animalId;
     }
 
-    public user getUserId() {
+    public User getUserId() {
         return userId;
     }
 
@@ -50,11 +50,11 @@ public class schedule {
         this.time = time;
     }
 
-    public void setAnimalId(animal animalId) {
+    public void setAnimalId(Animal animalId) {
         this.animalId = animalId;
     }
 
-    public void setUserId(user userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 

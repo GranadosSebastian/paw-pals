@@ -1,14 +1,13 @@
 package learn.pawpals.controllers;
 
-import learn.pawpals.domain.userService;
-import learn.pawpals.models.animal;
-import learn.pawpals.models.user;
+import learn.pawpals.domain.UserService;
+import learn.pawpals.models.User;
 
-public class userController {
+public class UserController {
 
-    private final userService service;
+    private final UserService service;
 
-    public userController(userService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
@@ -26,7 +25,7 @@ public class userController {
     }
 
     //@GetMapping("/roleId/{roleId}")
-    public user findByRole() {
+    public User findByRole() {
         return null;
     }
 

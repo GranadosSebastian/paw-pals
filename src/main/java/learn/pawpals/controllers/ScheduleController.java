@@ -1,14 +1,13 @@
 package learn.pawpals.controllers;
 
-import learn.pawpals.domain.scheduleService;
-import learn.pawpals.models.animal;
-import learn.pawpals.models.schedule;
+import learn.pawpals.domain.ScheduleService;
+import learn.pawpals.models.Schedule;
 
-public class scheduleController {
+public class ScheduleController {
 
-    private final scheduleService service;
+    private final ScheduleService service;
 
-    public scheduleController(scheduleService service) {
+    public ScheduleController(ScheduleService service) {
         this.service = service;
     }
 
@@ -28,17 +27,17 @@ public class scheduleController {
     }
 
     //@GetMapping("/date/{date}")
-    public schedule findByDate() {
+    public Schedule findByDate() {
         return null;
     }
 
     //@GetMapping("/animal/{animal}")
-    public schedule findByAnimal() {
+    public Schedule findByAnimal() {
         return null;
     }
 
     //@GetMapping("/adopter/{adopter}")
-    public schedule findByAdopter() {
+    public Schedule findByAdopter() {
         return null;
     }
 

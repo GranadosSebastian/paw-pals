@@ -1,19 +1,19 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.animal;
+import learn.pawpals.models.Animal;
 import java.util.List;
 
-public interface animalRepository {
+public interface AnimalRepository {
     // findAll
     //findBySpecies
     //add
     //update
     //delete
-    List<animal> findAll();
+    List<Animal> findAll();
 
-    List<animal> findBySpecies();
+    List<Animal> findBySpecies();
 
-    animal add();
+    Animal add();
 
     boolean update();
 

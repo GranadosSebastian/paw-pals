@@ -1,14 +1,14 @@
 package learn.pawpals.domain;
 
-import learn.pawpals.data.scheduleRepository;
-import learn.pawpals.models.schedule;
+import learn.pawpals.data.ScheduleRepository;
+import learn.pawpals.models.Schedule;
 import java.util.List;
 
-public class scheduleService {
+public class ScheduleService {
 
-    private final scheduleRepository scheduleRepository;
+    private final ScheduleRepository scheduleRepository;
 
-    public scheduleService(scheduleRepository scheduleRepository) {
+    public ScheduleService(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
     }
 
@@ -20,19 +20,19 @@ public class scheduleService {
     //update
     //delete
 
-    public List<schedule> findAll() {
+    public List<Schedule> findAll() {
         return null;
     }
 
-    public List<schedule> findByDate() {
+    public List<Schedule> findByDate() {
         return null;
     }
 
-    public List<schedule> findByAnimal() {
+    public List<Schedule> findByAnimal() {
         return null;
     }
 
-    public List<schedule> findByAdopter() {
+    public List<Schedule> findByAdopter() {
         return null;
     }
 

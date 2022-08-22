@@ -1,11 +1,11 @@
 package learn.pawpals.models;
 
-public class credentials {
+public class Credentials {
 
     private String username;
     private String password;
 
-    public credentials(String username, String password) {
+    public Credentials(String username, String password) {
         this.username = username;
         this.password = password;
     }

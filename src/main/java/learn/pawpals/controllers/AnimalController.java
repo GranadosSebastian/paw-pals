@@ -1,14 +1,15 @@
 package learn.pawpals.controllers;
 
-import learn.pawpals.domain.animalService;
-import learn.pawpals.models.animal;
+import learn.pawpals.data.DataAccessException;
+import learn.pawpals.domain.AnimalService;
+import learn.pawpals.models.Animal;
 
 import java.util.List;
 
-public class animalController {
+public class AnimalController {
 
-    private final animalService service;
-    public animalController(animalService service) {
+    private final AnimalService service;
+    public AnimalController(AnimalService service) {
         this.service = service;
     }
 
@@ -19,14 +20,12 @@ public class animalController {
     //delete
 
     //@GetMapping
-    public void findAll() {
-        //ResponseEntity
-        //try/catch
-        //return new Response entity
+    public List<Animal> findAll() throws DataAccessException {
+        return service.findAll();
     }
 
     //@GetMapping("/species/{species}")
-    public animal findBySpecies() {
+    public Animal findBySpecies() {
         return service.findBySpecies();
     }
 

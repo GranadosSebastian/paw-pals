@@ -2,7 +2,7 @@ package learn.pawpals.models;
 
 import java.time.LocalDate;
 
-public class animal {
+public class Animal {
 
     private int animalId;
 
@@ -12,7 +12,7 @@ public class animal {
 
     private int age;
 
-    private size size;
+    private Size size;
 
     private LocalDate arrivalDate;
 
@@ -20,16 +20,16 @@ public class animal {
 
     private int speciesId;
 
-    private user userId;
+    private User userId;
 
     private boolean isAvailable;
 
     // empty constructor
-    public animal() {
+    public Animal() {
     }
 
     // constructor
-    public animal(int animalId, String animalName, String breed, int age, learn.pawpals.models.size size, LocalDate arrivalDate, String friendliness, int speciesId, user userId, boolean isAvailable) {
+    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, int speciesId, User userId, boolean isAvailable) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.breed = breed;
@@ -59,7 +59,7 @@ public class animal {
         return age;
     }
 
-    public learn.pawpals.models.size getSize() {
+    public Size getSize() {
         return size;
     }
 
@@ -75,7 +75,7 @@ public class animal {
         return speciesId;
     }
 
-    public user getUserId() {
+    public User getUserId() {
         return userId;
     }
 
@@ -100,7 +100,7 @@ public class animal {
         this.age = age;
     }
 
-    public void setSize(learn.pawpals.models.size size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 
@@ -116,7 +116,7 @@ public class animal {
         this.speciesId = speciesId;
     }
 
-    public void setUserId(user userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 

@@ -1,12 +1,6 @@
 package learn.pawpals.data.mappers;
 
-import learn.pawpals.models.appUser;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
-public class appUserMapper {
+public class AppUserMapper {
     /*
     private final List<String> roles;
     public AppUserMapper(List<String> roles) {

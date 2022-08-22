@@ -1,14 +1,14 @@
 package learn.pawpals.domain;
 
-import learn.pawpals.data.userRepository;
-import learn.pawpals.models.user;
+import learn.pawpals.data.UserRepository;
+import learn.pawpals.models.User;
 import java.util.List;
 
-public class userService {
+public class UserService {
 
-    private final userRepository userRepository;
+    private final UserRepository userRepository;
 
-    public userService(userRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -18,11 +18,11 @@ public class userService {
     //update
     //delete
 
-    public List<user> findAll() {
+    public List<User> findAll() {
         return null;
     }
 
-    public List<user> findByRole(){
+    public List<User> findByRole(){
         return null;
     }
 

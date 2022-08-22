@@ -1,11 +1,6 @@
 package learn.pawpals.models;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class appUser  { // extends User
+public class AppUser { // extends User
     private static final String AUTHORITY_PREFIX = "ROLE_";
 
     private int appUserId;

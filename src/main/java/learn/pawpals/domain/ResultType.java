@@ -1,6 +1,6 @@
 package learn.pawpals.domain;
 
-public enum resultType {
+public enum ResultType {
 
     SUCCESS,
     INVALID,

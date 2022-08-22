@@ -1,6 +1,6 @@
 package learn.pawpals.controllers;
 
-public class authController {
+public class AuthController {
 
     // **Variables**
     // AuthenticationManager

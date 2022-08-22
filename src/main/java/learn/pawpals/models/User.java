@@ -1,6 +1,6 @@
 package learn.pawpals.models;
 
-public class user {
+public class User {
 
     private int userId;
     private String firstName;
@@ -11,11 +11,11 @@ public class user {
     private int roleId;
 
     // empty constructor
-    public user() {
+    public User() {
     }
 
     // constructor
-    public user(int userId, String firstName, String lastName, String address, String phone, String email, int roleId) {
+    public User(int userId, String firstName, String lastName, String address, String phone, String email, int roleId) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

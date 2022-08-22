@@ -1,6 +1,6 @@
 package learn.pawpals.models;
 
-public enum size {
+public enum Size {
 
     SMALL("small"),
     MEDIUM("medium"),
@@ -8,7 +8,7 @@ public enum size {
 
     private final String name;
 
-    size(String name) {
+    Size(String name) {
         this.name = name;
     }
 

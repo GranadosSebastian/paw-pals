@@ -1,13 +1,13 @@
 package learn.pawpals.data.mappers;
 
-import learn.pawpals.models.user;
+import learn.pawpals.models.User;
 
-public class userMapper {
+public class UserMapper {
 
     // implement RowMapper<user>
 
-    public user mapRow() {
-        user user = new user();
+    public User mapRow() {
+        User user = new User();
         // set variables
         return user;
     }
