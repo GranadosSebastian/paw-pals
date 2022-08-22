@@ -1,15 +1,25 @@
-package main.java.learn.pawpals.data;
+package learn.pawpals.data;
 
 import org.testng.annotations.Test;
 
-public class UserJdbcRepositoryTest {
+class ScheduleJdbcRepositoryTest {
+
     @Test
     void shouldFindAll() {
 
     }
+    @Test
+    void shouldFindByDate() {
+
+    }
 
     @Test
-    void shouldFindAllFosterers() {
+    void shouldFindByAnimal() {
+
+    }
+
+    @Test
+    void shouldFindByAdopter() {
 
     }
 

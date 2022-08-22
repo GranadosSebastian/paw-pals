@@ -5,18 +5,9 @@ import learn.pawpals.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
-import java.util.List;
-
-public class AppUserMapper {
-
-
-import learn.pawpals.models.AppUser;
-
-import org.springframework.jdbc.core.RowMapper;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 
 public class AppUserMapper implements RowMapper<AppUser> {
 
