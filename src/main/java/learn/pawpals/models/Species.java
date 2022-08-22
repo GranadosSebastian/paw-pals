@@ -9,8 +9,7 @@ public enum Species {
     GUINEA_PIG(5, "Guinea Pig"),
     BIRD(6, "Bird"),
     FISH(7, "Fish"),
-    LIZARD(8, "Lizard"),
-    SNAKE(9, "Snake");
+    REPTILE(8, "Reptile");
 
     private final String name;
 

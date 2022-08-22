@@ -19,7 +19,7 @@ public class Animal {
 
     private String friendliness;
 
-    private int speciesId;
+    private Species species;
 
     private int userId;
 
@@ -30,7 +30,7 @@ public class Animal {
     }
 
     // constructor
-    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, int speciesId, int userId, boolean isAvailable) {
+    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, Species species, int userId, boolean isAvailable) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.breed = breed;
@@ -38,7 +38,7 @@ public class Animal {
         this.size = size;
         this.arrivalDate = arrivalDate;
         this.friendliness = friendliness;
-        this.speciesId = speciesId;
+        this.species = species;
         this.userId = userId;
         this.isAvailable = isAvailable;
     }
@@ -72,8 +72,8 @@ public class Animal {
         return friendliness;
     }
 
-    public int getSpeciesId() {
-        return speciesId;
+    public Species getSpecies() {
+        return species;
     }
 
     public int getUserId() {
@@ -113,8 +113,8 @@ public class Animal {
         this.friendliness = friendliness;
     }
 
-    public void setSpeciesId(int speciesId) {
-        this.speciesId = speciesId;
+    public void setSpeciesId(Species species) {
+        this.species = species;
     }
 
     public void setUserId(int userId) {
@@ -132,8 +132,8 @@ public class Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal that = (Animal) o;
-        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && speciesId == that.speciesId && userId == that.userId && isAvailable == that.isAvailable;
+        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && species == that.species && userId == that.userId && isAvailable == that.isAvailable;
     }
     @Override
-    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, speciesId, userId, isAvailable); }
+    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, species, userId, isAvailable); }
 }

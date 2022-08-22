@@ -3,6 +3,7 @@ package learn.pawpals.domain;
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.AnimalRepository;
 import learn.pawpals.models.Animal;
+import learn.pawpals.models.Species;
 import org.springframework.stereotype.Service;
 
 
@@ -25,9 +26,9 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public List<Animal> findBySpecies(int speciesId) throws DataAccessException {
+    public List<Animal> findBySpecies(Species species) throws DataAccessException {
 
-        return animalRepository.findBySpecies(speciesId);
+        return animalRepository.findBySpecies(species);
     }
 
     public Result<Animal> add(Animal animal) throws DataAccessException {
@@ -36,12 +37,12 @@ public class AnimalService {
         if (animal != null && animal.getAnimalId() > 0) {
             result.addErrorMessage("Animal id should not be set.", ResultType.INVALID);
         }
-        /*
+
         if (result.isSuccess()) {
             animal = animalRepository.add(animal);
             result.setPayload(animal);
         }
-        */
+
         return result;
     }
 
@@ -53,13 +54,11 @@ public class AnimalService {
         }
 
         if (result.isSuccess()) {
-            /*
             if (animalRepository.update(animal)) {
                 result.setPayload(animal);
             } else {
                 result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animal.getAnimalId());
             }
-            */
         }
         return result;
     }
@@ -80,7 +79,7 @@ public class AnimalService {
             return result;
         }
 
-        if (animal.getSpeciesId() <= 0) {
+        if (animal.getSpecies() == null) {
             result.addErrorMessage("Animal 'species' is required.", ResultType.INVALID);
 
         }
