@@ -113,7 +113,7 @@ public class Animal {
         this.friendliness = friendliness;
     }
 
-    public void setSpeciesId(Species species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 
