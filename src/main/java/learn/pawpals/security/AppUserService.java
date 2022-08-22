@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/*
 @Service
 public class AppUserService implements UserDetailsService {
 
@@ -102,5 +101,3 @@ public class AppUserService implements UserDetailsService {
 
 
 }
-
- */

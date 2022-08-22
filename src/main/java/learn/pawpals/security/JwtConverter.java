@@ -1,5 +1,5 @@
 package learn.pawpals.security;
-/*
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.GrantedAuthority;
@@ -65,4 +65,3 @@ public class JwtConverter {
     }
 
 }
-*/

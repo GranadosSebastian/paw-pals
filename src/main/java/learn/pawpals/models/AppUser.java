@@ -2,6 +2,7 @@ package learn.pawpals.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.util.Assert;
 
 import java.util.ArrayList;
@@ -9,13 +10,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AppUser extends User { // extends User
-    /*
+public class AppUser extends User {
+
     private static final String AUTHORITY_PREFIX = "ROLE_";
 
     private int appUserId;
 
-    public appUser(int appUserId, String username, String password,
+    public AppUser(int appUserId, String username, String password,
                    boolean disabled, List<String> roles) {
         super(username, password, !disabled,
                 true, true, true,
@@ -51,6 +52,6 @@ public class AppUser extends User { // extends User
                 .collect(Collectors.toList());
     }
 
-     */
+
 
 }
