@@ -13,12 +13,6 @@ public class AnimalController {
         this.service = service;
     }
 
-    // findAll
-    //findBySpecies
-    //add
-    //update
-    //delete
-
     //@GetMapping
     public List<Animal> findAll() throws DataAccessException {
         return service.findAll();

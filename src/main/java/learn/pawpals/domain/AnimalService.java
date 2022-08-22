@@ -4,9 +4,7 @@ import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.AnimalRepository;
 import learn.pawpals.models.Animal;
 
-
 import java.util.List;
-
 
 public class AnimalService {
 
@@ -32,7 +30,7 @@ public class AnimalService {
             result.addErrorMessage("Animal id should not be set.", ResultType.INVALID);
         }
         if (result.isSuccess()) {
-       //     animal = animalRepository.add(animal);
+            animal = animalRepository.add(animal);
             result.setPayload(animal);
         }
         return result;
@@ -40,11 +38,26 @@ public class AnimalService {
 
     public Result<Animal> update(Animal animal) throws DataAccessException {
         Result<Animal> result = validate(animal);
+
+        if (animal.getAnimalId() <= 0) {
+            result.addErrorMessage("Animal ID is required.", ResultType.INVALID);
+        }
+
+        if (result.isSuccess()) {
+            if (animalRepository.update(animal)) {
+                result.setPayload(animal);
+            } else {
+                result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animal.getAnimalId());
+            }
+        }
         return result;
     }
 
-    public Result<Animal> delete(Animal animal) throws DataAccessException {
-        Result<Animal> result = validate(animal);
+    public Result<Animal> delete(int animalId) throws DataAccessException {
+        Result<Animal> result = new Result<>();
+        if (animalRepository.delete(animalId)) {
+            result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animalId);
+        }
         return result;
     }
 
@@ -56,6 +69,10 @@ public class AnimalService {
             return result;
         }
 
+        if (animal.getSpeciesId() <= 0) {
+            result.addErrorMessage("Animal 'species' is required", ResultType.INVALID);
+
+        }
         //add if conditions & validations
 
         return result;
