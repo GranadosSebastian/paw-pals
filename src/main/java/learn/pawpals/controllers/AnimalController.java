@@ -25,8 +25,8 @@ public class AnimalController {
     }
 
     //@GetMapping("/species/{species}")
-    public Animal findBySpecies() {
-        return service.findBySpecies();
+    public List<Animal> findBySpecies(int speciesId) throws DataAccessException {
+        return service.findBySpecies(speciesId);
     }
 
     //@PostMapping
