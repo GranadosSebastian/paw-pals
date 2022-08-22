@@ -6,12 +6,15 @@ import learn.pawpals.models.Animal;
 import org.springframework.stereotype.Service;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
+
+    private LocalDate today = LocalDate.now();
 
 
     public AnimalService(AnimalRepository animalRepository) {
@@ -84,10 +87,31 @@ public class AnimalService {
         }
 
         if (animal.getSpeciesId() <= 0) {
-            result.addErrorMessage("Animal 'species' is required", ResultType.INVALID);
+            result.addErrorMessage("Animal 'species' is required.", ResultType.INVALID);
 
         }
+
+        if (animal.getArrivalDate().isAfter(today)) {
+            result.addErrorMessage("Arrival date cannot be in the future.", ResultType.INVALID);
+        }
+
+        if (String.valueOf(animal.getArrivalDate()).isBlank()) {
+            result.addErrorMessage("Arrival date is required", ResultType.INVALID);
+        }
+
         //add if conditions & validations
+        /*
+        animalId
+        animalName
+        breed
+        age null
+        size
+        arrivalDate
+        friendliness null
+        isAvailable
+        speciesId
+        userId
+        */
 
         return result;
 

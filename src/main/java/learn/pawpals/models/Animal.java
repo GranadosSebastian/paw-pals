@@ -1,6 +1,7 @@
 package learn.pawpals.models;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Animal {
 
@@ -125,6 +126,14 @@ public class Animal {
     }
 
     // object equals
-    // hash code
-
+    // hash
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal that = (Animal) o;
+        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && speciesId == that.speciesId && userId == that.userId && isAvailable == that.isAvailable;
+    }
+    @Override
+    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, speciesId, userId, isAvailable); }
 }
