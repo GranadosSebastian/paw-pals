@@ -2,8 +2,7 @@ package main.java.learn.pawpals.domain;
 
 import org.testng.annotations.Test;
 
-public class userServiceTest {
-
+public class ScheduleServiceTest {
     @Test
     void shouldNotAddNull() {
 
@@ -13,5 +12,17 @@ public class userServiceTest {
     void shouldNotAddNullName() {
 
     }
+
+    @Test
+    void shouldNotAddPastDate() {
+
+    }
+
+    @Test
+    void shouldNotAddOverlappingDates() {
+
+    }
+
+
 
 }

@@ -1,8 +1,6 @@
 package learn.pawpals.security;
 
-import java.util.List;
-
-public class appUserService  {  //implements UserDetailsService
+public class AppUserService {  //implements UserDetailsService
    /*
     private final AppUserRepository repository;
     private final PasswordEncoder encoder;

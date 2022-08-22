@@ -2,7 +2,7 @@ package main.java.learn.pawpals.data;
 
 import org.testng.annotations.Test;
 
-public class animalJdbcRepositoryTest {
+public class AnimalJdbcRepositoryTest {
 
     @Test
     void shouldFindAll() {

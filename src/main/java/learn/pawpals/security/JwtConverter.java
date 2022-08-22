@@ -1,12 +1,6 @@
 package learn.pawpals.security;
 
-import java.security.Key;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class jwtConverter {
+public class JwtConverter {
 
     /*
     private Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
