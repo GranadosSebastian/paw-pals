@@ -27,6 +27,7 @@ PUT {{url}}/3 HTTP/1.1
 Content-Type: application/json
 
 {
+    "animal_id": 5,
     "animal_name": "Hilde",
     "breed": "German Shepherd Mix",
     "age": "1",
