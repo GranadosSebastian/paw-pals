@@ -1,17 +1,51 @@
 package main.java.learn.pawpals.data;
 
+import org.testng.annotations.Test;
+
 public class scheduleRepositoryTest {
-    /*
 
-        - shouldFindAll()
-        - shouldFindByDate()
-        - shouldFindByAnimal()
-        - shouldFindByAdopter()
-        - shouldAdd()
-        - shouldNotAdd()
-        - shouldUpdate()
-        - shouldDelete()
-        - shouldNotDelete()
+    @Test
+    void shouldFindAll() {
 
-     */
+    }
+    @Test
+    void shouldFindByDate() {
+
+    }
+
+    @Test
+    void shouldFindByAnimal() {
+
+    }
+
+    @Test
+    void shouldFindByAdopter() {
+
+    }
+
+    @Test
+    void shouldAdd() {
+
+    }
+
+    @Test
+    void shouldNotAdd() {
+
+    }
+
+    @Test
+    void shouldUpdate() {
+
+    }
+
+    @Test
+    void shouldDelete() {
+
+    }
+
+    @Test
+    void shouldNotDelete() {
+
+    }
+
 }

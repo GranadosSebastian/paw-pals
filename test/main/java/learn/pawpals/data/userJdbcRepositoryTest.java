@@ -1,15 +1,41 @@
 package main.java.learn.pawpals.data;
 
-public class userJdbcRepositoryTest {
+import org.testng.annotations.Test;
 
-    /*
-        - shouldFindAll()
-        - shouldFindAllFosterers()
-        - shouldAdd()
-        - shouldNotAdd()
-        - shouldUpdate()
-        - shouldDelete()
-        - shouldNotDelete()
-     */
+public class userJdbcRepositoryTest {
+    @Test
+    void shouldFindAll() {
+
+    }
+
+    @Test
+    void shouldFindAllFosterers() {
+
+    }
+
+    @Test
+    void shouldAdd() {
+
+    }
+
+    @Test
+    void shouldNotAdd() {
+
+    }
+
+    @Test
+    void shouldUpdate() {
+
+    }
+
+    @Test
+    void shouldDelete() {
+
+    }
+
+    @Test
+    void shouldNotDelete() {
+
+    }
 
 }
