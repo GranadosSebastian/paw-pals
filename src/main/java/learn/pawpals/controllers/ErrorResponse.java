@@ -1,9 +1,7 @@
 package learn.pawpals.controllers;
 
-
-/*
-import learn.field_agent.domain.Result;
-import learn.field_agent.domain.ResultType;
+import learn.pawpals.domain.Result;
+import learn.pawpals.domain.ResultType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -43,8 +41,6 @@ public class ErrorResponse {
 }
 */
 
-    public ErrorResponse(String message) {
-        this.message = message;
-    }
+
 }
 

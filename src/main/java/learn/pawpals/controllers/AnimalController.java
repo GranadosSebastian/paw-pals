@@ -6,6 +6,7 @@ import learn.pawpals.domain.AnimalService;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.Animal;
+import learn.pawpals.models.Species;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +30,9 @@ public class AnimalController {
     }
 
 
-    @GetMapping("/animal/{speciesId}")
-    public List<Animal> findBySpecies(@PathVariable int speciesId) throws DataAccessException {
-        return service.findBySpecies(speciesId);
+    @GetMapping("/animal/{species}")
+    public List<Animal> findBySpecies(@PathVariable Species species) throws DataAccessException {
+        return service.findBySpecies(species);
     }
 
     @PostMapping
