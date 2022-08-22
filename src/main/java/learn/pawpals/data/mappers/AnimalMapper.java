@@ -23,6 +23,7 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setArrivalDate((LocalDate) rs.getObject("arrival_date"));
         animal.setFriendliness(rs.getString("friendliness_level"));
         animal.setAvailable(rs.getBoolean(String.valueOf(rs.getBoolean("is_available"))));
+
         return animal;
     }
 }
