@@ -1,8 +1,17 @@
 package learn.pawpals.security;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+
+import java.security.Key;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class JwtConverter {
 
-    /*
     private Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     private final String ISSUER = "bug-safari";
@@ -50,5 +59,5 @@ public class JwtConverter {
 
         return null;
     }
-    */
+
 }

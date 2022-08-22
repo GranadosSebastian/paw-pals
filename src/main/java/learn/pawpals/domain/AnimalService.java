@@ -3,10 +3,12 @@ package learn.pawpals.domain;
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.AnimalRepository;
 import learn.pawpals.models.Animal;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
+@Service
 public class AnimalService {
 
     private final AnimalRepository animalRepository;

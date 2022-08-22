@@ -12,12 +12,11 @@ import java.time.LocalDate;
 
 public class AnimalMapper implements RowMapper<Animal> {
 
-    // implement RowMapper<animal>
-
     @Override
     public Animal mapRow(ResultSet rs, int rowNum) throws SQLException {
         Animal animal = new Animal();
         animal.setAnimalId(rs.getInt("animal_id"));
+
         animal.setAnimalName(rs.getString("animal_id"));
         animal.setBreed(rs.getString("breed"));
         animal.setAge(rs.getInt("age"));
@@ -25,7 +24,7 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setArrivalDate((LocalDate) rs.getObject("arrival_date"));
         animal.setFriendliness(rs.getString("friendliness_level"));
         animal.setAvailable(rs.getBoolean(String.valueOf(rs.getBoolean("is_available"))));
+
         return animal;
     }
-
 }
