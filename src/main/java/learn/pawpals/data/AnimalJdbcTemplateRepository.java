@@ -3,6 +3,7 @@ package learn.pawpals.data;
 
 import learn.pawpals.data.mappers.AnimalMapper;
 import learn.pawpals.models.Animal;
+import learn.pawpals.models.Species;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -19,7 +20,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     private final JdbcTemplate jdbcTemplate;
     private final String FULLANIMALSQLCOLS = " animal_id, animal_name," +
             "breed, age, size, arrival_date, friendliness_level," +
-            "is_available ";
+            "species, is_available ";
 
     public AnimalJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -33,13 +34,13 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
 
     @Override
     @Transactional
-    public List<Animal> findBySpecies(int speciesId) {
+    public List<Animal> findBySpecies(Species species) {
 
         final String sql = "select" + FULLANIMALSQLCOLS +
-                "from animal where species_id = ?;";
+                "from animal where species = ?;";
 
 
-        List<Animal> results = jdbcTemplate.query(sql, new AnimalMapper(), speciesId).stream()
+        List<Animal> results = jdbcTemplate.query(sql, new AnimalMapper(), species).stream()
                 .collect(Collectors.toList());
 
         return results;
@@ -61,6 +62,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
             ps.setObject(5, animal.getArrivalDate());
             ps.setString(6, animal.getFriendliness());
             ps.setBoolean(7, animal.isAvailable());
+            ps.setObject(8, animal.getSpecies());
             return ps;
         }, keyHolder);
 
@@ -81,7 +83,8 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
                 "size = ?, " +
                 "arrival_date = ?, " +
                 "friendliness_level = ?," +
-                "is_available = ? " +
+                "is_available = ?," +
+                "species = ? " +
                 "where animal_id = ?;";
 
         return jdbcTemplate.update(sql, animal.getAnimalName(),
@@ -91,6 +94,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
                                         animal.getArrivalDate(),
                                         animal.getFriendliness(),
                                         animal.isAvailable(),
+                                        animal.getSpecies(),
                                         animal.getAnimalId()) > 0;
     }
 

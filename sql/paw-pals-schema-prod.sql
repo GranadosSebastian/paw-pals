@@ -48,7 +48,7 @@ create table animal (
     arrival_date date not null,
     friendliness_level varchar(10) null,
     is_available bit null,
-    species_id int not null,
+    species varchar(20) not null,
     user_id int not null,
 	constraint fk_animal_species_id
 		foreign key (species_id)
@@ -71,11 +71,6 @@ constraint fk_schedule_animal_id
 	references animal(animal_id)
 );
 
-insert into species (species_name)
-values ('dog'),
-		('cat'),
-		('rabbit'),
-        ('reptile');
 
 insert into `role` (role_type, user_access_level)
 values
@@ -93,13 +88,13 @@ values
     ('Sebastian', 'Granados', null, null, 'grandoltime@aol.com', 1),
     ('Keri', 'Salanik', null, null, 'saladdressing@aol.com', 3);
 
-insert into animal (animal_name, breed, age, size, arrival_date, is_available, species_id, user_id)
+insert into animal (animal_name, breed, age, size, arrival_date, is_available, species, user_id)
 values
-('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 1, 6),
-('Zazu', 'tabby', 1, 'small', '2022-02-15', 1, 2, 1),
-('Missy', 'calico', 6, 'small', '2008-09-09', 0, 2, 3),
-('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 1, 6),
-('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 1, 1);
+('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 'dog', 6),
+('Zazu', 'tabby', 1, 'small', '2022-02-15', 1, 'cat', 1),
+('Missy', 'calico', 6, 'small', '2008-09-09', 0, 'cat', 3),
+('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 6),
+('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
 
 		
 

@@ -1,6 +1,8 @@
 package learn.pawpals.data;
 
 import learn.pawpals.models.Animal;
+import learn.pawpals.models.Species;
+
 import java.util.List;
 
 public interface AnimalRepository {
@@ -12,7 +14,7 @@ public interface AnimalRepository {
     List<Animal> findAll();
 
 
-    List<Animal> findBySpecies(int speciesId);
+    List<Animal> findBySpecies(Species species);
 
 
     Animal add(Animal animal);
