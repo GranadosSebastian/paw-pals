@@ -1,4 +1,4 @@
-package main.java.learn.pawpals.data;
+package learn.pawpals.data;
 
 public class UserJdbcRepositoryDouble {
 
