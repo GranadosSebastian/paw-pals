@@ -17,7 +17,7 @@ public class AnimalMapper implements RowMapper<Animal> {
         Animal animal = new Animal();
         animal.setAnimalId(rs.getInt("animal_id"));
 
-        animal.setAnimalName(rs.getString("animal_id"));
+        animal.setAnimalName(rs.getString("animal_name"));
         animal.setBreed(rs.getString("breed"));
         animal.setAge(rs.getInt("age"));
         animal.setSize(Size.valueOf(rs.getString("size")));
