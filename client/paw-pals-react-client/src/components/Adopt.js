@@ -53,33 +53,30 @@ function Adopt() {
     return (
 
         <>
-            {/* {animals.map((animal) => */}
-            <div class="card" style={{ width: "18rem" }}>
-                <img className="card-img-top center-cropped rounded-circle" src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" alt="..." />
-                <div className="card-body">
-                    {/* <h5 class="card-title">{animal.animalName}</h5> */}
-                    <h5 class="card-title">Name</h5>
-                    <ul>
-                        {/* <li>{animal.age}</li>
+            {animals.map((animal) =>
+                <div class="card" style={{ width: "18rem" }}>
+                    <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle" alt="..." />
+                    <div className="card-body">
+                        {/* <h5 class="card-title">{animal.animalName}</h5> */}
+                        <h5 class="card-title">Name</h5>
+                        <ul>
+                            {/* <li>{animal.age}</li>
                             <li>{animal.breed}</li>
                             <li>{animal.size}</li>
                             <li>{animal.friendliness}</li>
                             <li>{animal.arrivalDate}</li> */}
-                        <li>age</li>
-                        <li>breed</li>
-                        <li>size</li>
-                        <li>friendliness</li>
-                        <li>arrival date</li>
-                    </ul>
-                    {/* <Link to={`/schedule`}>Edit</Link>
-                    <Link to={`/animals/edit/${animal.animalId}`}>Edit</Link>
-                    <button onClick={() => handleDeleteAnimal(animal.animalId)}>Delete</button> */}
-                    <a href="#" className="btn btn-primary">Schedule Visit</a>
-                    <a href="#" className="btn btn-primary">Edit</a>
-                    <a href="#" className="btn btn-primary">Delete</a>
+                            <li>age</li>
+                            <li>breed</li>
+                            <li>size</li>
+                            <li>friendliness</li>
+                            <li>arrival date</li>
+                        </ul>
+                        <Link to={`/schedule`}>Visit</Link>
+                        <Link to={`/animals/edit/${animal.animalId}`}>Edit</Link>
+                        <button onClick={() => handleDeleteAnimal(animal.animalId)}>Delete</button>
+                    </div>
                 </div>
-            </div>
-            {/* )} */}
+            )}
         </>
     );
 }

@@ -186,6 +186,14 @@ function PetForm() {
                         <option value="8">Reptile</option>
                     </select>
                 </div>
+                <div>
+                    <button className="btn btn-success mr-2" type="submit">
+                        {animalId ? 'Update Pet' : 'Add Pet'}
+                    </button>
+                    <Link className="btn btn-warning" to="/animals">
+                        Cancel
+                    </Link>
+                </div>
             </form>
         </>
 
