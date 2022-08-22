@@ -36,10 +36,12 @@ public class AnimalService {
         if (animal != null && animal.getAnimalId() > 0) {
             result.addErrorMessage("Animal id should not be set.", ResultType.INVALID);
         }
+        /*
         if (result.isSuccess()) {
             animal = animalRepository.add(animal);
             result.setPayload(animal);
         }
+        */
         return result;
     }
 
@@ -51,20 +53,22 @@ public class AnimalService {
         }
 
         if (result.isSuccess()) {
+            /*
             if (animalRepository.update(animal)) {
                 result.setPayload(animal);
             } else {
                 result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animal.getAnimalId());
             }
+            */
         }
         return result;
     }
 
     public Result<Animal> delete(int animalId) throws DataAccessException {
         Result<Animal> result = new Result<>();
-        if (animalRepository.delete(animalId)) {
+      /*  if (animalRepository.delete(animalId)) {
             result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animalId);
-        }
+        } */
         return result;
     }
 

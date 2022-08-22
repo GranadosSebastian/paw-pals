@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AppUser extends User { // extends User
+    /*
     private static final String AUTHORITY_PREFIX = "ROLE_";
 
     private int appUserId;
@@ -49,5 +50,7 @@ public class AppUser extends User { // extends User
                 .map(a -> a.getAuthority().substring(AUTHORITY_PREFIX.length()))
                 .collect(Collectors.toList());
     }
+
+     */
 
 }

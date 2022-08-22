@@ -1,8 +1,14 @@
 package learn.pawpals.data.mappers;
 
 
+import learn.pawpals.models.AppUser;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.util.List;
+
 public class AppUserMapper {
-    /*
+
 
 import learn.pawpals.models.AppUser;
 

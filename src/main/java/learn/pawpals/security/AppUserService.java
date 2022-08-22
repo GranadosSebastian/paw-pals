@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
 @Service
 public class AppUserService implements UserDetailsService {
 
@@ -29,7 +30,7 @@ public class AppUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = repository.findByUsername(username);
 
-        if (appUser == null /*|| !appUser.isEnabled()*/) {
+        if (appUser == null || !appUser.isEnabled()) {
             throw new UsernameNotFoundException(username + " not found");
         }
         return appUser;
@@ -99,4 +100,7 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
+
 }
+
+ */
