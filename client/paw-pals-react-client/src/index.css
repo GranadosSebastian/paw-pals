@@ -1,0 +1,62 @@
+
+
+/* 
+Color Palette
+- FF9F1C
+- FFBF69
+- FFFFFF
+- CBF3F0
+- 2EC4B6
+ */
+
+
+  /* Bootstrap Overrides */
+
+  .bg-primary { 
+    background-color: #FF9F1C;
+    border-color: #FF9F1C;
+  }
+
+  .btn-primary { 
+    background-color: #FF9F1C;
+    border-color: #FF9F1C;
+  }
+  
+  .btn-primary:hover, .btn-primary:active, .btn-primary:focus { 
+    background-color: #FFBF69;
+    border-color: #FFBF69;
+  }
+  
+  .btn-primary:focus {
+    outline: 3px solid #FF9F1C !important;
+  }
+  
+  .btn-info { 
+    background-color: #f896d8;
+    border-color: #f896d8;
+  }
+  
+  .btn-info:hover, .btn-info:active, .btn-info:focus { 
+    background-color: #d177b3;
+    border-color: #d177b3;
+    color: white;
+  }
+  
+  .btn-info:focus {
+    outline: 3px solid #feb7e7 !important;
+  }
+  
+  .btn-danger { 
+    background-color: #ca7df9;
+    border-color: #ca7df9;
+    color: black;
+  }
+  
+  .btn-danger:hover, .btn-danger:active, .btn-danger:focus { 
+    background-color: #b65fed;
+    border-color: #b65fed;
+  }
+  
+  .btn-danger:focus {
+    outline: 3px solid #d89efc !important;
+  }
