@@ -30,16 +30,6 @@ public class AnimalService {
         return animalRepository.findBySpecies(speciesId);
     }
 
-
-
-    private void validate() {
-        //result
-        //if conditions & validations
-        //return result
-
-        return animalRepository.findBySpecies();
-    }
-
     public Result<Animal> add(Animal animal) throws DataAccessException {
         Result<Animal> result = validate(animal);
 
@@ -91,6 +81,15 @@ public class AnimalService {
 
         }
 
+        if (animal.getAnimalName().isBlank() || animal.getAnimalName() == null) {
+            result.addErrorMessage("Animal name cannot be empty.", ResultType.INVALID);
+        }
+
+
+        if (animal.getSize() == null) {
+            result.addErrorMessage("Size of animal is required.", ResultType.INVALID);
+        }
+
         if (animal.getArrivalDate().isAfter(today)) {
             result.addErrorMessage("Arrival date cannot be in the future.", ResultType.INVALID);
         }
@@ -99,19 +98,10 @@ public class AnimalService {
             result.addErrorMessage("Arrival date is required", ResultType.INVALID);
         }
 
-        //add if conditions & validations
-        /*
-        animalId
-        animalName
-        breed
-        age null
-        size
-        arrivalDate
-        friendliness null
-        isAvailable
-        speciesId
-        userId
-        */
+        if (animal.getUserId() <= 0) {
+            result.addErrorMessage("User ID is required.", ResultType.INVALID);
+
+        }
 
         return result;
 
