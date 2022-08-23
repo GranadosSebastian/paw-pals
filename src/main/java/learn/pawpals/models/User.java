@@ -83,6 +83,7 @@ public class User {
     public void setRoleId(int roleId) {
         this.roleId = roleId; }
 
+    /*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,6 +93,6 @@ public class User {
     }
     @Override
     public int hashCode() { return Objects.hash(userId, firstName, lastName, address, phone, email, roleId); }
-
+    */
 
 }
