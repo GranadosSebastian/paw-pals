@@ -15,7 +15,6 @@ import java.util.List;
 
 @Service
 public class AppUserService implements UserDetailsService {
-
     private final AppUserRepository repository;
     private final PasswordEncoder encoder;
 
