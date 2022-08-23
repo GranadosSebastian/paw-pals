@@ -16,18 +16,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/animal")
 public class AnimalController {
-
     private final AnimalService service;
     public AnimalController(AnimalService service) {
         this.service = service;
     }
 
-
     @GetMapping
     public List<Animal> findAll() throws DataAccessException {
         return service.findAll();
     }
-
 
     @GetMapping("/{species}")
     public List<Animal> findBySpecies(@PathVariable Species species) throws DataAccessException {
@@ -67,6 +64,4 @@ public class AnimalController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
 }

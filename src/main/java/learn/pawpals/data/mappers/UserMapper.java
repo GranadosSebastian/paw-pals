@@ -1,15 +1,14 @@
 package learn.pawpals.data.mappers;
 
 import learn.pawpals.models.User;
+import org.springframework.jdbc.core.RowMapper;
 
-public class UserMapper {
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    // implement RowMapper<user>
-
-    public User mapRow() {
-        User user = new User();
-        // set variables
-        return user;
+public class UserMapper implements RowMapper<User> {
+    @Override
+    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return null;
     }
-
 }
