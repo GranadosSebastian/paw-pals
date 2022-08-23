@@ -125,8 +125,6 @@ public class Animal {
         isAvailable = available;
     }
 
-    // object equals
-    // hash
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

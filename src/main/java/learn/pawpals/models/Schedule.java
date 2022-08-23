@@ -1,6 +1,7 @@
 package learn.pawpals.models;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class Schedule {
 
@@ -8,16 +9,16 @@ public class Schedule {
     private LocalTime time;
 
     // variables from other models
-    private Animal animalId;
+    private int animalId;
 
-    private User userId;
+    private int userId;
 
     // empty constructor
     public Schedule() {
     }
 
     // constructor
-    public Schedule(int scheduleId, LocalTime time, Animal animalId, User userId) {
+    public Schedule(int scheduleId, LocalTime time, int animalId, int userId) {
         this.scheduleId = scheduleId;
         this.time = time;
         this.animalId = animalId;
@@ -33,11 +34,11 @@ public class Schedule {
         return time;
     }
 
-    public Animal getAnimalId() {
+    public int getAnimalId() {
         return animalId;
     }
 
-    public User getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -50,15 +51,22 @@ public class Schedule {
         this.time = time;
     }
 
-    public void setAnimalId(Animal animalId) {
+    public void setAnimalId(int animalId) {
         this.animalId = animalId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    // object equals
-    // hash code
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Schedule that = (Schedule) o;
+        return scheduleId == that.scheduleId && time == that.time && animalId == that.animalId && userId == that.userId;
+    }
+    @Override
+    public int hashCode() { return Objects.hash(scheduleId, time, animalId, userId); }
 
 }
