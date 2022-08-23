@@ -1,6 +1,6 @@
 package learn.pawpals.data.mappers;
 
-import learn.pawpals.models.User;
+import learn.pawpals.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -9,15 +9,15 @@ import java.sql.SQLException;
 public class UserMapper implements RowMapper {
 
     @Override
-    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-        User user = new User();
-        user.setUserId(rs.getInt("user_id"));
-        user.setFirstName(rs.getString("first_name"));
-        user.setLastName(rs.getString("last_name"));
-        user.setAddress(rs.getString("address"));
-        user.setPhone(rs.getString("phone"));
-        user.setEmail(rs.getString("email"));
-        user.setRoleId(rs.getInt("role_id"));
-        return user;
+    public AppUser mapRow(ResultSet rs, int rowNum) throws SQLException {
+        AppUser appUser = new AppUser();
+        appUser.setAppUserId(rs.getInt("user_id"));
+        appUser.setFirstName(rs.getString("first_name"));
+        appUser.setLastName(rs.getString("last_name"));
+        appUser.setAddress(rs.getString("address"));
+        appUser.setPhone(rs.getString("phone"));
+        appUser.setEmail(rs.getString("email"));
+        appUser.setRoleId(rs.getInt("role_id"));
+        return appUser;
     }
 }

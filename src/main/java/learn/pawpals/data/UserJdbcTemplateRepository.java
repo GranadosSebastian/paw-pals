@@ -1,7 +1,7 @@
 package learn.pawpals.data;
 
 import learn.pawpals.data.mappers.UserMapper;
-import learn.pawpals.models.User;
+import learn.pawpals.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -26,24 +26,24 @@ public class UserJdbcTemplateRepository implements UserRepository {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<AppUser> findAll() {
         final String sql = "select" + FULLUSERSQLCOLS + "from `user`;";
         return jdbcTemplate.query(sql, new UserMapper());
     }
 
     @Override
     @Transactional
-    public List<User> findByRole(int roleId) {
+    public List<AppUser> findByRole(int roleId) {
         final String sql = "select" + FULLUSERSQLCOLS +
                 "from `user` where role_id = ? ;";
 
-        List<User> results = jdbcTemplate.query(sql, new UserMapper(), roleId).stream().toList();
+        List<AppUser> results = jdbcTemplate.query(sql, new UserMapper(), roleId).stream().toList();
 
         return results;
     }
 
     @Override
-    public User add(User user) {
+    public AppUser add(AppUser appUser) {
 
         final String sql = "insert into `user` (" + FULLUSERSQLCOLS + ") " +
                 "values (?, ?, ?, ?, ?, ?);";
@@ -51,12 +51,12 @@ public class UserJdbcTemplateRepository implements UserRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, user.getFirstName());
-            ps.setString(2, user.getLastName());
-            ps.setString(3, user.getAddress());
-            ps.setString(4, user.getPhone());
-            ps.setString(5, user.getEmail());
-            ps.setInt(6, user.getRoleId());
+            ps.setString(1, appUser.getFirstName());
+            ps.setString(2, appUser.getLastName());
+            ps.setString(3, appUser.getAddress());
+            ps.setString(4, appUser.getPhone());
+            ps.setString(5, appUser.getEmail());
+            ps.setInt(6, appUser.getRoleId());
             return ps;
         }, keyHolder);
 
@@ -64,12 +64,12 @@ public class UserJdbcTemplateRepository implements UserRepository {
             return null;
         }
 
-        user.setUserId(keyHolder.getKey().intValue());
-        return user;
+        appUser.setAppUserId(keyHolder.getKey().intValue());
+        return appUser;
     }
 
     @Override
-    public boolean update(User user) {
+    public boolean update(AppUser appUser) {
         final String sql = "update `user` set " +
                 "first_name = ?, " +
                 "last_name = ?, " +
@@ -79,19 +79,19 @@ public class UserJdbcTemplateRepository implements UserRepository {
                 "role_id = ? " +
                 "where user_id = ?;";
 
-        return jdbcTemplate.update(sql, user.getFirstName(),
-                                        user.getLastName(),
-                                        user.getAddress(),
-                                        user.getPhone(),
-                                        user.getEmail(),
-                                        user.getRoleId(),
-                                        user.getUserId()) > 0;
+        return jdbcTemplate.update(sql, appUser.getFirstName(),
+                                        appUser.getLastName(),
+                                        appUser.getAddress(),
+                                        appUser.getPhone(),
+                                        appUser.getEmail(),
+                                        appUser.getRoleId(),
+                                        appUser.getAppUserId()) > 0;
     }
 
     @Override
-    public boolean delete(int userId) {
-        jdbcTemplate.update("delete from animal where user_id = ?", userId);
-        return jdbcTemplate.update("delete from `user` where user_id = ?", userId) > 0;
+    public boolean delete(int appUserId) {
+        jdbcTemplate.update("delete from animal where user_id = ?", appUserId);
+        return jdbcTemplate.update("delete from `user` where user_id = ?", appUserId) > 0;
     }
 
 }
