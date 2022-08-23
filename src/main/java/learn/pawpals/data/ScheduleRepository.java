@@ -15,7 +15,7 @@ public interface ScheduleRepository {
     //delete
 
     List<Schedule> findAll();
-    List<Schedule> findByDate();
+    List<Schedule> findByTime();
 
     List<Schedule> findByAnimal();
 

@@ -1,9 +1,11 @@
 package learn.pawpals.data;
 
 import learn.pawpals.models.Schedule;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
     //findAll
@@ -20,7 +22,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     }
 
     @Override
-    public List<Schedule> findByDate() {
+    public List<Schedule> findByTime() {
         return null;
     }
 

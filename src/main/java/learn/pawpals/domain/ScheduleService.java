@@ -4,11 +4,13 @@ import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.ScheduleRepository;
 import learn.pawpals.models.Animal;
 import learn.pawpals.models.Schedule;
+import org.springframework.stereotype.Service;
 
 import javax.xml.crypto.Data;
 import java.time.LocalTime;
 import java.util.List;
 
+@Service
 public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
