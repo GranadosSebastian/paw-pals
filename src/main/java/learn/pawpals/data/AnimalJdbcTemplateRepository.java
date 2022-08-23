@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 @Repository
 public class AnimalJdbcTemplateRepository implements AnimalRepository {
     private final JdbcTemplate jdbcTemplate;
-    private final String FULLANIMALSQLCOLS = " animal_id, animal_name," +
-            "breed, age, size, arrival_date, friendliness_level," +
+    private final String FULLANIMALSQLCOLS = " animal_id, animal_name, " +
+            "breed, age, size, arrival_date, friendliness_level, " +
             "species, is_available, user_id ";
 
     public AnimalJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
