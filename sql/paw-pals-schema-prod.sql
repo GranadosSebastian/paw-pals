@@ -2,12 +2,6 @@ drop database if exists paw_pals;
 create database paw_pals;
 use paw_pals;
 
-
-create table species (
-	species_id int primary key auto_increment,
-    species_name varchar(50) not null
-	);
-
 create table `role` (
 	role_id int primary key auto_increment,
     role_type varchar(25) not null,
@@ -50,9 +44,6 @@ create table animal (
     is_available bit null,
     species varchar(20) not null,
     user_id int not null,
-	constraint fk_animal_species_id
-		foreign key (species_id)
-		references species(species_id),
 	constraint fk_animal_user_id
 		foreign key (user_id)
 		references `user`(user_id)

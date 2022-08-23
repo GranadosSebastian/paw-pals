@@ -20,7 +20,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     private final JdbcTemplate jdbcTemplate;
     private final String FULLANIMALSQLCOLS = " animal_id, animal_name," +
             "breed, age, size, arrival_date, friendliness_level," +
-            "species, is_available ";
+            "is_available, species, user_id ";
 
     public AnimalJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
