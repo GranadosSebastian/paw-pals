@@ -1,8 +1,11 @@
 package learn.pawpals.models;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Component
 public class Animal {
 
     private int animalId;
