@@ -39,7 +39,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     public List<Animal> findBySpecies(Species species) {
 
         final String sql = "select" + FULLANIMALSQLCOLS +
-                "from animal where species = ?;";
+                "from animal where species = ? ;";
 
 
         List<Animal> results = jdbcTemplate.query(sql, new AnimalMapper(), species).stream()
