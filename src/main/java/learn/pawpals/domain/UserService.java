@@ -16,8 +16,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> findByRole(User user) throws DataAccessException {
-        return userRepository.findByRole(user);
+    public List<User> findByRole(int roleId) throws DataAccessException {
+        return userRepository.findByRole(roleId);
     }
 
     public Result<User> add(User user) throws DataAccessException {

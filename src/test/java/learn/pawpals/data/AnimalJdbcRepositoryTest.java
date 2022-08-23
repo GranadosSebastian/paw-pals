@@ -20,7 +20,7 @@ public class AnimalJdbcRepositoryTest {
     @Autowired AnimalJdbcTemplateRepository repository;
 
     @Autowired
-    private KnownGoodState knownGoodState;
+    KnownGoodState knownGoodState;
 
     @BeforeEach
     void setup() {
