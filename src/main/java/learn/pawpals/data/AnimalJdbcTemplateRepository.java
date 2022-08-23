@@ -4,6 +4,7 @@ package learn.pawpals.data;
 import learn.pawpals.data.mappers.AnimalMapper;
 import learn.pawpals.models.Animal;
 import learn.pawpals.models.Species;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -17,16 +18,17 @@ import java.util.stream.Collectors;
 
 @Repository
 public class AnimalJdbcTemplateRepository implements AnimalRepository {
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     private final String FULLANIMALSQLCOLS = " animal_id, animal_name, " +
             "breed, age, size, arrival_date, friendliness_level, " +
             "is_available, species, user_id ";
 
-
-    public AnimalJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
+    public AnimalJdbcTemplateRepository(final JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
 
     @Override
     public List<Animal> findAll() {
