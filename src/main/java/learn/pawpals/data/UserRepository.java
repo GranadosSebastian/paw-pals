@@ -14,11 +14,11 @@ public interface UserRepository {
 
     List<User> findAll();
 
-    List<User> findByRole();
+    List<User> findByRole(int roleId);
 
-    User add();
+    User add(User user);
 
-    boolean update();
+    boolean update(User user);
 
-    boolean delete();
+    boolean delete(int userId);
 }
