@@ -65,9 +65,9 @@ public class AnimalService {
 
     public Result<Animal> delete(int animalId) throws DataAccessException {
         Result<Animal> result = new Result<>();
-      /*  if (animalRepository.delete(animalId)) {
+        if (animalRepository.deleteById(animalId)) {
             result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animalId);
-        } */
+        }
         return result;
     }
 
