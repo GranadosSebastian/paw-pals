@@ -1,7 +1,12 @@
 package learn.pawpals.domain;
 
+import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.ScheduleRepository;
+import learn.pawpals.models.Animal;
 import learn.pawpals.models.Schedule;
+
+import javax.xml.crypto.Data;
+import java.time.LocalTime;
 import java.util.List;
 
 public class ScheduleService {
@@ -12,49 +17,63 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
-    //findAll
-    //findByDate
-    //findByAnimal
-    //findByAdopter
-    //add
-    //update
-    //delete
-
-    public List<Schedule> findAll() {
-        return null;
+    public List<Schedule> findAll() throws DataAccessException {
+        return scheduleRepository.findAll();
     }
 
-    public List<Schedule> findByDate() {
-        return null;
+    /*
+    public List<Schedule> findByTime(LocalTime time) throws DataAccessException {
+        return scheduleRepository.findByTime(time);
     }
 
-    public List<Schedule> findByAnimal() {
-        return null;
+
+    public List<Schedule> findByAnimal(Animal animal) throws DataAccessException {
+
+          return scheduleRepository.findByAnimal(animal);
     }
 
-    public List<Schedule> findByAdopter() {
-        return null;
+    /*
+    public Result<Schedule> add(Schedule schedule) {
+        Result<Schedule> result = validate(schedule);
+        if (schedule != null && schedule.getScheduleId() > 0) {
+            result.addErrorMessage("Schedule id should not be set.", ResultType.INVALID);
+        }
+        if (result.isSuccess()) {
+        //    schedule = scheduleRepository.add(schedule);
+            result.setPayload(schedule);
+        }
+        return result;
+    } */
+
+    public Result<Schedule> update(Schedule schedule) throws DataAccessException {
+        Result<Schedule> result = validate(schedule);
+        if (schedule.getScheduleId() <= 0) {
+            result.addErrorMessage("Schedule ID is required.", ResultType.INVALID);
+        }
+     /*   if (result.isSuccess()) {
+            if (scheduleRepository.update(schedule)) {
+                result.setPayload(schedule);
+            } else {
+                result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, animal.getAnimalId());
+            }
+        } */
+        return result;
     }
 
-    public void add() {
-        //result
-        //return result
+    public Result<Schedule> delete(int scheduleId) throws DataAccessException {
+        Result<Schedule> result = new Result();
+      /*  if (scheduleRepository.delete(scheduleId)) {
+            result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, animalId);
+        } */
+        return result;
     }
 
-    public void update() {
-        //result
-        //return result
-    }
-
-    public void delete() {
-        //result
-        //return result
-    }
-
-    private void validate() {
-        //result
+    private Result<Schedule> validate(Schedule schedule) throws DataAccessException {
+        Result<Schedule> result = new Result();
         //if conditions & validations
-        //return result
+        return result;
     }
 
 }
+
+

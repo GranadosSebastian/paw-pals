@@ -27,7 +27,8 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setArrivalDate(LocalDate.parse(rs.getString("arrival_date")));
         animal.setFriendliness(rs.getString("friendliness_level"));
         animal.setAvailable(rs.getBoolean("is_available"));
-        Species species = Species.valueOf(rs.getString("species").toUpperCase());
+        String speciesInString = rs.getString("species").toUpperCase();
+        Species species = Species.valueOf(speciesInString);
         animal.setSpecies(species);
         animal.setUserId(rs.getInt("user_id"));
 

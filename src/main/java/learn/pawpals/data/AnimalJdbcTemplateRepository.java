@@ -23,7 +23,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
 
     private final String FULLANIMALSQLCOLS = " animal_id, animal_name, " +
             "breed, age, size, arrival_date, friendliness_level, " +
-            "species, is_available, user_id ";
+            "is_available, species, user_id ";
 
     public AnimalJdbcTemplateRepository(final JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -54,7 +54,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     public Animal add(Animal animal) {
 
         final String sql = "insert into animal (" + FULLANIMALSQLCOLS + ") " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -67,6 +67,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
             ps.setString(6, animal.getFriendliness());
             ps.setBoolean(7, animal.isAvailable());
             ps.setObject(8, animal.getSpecies());
+            ps.setInt(9, animal.getUserId());
             return ps;
         }, keyHolder);
 

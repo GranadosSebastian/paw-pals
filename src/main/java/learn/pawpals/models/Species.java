@@ -2,14 +2,14 @@ package learn.pawpals.models;
 
 public enum Species {
 
-    CAT(1, "Cat"),
-    DOG(2, "Dog"),
-    RABBIT(3, "Rabbit"),
-    HAMSTER(4, "Hamster"),
-    GUINEA_PIG(5, "Guinea Pig"),
-    BIRD(6, "Bird"),
-    FISH(7, "Fish"),
-    REPTILE(8, "Reptile");
+    cat(1, "cat"),
+    dog(2, "dog"),
+    rabbit(3, "rabbit"),
+    hamster(4, "hamster"),
+    guinea_pig(5, "guinea pig"),
+    bird(6, "bird"),
+    fish(7, "fish"),
+    reptile(8, "reptile");
 
     private final String name;
 
