@@ -18,9 +18,15 @@ import java.util.stream.Collectors;
 @Repository
 public class AnimalJdbcTemplateRepository implements AnimalRepository {
     private final JdbcTemplate jdbcTemplate;
+<<<<<<< HEAD
     private final String FULLANIMALSQLCOLS = " animal_id, animal_name," +
             "breed, age, size, arrival_date, friendliness_level," +
             "is_available, species, user_id ";
+=======
+    private final String FULLANIMALSQLCOLS = " animal_id, animal_name, " +
+            "breed, age, size, arrival_date, friendliness_level, " +
+            "species, is_available, user_id ";
+>>>>>>> e4a840e4fbbb4598ed330df40f080017cc705251
 
     public AnimalJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -50,7 +56,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     public Animal add(Animal animal) {
 
         final String sql = "insert into animal (" + FULLANIMALSQLCOLS + ") " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?);";
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -84,7 +90,8 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
                 "arrival_date = ?, " +
                 "friendliness_level = ?," +
                 "is_available = ?," +
-                "species = ? " +
+                "species = ?, " +
+                "user_id = ? " +
                 "where animal_id = ?;";
 
         return jdbcTemplate.update(sql, animal.getAnimalName(),

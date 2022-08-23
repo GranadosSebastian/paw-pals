@@ -151,9 +151,14 @@ function PetForm() {
                         value={animal.age} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="size">Size:</label>
-                    <input id="size" name="size" type="text" className="form-control"
-                        value={animal.size} onChange={handleChange} />
+                    <label htmlFor="size">Size: </label>
+                    <select id="size" name="size" className="form-control"
+                        value={animal.size} onChange={handleChange}>
+                        <option value="SMALL">Small</option>
+                        <option value="MEDIUM">Medium</option>
+                        <option value="LARGE">Large</option>
+
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="arrivalDate">Arrival Date:</label>
