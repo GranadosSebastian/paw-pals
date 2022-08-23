@@ -16,9 +16,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> findByRole(User user) throws DataAccessException {
-      //  return userRepository.findByRole(user);
-        return null;
+    public List<User> findByRole(int roleId) throws DataAccessException {
+        return userRepository.findByRole(roleId);
     }
 
     public Result<User> add(User user) throws DataAccessException {
@@ -29,7 +28,7 @@ public class UserService {
         }
 
         if (result.isSuccess()) {
-          //  user = userRepository.add(user);
+            user = userRepository.add(user);
             result.setPayload(user);
         }
 
@@ -43,22 +42,22 @@ public class UserService {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
         }
 
-      /*  if (result.isSuccess()) {
+        if (result.isSuccess()) {
             if (userRepository.update(user)) {
                 result.setPayload(user);
             } else {
                 result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, user.getUserId());
             }
-        } */
+        }
 
         return result;
     }
 
     public Result<User> delete(int userId) throws DataAccessException {
         Result<User> result = new Result<>();
-      /*  if (userRepository.delete(userId)) {
+        if (userRepository.delete(userId)) {
             result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, userId);
-        } */
+        }
         return result;
     }
 
