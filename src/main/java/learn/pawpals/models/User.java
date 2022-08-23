@@ -1,5 +1,7 @@
 package learn.pawpals.models;
 
+import java.util.Objects;
+
 public class User {
 
     private int userId;
@@ -79,10 +81,17 @@ public class User {
     }
 
     public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
+        this.roleId = roleId; }
 
-    // object equals
-    // hash code
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User that = (User) o;
+        return userId == that.userId && firstName == that.firstName && lastName == that.lastName && address == that.address && phone == that.phone && email == that.email && roleId == that.roleId;
+    }
+    @Override
+    public int hashCode() { return Objects.hash(userId, firstName, lastName, address, phone, email, roleId); }
+
 
 }
