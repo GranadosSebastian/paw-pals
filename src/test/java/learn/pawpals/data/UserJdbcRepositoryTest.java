@@ -1,6 +1,7 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.User;
+import learn.pawpals.App;
+import learn.pawpals.models.AppUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +25,7 @@ public class UserJdbcRepositoryTest {
 
     @Test
     void shouldFindAll() {
-        List<User> users = repository.findAll();
+        List<AppUser> users = repository.findAll();
         assertNotNull(users);
         assertTrue(users.size() == 6);
 
@@ -32,19 +33,19 @@ public class UserJdbcRepositoryTest {
 
     @Test
     void shouldFindAllFosterers() {
-        List<User> users = repository.findByRole(3);
+        List<AppUser> users = repository.findByRole(3);
         assertEquals(2, users.size());
 
     }
 
     @Test
     void shouldAdd() {
-        User user = new User();
+        AppUser user = new AppUser();
         user.setFirstName("Testing");
         user.setLastName("TestingLastName");
         user.setEmail("123@gmail.com");
         user.setRoleId(1);
-        User actual = repository.add(user);
+        AppUser actual = repository.add(user);
 
         assertNotNull(actual);
         assertEquals("Testing", actual.getFirstName());
@@ -53,8 +54,8 @@ public class UserJdbcRepositoryTest {
 
     @Test
     void shouldUpdateUser() {
-        User user = new User();
-        user.setUserId(6);
+        AppUser user = new AppUser();
+        user.setAppUserId(6);
         user.setAddress("9876 Test Lane");
         assertTrue(repository.update(user));
 

@@ -1,24 +1,18 @@
 package learn.pawpals.data;
 
-import learn.pawpals.models.User;
+import learn.pawpals.models.AppUser;
 
 import java.util.List;
 
 public interface UserRepository {
 
-    //findAll
-    //findByRole
-    //add
-    //update
-    //delete
+    List<AppUser> findAll();
 
-    List<User> findAll();
+    List<AppUser> findByRole(int roleId);
 
-    List<User> findByRole(int roleId);
+    AppUser add(AppUser appUser);
 
-    User add(User user);
+    boolean update(AppUser appUser);
 
-    boolean update(User user);
-
-    boolean delete(int userId);
+    boolean delete(int appUserId);
 }
