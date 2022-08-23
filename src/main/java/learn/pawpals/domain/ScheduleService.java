@@ -1,7 +1,11 @@
 package learn.pawpals.domain;
 
+import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.ScheduleRepository;
+import learn.pawpals.models.Animal;
 import learn.pawpals.models.Schedule;
+
+import javax.xml.crypto.Data;
 import java.util.List;
 
 public class ScheduleService {
@@ -12,49 +16,53 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
-    //findAll
-    //findByDate
-    //findByAnimal
-    //findByAdopter
-    //add
-    //update
-    //delete
-
-    public List<Schedule> findAll() {
-        return null;
+    public List<Schedule> findAll() throws DataAccessException {
+        return scheduleRepository.findAll();
     }
 
-    public List<Schedule> findByDate() {
-        return null;
+    public List<Schedule> findByDate() throws DataAccessException {
+        return scheduleRepository.findByDate();
     }
 
-    public List<Schedule> findByAnimal() {
-        return null;
+    public List<Schedule> findByAnimal() throws DataAccessException {
+
+        return scheduleRepository.findByAnimal();
     }
 
-    public List<Schedule> findByAdopter() {
-        return null;
+    public List<Schedule> findByAdopter() throws DataAccessException {
+
+        return scheduleRepository.findByAdopter();
     }
 
-    public void add() {
-        //result
+    public Result<Schedule> add(Schedule schedule) {
+        Result<Schedule> result = validate(schedule);
+        if (schedule != null && schedule.getScheduleId() > 0) {
+            result.addErrorMessage("Schedule id should not be set.", ResultType.INVALID);
+        }
+
+        if (result.isSuccess()) {
+            schedule = scheduleRepository.add(schedule);
+            result.setPayload(schedule);
+        }
+    }
+
+    public Result<Schedule> update(Schedule schedule) throws DataAccessException {
+        Result<Schedule> result = validate(schedule);
         //return result
     }
 
-    public void update() {
-        //result
-        //return result
+    public Result<Schedule> delete(int scheduleId) throws DataAccessException {
+        Result<Schedule> result = new Result();
+        if (scheduleRepository.delete(scheduleId)) {
+            result.addErrorMessage("Animal ID %s was not found.", ResultType.NOT_FOUND, animalId);
+        }
+        return result;
     }
 
-    public void delete() {
-        //result
-        //return result
-    }
-
-    private void validate() {
-        //result
+    private Result<Schedule> validate(Schedule schedule) throws DataAccessException {
+        Result<Schedule> result = new Result();
         //if conditions & validations
-        //return result
+        return result;
     }
 
 }

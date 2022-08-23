@@ -1,5 +1,5 @@
 package learn.pawpals.controllers;
-
+/*
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
@@ -29,7 +29,8 @@ public class UserController {
 
     @GetMapping("/{roleId}")
     public List<User> findByRole(@PathVariable int roleId) throws DataAccessException {
-        return service.findByRole(roleId);
+      //  return service.findByRole(roleId);
+        return null;
     }
 
     @PostMapping
@@ -67,3 +68,4 @@ public class UserController {
     }
 
 }
+*/
