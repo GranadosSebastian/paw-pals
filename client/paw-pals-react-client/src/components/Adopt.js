@@ -11,7 +11,7 @@ function Adopt() {
         fetch('http://localhost:8080/api/animal')
             .then(response => {
                 if (response.status === 200) {
-                    return response.jston();
+                    return response.json();
                 } else {
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
