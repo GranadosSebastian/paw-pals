@@ -1,15 +1,15 @@
 package learn.pawpals.data.mappers;
 
 import learn.pawpals.models.Schedule;
+import org.springframework.jdbc.core.RowMapper;
 
-public class ScheduleMapper {
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    // implement RowMapper<schedule>
+public class ScheduleMapper implements RowMapper<Schedule> {
 
-    public Schedule mapRow() {
-        Schedule schedule = new Schedule();
-        // set variables
-        return schedule;
+    @Override
+    public Schedule mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return null;
     }
-
 }

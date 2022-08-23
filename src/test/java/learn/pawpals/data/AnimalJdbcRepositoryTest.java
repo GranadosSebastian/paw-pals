@@ -36,7 +36,7 @@ public class AnimalJdbcRepositoryTest {
 
     @Test
     void shouldFindSpecies() {
-        List<Animal> animals = repository.findBySpecies(Species.CAT);
+        List<Animal> animals = repository.findBySpecies(Species.cat);
         assertEquals(2, animals.size());
     }
     @Test
@@ -45,7 +45,7 @@ public class AnimalJdbcRepositoryTest {
         animal.setAnimalName("TEST");
         animal.setSize(Size.MEDIUM);
         animal.setArrivalDate(LocalDate.now());
-        animal.setSpecies(Species.BIRD);
+        animal.setSpecies(Species.bird);
         animal.setUserId(1);
         Animal actual = repository.add(animal);
 
