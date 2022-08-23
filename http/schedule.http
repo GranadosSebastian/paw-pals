@@ -1,0 +1,8 @@
+@url = http://localhost:8080/api/schedule
+###
+
+GET {{url}} HTTP/1.1
+###
+
+GET {{url}}/10:00 HTTP/1.1
+###
