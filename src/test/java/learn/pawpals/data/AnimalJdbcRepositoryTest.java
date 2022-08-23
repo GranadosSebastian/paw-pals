@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AnimalJdbcRepositoryTest {
 
     @Autowired
-    AnimalJdbcTemplateRepository repository;
+    private AnimalJdbcTemplateRepository repository;
 
     @Autowired
-    KnownGoodState knownGoodState;
+    private KnownGoodState knownGoodState;
 
     @BeforeEach
     void setup() {

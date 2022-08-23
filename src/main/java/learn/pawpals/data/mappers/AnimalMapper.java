@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Locale;
 
 
 public class AnimalMapper implements RowMapper<Animal> {
@@ -20,11 +21,14 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setAnimalName(rs.getString("animal_name"));
         animal.setBreed(rs.getString("breed"));
         animal.setAge(rs.getInt("age"));
-        animal.setSize(Size.valueOf(rs.getString("size")));
-        animal.setArrivalDate((LocalDate) rs.getObject("arrival_date"));
+        String sizeInString = rs.getString("size").toUpperCase();
+        Size size = Size.valueOf(sizeInString);
+        animal.setSize(size);
+        animal.setArrivalDate(LocalDate.parse(rs.getString("arrival_date")));
         animal.setFriendliness(rs.getString("friendliness_level"));
-        animal.setAvailable(rs.getBoolean(String.valueOf(rs.getBoolean("is_available"))));
-        animal.setSpecies(Species.valueOf(rs.getString("species")));
+        animal.setAvailable(rs.getBoolean("is_available"));
+        Species species = Species.valueOf(rs.getString("species").toUpperCase());
+        animal.setSpecies(species);
         animal.setUserId(rs.getInt("user_id"));
 
         return animal;

@@ -2,6 +2,8 @@ drop database if exists paw_pals;
 create database paw_pals;
 use paw_pals;
 
+
+
 create table `role` (
 	role_id int primary key auto_increment,
     role_type varchar(25) not null,
@@ -88,6 +90,4 @@ values
 ('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
 
 		
-
-
 

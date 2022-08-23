@@ -132,8 +132,8 @@ public class Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal that = (Animal) o;
-        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && species == that.species && userId == that.userId && isAvailable == that.isAvailable;
+        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && isAvailable == that.isAvailable && species == that.species && userId == that.userId;
     }
     @Override
-    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, species, userId, isAvailable); }
+    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, isAvailable, species, userId); }
 }
