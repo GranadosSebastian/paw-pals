@@ -25,6 +25,7 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setFriendliness(rs.getString("friendliness_level"));
         animal.setAvailable(rs.getBoolean(String.valueOf(rs.getBoolean("is_available"))));
         animal.setSpecies(Species.valueOf(rs.getString("species")));
+        animal.setUserId(rs.getInt("user_id"));
 
         return animal;
     }
