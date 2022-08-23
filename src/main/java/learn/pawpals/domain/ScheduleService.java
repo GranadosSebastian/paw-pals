@@ -21,7 +21,7 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-
+/*
     public List<Schedule> findByTime(LocalTime time) throws DataAccessException {
         return scheduleRepository.findByTime(time);
     }
@@ -31,7 +31,6 @@ public class ScheduleService {
 
           return scheduleRepository.findByAnimal(animal);
     }
-
 
     public Result<Schedule> add(Schedule schedule) {
         Result<Schedule> result = validate(schedule);
@@ -73,6 +72,8 @@ public class ScheduleService {
         //if conditions & validations
         return result;
     }
+
+ */
 
 }
 
