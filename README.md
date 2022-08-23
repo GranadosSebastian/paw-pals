@@ -44,7 +44,7 @@ ___
         - animalId (int)
         - animalName (String)
         - breed (String)
-        - age (String)
+        - age (inti)
         - size (enum)
         - arrivalDate (LocalDate)
         - friendliness (String)
@@ -244,8 +244,8 @@ ___
     - animal_id int, not null
 
 <<<<<<< HEAD
-### UsernamesTable
-    - username_id, pk
+### LoginTable
+    - login_id, pk
     - username, varchar(50), not null
     - password, varchar(50), not null
     
@@ -272,6 +272,7 @@ ___
     - role_type, varchar(50), not null
     - description, varchar(100)
     - user_access_level, varchar(15), not null
+>>>>>>> d227e197f2ceadfed91337ab84b07173b6e58314
 
 
 ### mySQL Test Data (1 hr)

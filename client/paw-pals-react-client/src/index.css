@@ -11,7 +11,7 @@ Color Palette
 
 
   /* Bootstrap Overrides */
-
+/* 
   .bg-primary { 
     background-color: #FF9F1C;
     border-color: #FF9F1C;
@@ -59,4 +59,4 @@ Color Palette
   
   .btn-danger:focus {
     outline: 3px solid #d89efc !important;
-  }
+  } */
