@@ -20,11 +20,11 @@ public class AppUser extends User {
     private String lastName;
     private String address;
     private String phone;
-    private String email;
     private int roleId;
 
     public AppUser(int appUserId, String username, String password,
-                   boolean disabled, List<String> roles) {
+                   boolean disabled, String firstName, String lastName,
+                   String address, String phone, List<String> roles) {
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
@@ -33,7 +33,6 @@ public class AppUser extends User {
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
-        this.email = email;
         this.roleId = roleId;
     }
 
@@ -80,13 +79,6 @@ public class AppUser extends User {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public int getRoleId() {
         return roleId;
