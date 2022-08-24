@@ -14,9 +14,7 @@ public class AppUser extends User {
 
     private static final String AUTHORITY_PREFIX = "ROLE_";
     private int appUserId;
-    private String username;
-    private String password;
-    private boolean disabled;
+
     private List<String> roles = new ArrayList<>();
     private String firstName;
     private String lastName;
@@ -29,18 +27,10 @@ public class AppUser extends User {
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
-        this.appUserId = appUserId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
-    }
-
-    public AppUser(String username, String password,
-                   boolean disabled, List<String> roles) {
-        super(username, password, !disabled,
-                true, true, true,
-                convertRolesToAuthorities(roles));
     }
 
     public int getAppUserId() {
@@ -49,32 +39,6 @@ public class AppUser extends User {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isDisabled() {
-        return disabled;
-    }
-
-    public void setDisabled(boolean disabled) {
-        this.disabled = disabled;
     }
 
     public List<String> getRoles() {

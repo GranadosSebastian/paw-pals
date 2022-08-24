@@ -4,6 +4,7 @@ import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.AppUser;
+import learn.pawpals.security.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/appuser")
-public class UserController {
+public class AppUserController {
 
-    private final UserService service;
-    public UserController(UserService service) {
+    private final AppUserService service;
+    public AppUserController(AppUserService service) {
         this.service = service;
     }
+
 
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
@@ -57,5 +59,6 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    */
 
 }
