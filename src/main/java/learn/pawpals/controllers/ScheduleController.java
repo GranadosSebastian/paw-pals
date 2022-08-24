@@ -10,12 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/schedule")
+//@RestController
+//@RequestMapping("/api/schedule")
 public class ScheduleController {
-
+    /*
     private final ScheduleService service;
 
     public ScheduleController(ScheduleService service) {
@@ -26,8 +27,6 @@ public class ScheduleController {
     public List<Schedule> findAll() throws DataAccessException {
         return service.findAll();
     }
-
-    /*
     @GetMapping("/{time}")
     public List<Schedule> findByTime(@PathVariable LocalTime time) {
         return service.findByTime(time);
@@ -38,7 +37,6 @@ public class ScheduleController {
         return service.findByAnimal(animal);
     }
 
-
     @PostMapping
     public ResponseEntity<?> add(@RequestBody Schedule schedule) throws DataAccessException {
         Result<Schedule> result = service.add(schedule);
@@ -47,7 +45,7 @@ public class ScheduleController {
         }
         return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
     }
-    */
+
 
     @PutMapping("/{scheduleId}")
     public ResponseEntity<?> update(@PathVariable int scheduleId, @RequestBody Schedule schedule) throws DataAccessException {
@@ -73,5 +71,6 @@ public class ScheduleController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    */
 
 }

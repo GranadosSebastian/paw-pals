@@ -23,7 +23,7 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-    /*
+/*
     public List<Schedule> findByTime(LocalTime time) throws DataAccessException {
         return scheduleRepository.findByTime(time);
     }
@@ -34,7 +34,6 @@ public class ScheduleService {
           return scheduleRepository.findByAnimal(animal);
     }
 
-    /*
     public Result<Schedule> add(Schedule schedule) {
         Result<Schedule> result = validate(schedule);
         if (schedule != null && schedule.getScheduleId() > 0) {
@@ -45,28 +44,28 @@ public class ScheduleService {
             result.setPayload(schedule);
         }
         return result;
-    } */
+    }
 
     public Result<Schedule> update(Schedule schedule) throws DataAccessException {
         Result<Schedule> result = validate(schedule);
         if (schedule.getScheduleId() <= 0) {
             result.addErrorMessage("Schedule ID is required.", ResultType.INVALID);
         }
-     /*   if (result.isSuccess()) {
+        if (result.isSuccess()) {
             if (scheduleRepository.update(schedule)) {
                 result.setPayload(schedule);
             } else {
                 result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, animal.getAnimalId());
             }
-        } */
+        }
         return result;
     }
 
     public Result<Schedule> delete(int scheduleId) throws DataAccessException {
         Result<Schedule> result = new Result();
-      /*  if (scheduleRepository.delete(scheduleId)) {
-            result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, animalId);
-        } */
+        if (scheduleRepository.delete(scheduleId)) {
+            result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, scheduleId);
+        }
         return result;
     }
 
@@ -75,6 +74,8 @@ public class ScheduleService {
         //if conditions & validations
         return result;
     }
+
+ */
 
 }
 

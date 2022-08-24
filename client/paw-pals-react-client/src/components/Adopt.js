@@ -11,7 +11,7 @@ function Adopt() {
         fetch('http://localhost:8080/api/animal')
             .then(response => {
                 if (response.status === 200) {
-                    return response.jston();
+                    return response.json();
                 } else {
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
@@ -58,7 +58,6 @@ function Adopt() {
                     <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle" alt="..." />
                     <div className="card-body">
                         <h5 class="card-title">{animal.animalName}</h5>
-                        <h5 class="card-title">Name</h5>
                         <ul>
                             <li>{animal.age}</li>
                             <li>{animal.breed}</li>

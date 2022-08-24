@@ -11,7 +11,7 @@ const USER_DEFAULT = {
     address: '',
     phone: '',
     email: '',
-    rodeId: 0
+    roleId: 1
 };
 
 function UserForm() {
@@ -154,9 +154,14 @@ function UserForm() {
                         value={user.email} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="roleId">Role ID:</label>
-                    <input id="roleId" name="roleId" type="number" className="form-control"
-                        value={user.roleId} onChange={handleChange} />
+                    <label htmlFor="roleId">Role: </label>
+                    <select id="roleId" name="roleId" className="form-control"
+                        value={user.roleId} onChange={handleChange}>
+                        <option value="1">Staff</option>
+                        <option value="2">Volunteer</option>
+                        <option value="3">Foster Parent</option>
+                        <option value="4">Adopter</option>
+                    </select>
                 </div>
                 <div className="mt-4">
                     <button className="btn btn-success mr-2" type="submit">

@@ -16,12 +16,25 @@ public class AppUser extends User {
 
     private int appUserId;
 
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phone;
+    private String email;
+    private int roleId;
+
     public AppUser(int appUserId, String username, String password,
                    boolean disabled, List<String> roles) {
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
         this.appUserId = appUserId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.roleId = roleId;
     }
 
 
@@ -34,6 +47,53 @@ public class AppUser extends User {
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId; }
 
     public static List<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>(roles.size());
@@ -52,6 +112,17 @@ public class AppUser extends User {
                 .collect(Collectors.toList());
     }
 
+        /*
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User that = (User) o;
+        return userId == that.userId && firstName == that.firstName && lastName == that.lastName && address == that.address && phone == that.phone && email == that.email && roleId == that.roleId;
+    }
+    @Override
+    public int hashCode() { return Objects.hash(userId, firstName, lastName, address, phone, email, roleId); }
+    */
 
 
 }
