@@ -24,9 +24,7 @@ public class ScheduleService {
     }
 
 /*
-    public List<Schedule> findByDateTime(LocalDateTime dateTime) throws DataAccessException {
-        return scheduleRepository.findByDateTime(dateTime);
-    }
+
 
 
     public List<Schedule> findByAnimal(Animal animal) throws DataAccessException {
