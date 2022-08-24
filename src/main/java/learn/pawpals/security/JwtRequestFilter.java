@@ -1,5 +1,6 @@
 package learn.pawpals.security;
 
+import learn.pawpals.models.AppUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,13 +29,13 @@ public class JwtRequestFilter extends BasicAuthenticationFilter {
         String authorization = request.getHeader("Authorization");
         if (authorization != null && authorization.startsWith("Bearer ")) {
 
-            User user = converter.getUserFromToken(authorization);
-            if (user == null) {
+            AppUser appUser = converter.getUserFromToken(authorization);
+            if (appUser == null) {
                 response.setStatus(403);
             } else {
 
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                        user.getUsername(), null, user.getAuthorities());
+                        appUser, appUser.getAuthorities());
 
                 SecurityContextHolder.getContext().setAuthentication(token);
             }

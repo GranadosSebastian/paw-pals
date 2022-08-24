@@ -41,9 +41,12 @@ public class AuthController {
             Authentication authentication = authenticationManager.authenticate(authToken);
 
             if (authentication.isAuthenticated()) {
-                String jwtToken = jwtConverter.getTokenFromUser((User) authentication.getPrincipal());
                 HashMap<String, String> map = new HashMap<>();
-                map.put("jwt_token", jwtToken);
+
+                AppUser appUser = (AppUser)authentication.getPrincipal();
+                String token = jwtConverter.getTokenFromUser(appUser);
+                map.put("jwt_token", token);
+
                 return new ResponseEntity<>(map, HttpStatus.OK);
             }
         } catch (AuthenticationException ex) {
