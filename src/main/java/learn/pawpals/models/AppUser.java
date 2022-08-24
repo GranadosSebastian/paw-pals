@@ -34,9 +34,6 @@ public class AppUser extends User {
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
-
-        this.roleId = roleId;
-
     }
 
     public int getAppUserId() {
@@ -86,14 +83,6 @@ public class AppUser extends User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId; }
 
     public static List<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>(roles.size());
