@@ -2,7 +2,11 @@ package learn.pawpals.domain;
 
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.UserRepository;
+<<<<<<< HEAD
+import learn.pawpals.models.User;
+=======
 import learn.pawpals.models.AppUser;
+>>>>>>> dae6104681a7b7bf4b9a575e19294c5ccfeb0fce
 import org.springframework.stereotype.Service;
 
 import java.util.List;

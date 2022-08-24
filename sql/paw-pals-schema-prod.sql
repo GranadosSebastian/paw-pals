@@ -2,34 +2,33 @@ drop database if exists paw_pals;
 create database paw_pals;
 use paw_pals;
 
-create table `role` (
-	role_id int primary key auto_increment,
-    role_type varchar(25) not null,
-    `description` varchar(100),
-    user_access_level varchar(15) not null
-);
-
-create table `user` (
-	user_id int primary key auto_increment,
-    first_name varchar(50) not null,
+create table app_user (
+    app_user_id int primary key auto_increment,
+    username varchar(50) not null unique,
+    password_hash varchar(2048) not null,
+    disabled bit not null default(0),
+	first_name varchar(50) not null,
     last_name varchar(50) not null,
     address varchar(100) null,
-    phone varchar(16) null,
-    email varchar(50) not null,
-    role_id int not null,
-    constraint fk_user_role_id
-		foreign key (role_id)
-		references `role`(role_id)
+    phone varchar(16) null
 );
 
-create table login (
-login_id int primary key auto_increment,
-username varchar(50) not null,
-password varchar(50) not null,
-user_id int not null,
-constraint fk_login_user_id
-	foreign key (user_id)
-    references `user`(user_id)
+create table app_role (
+    app_role_id int primary key auto_increment,
+    `name` varchar(50) not null unique
+);
+
+create table app_user_role (
+    app_user_id int not null,
+    app_role_id int not null,
+    constraint pk_app_user_role
+        primary key (app_user_id, app_role_id),
+    constraint fk_app_user_role_user_id
+        foreign key (app_user_id)
+        references app_user(app_user_id),
+    constraint fk_app_user_role_role_id
+        foreign key (app_role_id)
+        references app_role(app_role_id)
 );
 
 
@@ -43,43 +42,52 @@ create table animal (
     friendliness_level varchar(10) null,
     is_available bit null,
     species varchar(20) not null,
-    user_id int not null,
-	constraint fk_animal_user_id
-		foreign key (user_id)
-		references `user`(user_id)
+    app_user_id int not null,
+	constraint fk_animal_app_user_id
+		foreign key (app_user_id)
+		references app_user(app_user_id)
 );
 
 create table `schedule` (
 schedule_id int primary key auto_increment,
 `time` datetime not null,
-user_id int not null,
+app_user_id int not null,
 animal_id int not null,
-constraint fk_schedule_user_id
-	foreign key (user_id)
-	references `user`(user_id),
+constraint fk_schedule_app_user_id
+	foreign key (app_user_id)
+	references app_user(app_user_id),
 constraint fk_schedule_animal_id
 	foreign key (animal_id)
 	references animal(animal_id)
 );
 
 
-insert into `role` (role_type, user_access_level)
-values
-	('staff', 'full_access'),
-    ('volunteer', 'partial_access'),
-    ('foster_parent', 'partial_access'),
-    ('adopter', 'limited_access');
-    
-insert into `user` (first_name, last_name, address, phone, email, role_id)
-values
-	('Dex', 'Fitch', '123 Nowhere Lane', '1234567890', 'fitchyfetch@gmail.com', 3),
-    ('Adel', 'Mozip', '908 Main Street', '0987654321', 'mozippeezagg@yahoo.com', 4),
-    ('Corbin', 'March', '456 Planters Way', '4564564566', 'marchymarch@hotmail.com', 4),
-    ('Angela', 'Mott', null, null, 'MottsandTotts@gmail.com', 1),
-    ('Sebastian', 'Granados', null, null, 'grandoltime@aol.com', 1),
-    ('Keri', 'Salanik', null, null, 'saladdressing@aol.com', 3);
+insert into app_role (`name`) values
+    ('staff'),
+    ('volunteer'),
+    ('foster_parent'),
+    ('adopter');
 
-insert into animal (animal_name, breed, age, size, arrival_date, is_available, species, user_id)
+-- passwords are set to "P@ssw0rd!"
+insert into app_user (username, password_hash, disabled, first_name, last_name, address, phone)
+    values
+    ('fitchyfetch@gmail.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0, 'Dex', 'Fitch', '123 Nowhere Lane', '1234567890'),
+    ('mozippeezagg@yahoo.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0, 'Adel', 'Mozip', '908 Main Street', '098765432'),
+	('marchymarch@hotmail.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0,'Corbin', 'March', '456 Planters Way', '4564564566'),
+    ('MottsandTotts@gmail.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0, 'Angela', 'Mott', null, null ),
+    ('grandoltime@aol.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0, 'Sebastian', 'Granados', null, null ),
+    ('saladdressing@aol.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0,'Keri', 'Salanik', null, null );
+
+insert into app_user_role
+    values
+    (1, 3),
+    (2, 1),
+    (3, 4),
+    (4, 2),
+    (5, 4),
+    (6, 3);
+
+insert into animal (animal_name, breed, age, size, arrival_date, is_available, species, app_user_id)
 values
 ('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 'dog', 6),
 ('Zazu', 'tabby', 1, 'small', '2022-02-15', 1, 'cat', 1),
