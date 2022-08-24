@@ -14,7 +14,7 @@ import javax.xml.crypto.Data;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/appuser")
 public class UserController {
 
     private final UserService service;
