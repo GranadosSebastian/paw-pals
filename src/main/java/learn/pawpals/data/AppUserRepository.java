@@ -6,8 +6,11 @@ public interface AppUserRepository {
 
     AppUser findByUsername(String username);
 
-    AppUser create(AppUser user);
+    AppUser add(AppUser user);
+
 
     boolean update(AppUser user);
+
+    boolean delete(int appUserId);
 
 }

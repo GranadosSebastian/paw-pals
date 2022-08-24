@@ -20,10 +20,13 @@ public class AppUser extends User {
     private String lastName;
     private String address;
     private String phone;
+    private int roleId;
+
 
     public AppUser(int appUserId, String username, String password,
-                   boolean disabled, List<String> roles, String firstName, String lastName,
-                   String address, String phone) {
+                   boolean disabled, String firstName, String lastName,
+                   String address, String phone, List<String> roles) {
+
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
@@ -31,6 +34,9 @@ public class AppUser extends User {
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
+
+        this.roleId = roleId;
+
     }
 
     public int getAppUserId() {
@@ -80,6 +86,14 @@ public class AppUser extends User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId; }
 
     public static List<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>(roles.size());
