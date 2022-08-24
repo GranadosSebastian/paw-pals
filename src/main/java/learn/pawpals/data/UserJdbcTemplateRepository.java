@@ -55,8 +55,6 @@ public class UserJdbcTemplateRepository implements UserRepository {
             ps.setString(2, appUser.getLastName());
             ps.setString(3, appUser.getAddress());
             ps.setString(4, appUser.getPhone());
-            ps.setString(5, appUser.getEmail());
-            ps.setInt(6, appUser.getRoleId());
             return ps;
         }, keyHolder);
 
@@ -83,8 +81,6 @@ public class UserJdbcTemplateRepository implements UserRepository {
                                         appUser.getLastName(),
                                         appUser.getAddress(),
                                         appUser.getPhone(),
-                                        appUser.getEmail(),
-                                        appUser.getRoleId(),
                                         appUser.getAppUserId()) > 0;
     }
 

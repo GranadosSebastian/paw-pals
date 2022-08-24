@@ -14,16 +14,18 @@ public class AppUser extends User {
 
     private static final String AUTHORITY_PREFIX = "ROLE_";
     private int appUserId;
+    private String username;
+    private String password;
+    private boolean disabled;
+    private List<String> roles = new ArrayList<>();
     private String firstName;
     private String lastName;
     private String address;
     private String phone;
-    private String email;
-    private int roleId;
 
     public AppUser(int appUserId, String username, String password,
                    boolean disabled, List<String> roles, String firstName, String lastName,
-                   String address, String phone, String email, int roleId) {
+                   String address, String phone) {
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
@@ -32,14 +34,9 @@ public class AppUser extends User {
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
-        this.email = email;
-        this.roleId = roleId;
     }
 
-
-    private List<String> roles = new ArrayList<>();
-
-    public AppUser(int appUserId, String username, String password,
+    public AppUser(String username, String password,
                    boolean disabled, List<String> roles) {
         super(username, password, !disabled,
                 true, true, true,
@@ -52,6 +49,40 @@ public class AppUser extends User {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public String getFirstName() {
@@ -85,21 +116,6 @@ public class AppUser extends User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId; }
 
     public static List<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>(roles.size());
