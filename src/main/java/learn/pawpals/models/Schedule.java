@@ -12,68 +12,60 @@ public class Schedule {
     // variables from other models
     private int animalId;
 
-    private int userId;
+    private int appUserId;
 
     // empty constructor
     public Schedule() {
     }
 
     // constructor
-<<<<<<< HEAD
+
     public Schedule(int scheduleId, LocalTime dateTime, int animalId, int userId) {
         this.scheduleId = scheduleId;
         this.dateTime = LocalDateTime.from(dateTime);
-=======
-    public Schedule(int scheduleId, LocalDateTime dateTime, int animalId, int userId) {
-        this.scheduleId = scheduleId;
-        this.dateTime = dateTime;
->>>>>>> ea28e3acd87d4e7f91da11e0ae32fe5a6edd7d66
-        this.animalId = animalId;
-        this.userId = userId;
     }
 
-    // getters
     public int getScheduleId() {
         return scheduleId;
+    }
+
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
     public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    public int getAnimalId() {
-        return animalId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    // setters
-    public void setScheduleId(int scheduleId) {
-        this.scheduleId = scheduleId;
-    }
-
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public int getAnimalId() {
+        return animalId;
     }
 
     public void setAnimalId(int animalId) {
         this.animalId = animalId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getAppUserId() {
+        return appUserId;
     }
+
+    public void setAppUserId(int appUserId) {
+        this.appUserId = appUserId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Schedule that = (Schedule) o;
-        return scheduleId == that.scheduleId && dateTime == that.dateTime && animalId == that.animalId && userId == that.userId;
+        return scheduleId == that.scheduleId && dateTime == that.dateTime && animalId == that.animalId && appUserId == that.appUserId;
     }
     @Override
-    public int hashCode() { return Objects.hash(scheduleId, dateTime, animalId, userId); }
+    public int hashCode() { return Objects.hash(scheduleId, dateTime, animalId, appUserId); }
 
 }

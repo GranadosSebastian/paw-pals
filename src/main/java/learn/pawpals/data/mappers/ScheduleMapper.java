@@ -12,9 +12,9 @@ public class ScheduleMapper implements RowMapper<Schedule> {
     public Schedule mapRow(ResultSet rs, int rowNum) throws SQLException {
         Schedule schedule = new Schedule();
         schedule.setScheduleId(rs.getInt("schedule_id"));
-        schedule.setDateTime(LocalDateTime.parse(rs.getString("date_time")));
-        schedule.setUserId(rs.getInt("user_id"));
-        schedule.setAnimalId(rs.getInt("schedule_id"));
+        schedule.setDateTime(LocalDateTime.parse(rs.getString("time")));
+        schedule.setAppUserId(rs.getInt("app_user_id"));
+        schedule.setAnimalId(rs.getInt("animal_id"));
         return schedule;
     }
 }
