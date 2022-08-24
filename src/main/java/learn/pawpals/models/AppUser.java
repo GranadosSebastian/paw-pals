@@ -13,9 +13,7 @@ import java.util.stream.Collectors;
 public class AppUser extends User {
 
     private static final String AUTHORITY_PREFIX = "ROLE_";
-
     private int appUserId;
-
     private String firstName;
     private String lastName;
     private String address;
@@ -24,7 +22,8 @@ public class AppUser extends User {
     private int roleId;
 
     public AppUser(int appUserId, String username, String password,
-                   boolean disabled, List<String> roles) {
+                   boolean disabled, List<String> roles, String firstName, String lastName,
+                   String address, String phone, String email, int roleId) {
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
@@ -39,6 +38,13 @@ public class AppUser extends User {
 
 
     private List<String> roles = new ArrayList<>();
+
+    public AppUser(int appUserId, String username, String password,
+                   boolean disabled, List<String> roles) {
+        super(username, password, !disabled,
+                true, true, true,
+                convertRolesToAuthorities(roles));
+    }
 
     public int getAppUserId() {
         return appUserId;

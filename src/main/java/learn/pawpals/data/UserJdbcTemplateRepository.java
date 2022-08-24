@@ -1,6 +1,5 @@
 package learn.pawpals.data;
 
-import learn.pawpals.data.mappers.UserMapper;
 import learn.pawpals.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class UserJdbcTemplateRepository implements UserRepository {
@@ -28,7 +26,8 @@ public class UserJdbcTemplateRepository implements UserRepository {
     @Override
     public List<AppUser> findAll() {
         final String sql = "select" + FULLUSERSQLCOLS + "from `user`;";
-        return jdbcTemplate.query(sql, new UserMapper());
+   //     return jdbcTemplate.query(sql, new UserMapper());
+        return null; //edit out
     }
 
     @Override
@@ -37,9 +36,10 @@ public class UserJdbcTemplateRepository implements UserRepository {
         final String sql = "select" + FULLUSERSQLCOLS +
                 "from `user` where role_id = ? ;";
 
-        List<AppUser> results = jdbcTemplate.query(sql, new UserMapper(), roleId).stream().toList();
+    //    List<AppUser> results = jdbcTemplate.query(sql, new UserMapper(), roleId).stream().toList();
 
-        return results;
+    //    return results;
+        return null;
     }
 
     @Override

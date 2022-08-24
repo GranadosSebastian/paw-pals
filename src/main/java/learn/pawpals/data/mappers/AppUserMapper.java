@@ -1,13 +1,11 @@
 package learn.pawpals.data.mappers;
 
-
 import learn.pawpals.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 
 public class AppUserMapper implements RowMapper<AppUser> {
     private final List<String> roles;
@@ -17,11 +15,21 @@ public class AppUserMapper implements RowMapper<AppUser> {
 
     @Override
     public AppUser mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new AppUser(
-                rs.getInt("app_user_id"),
-                rs.getString("username"),
-                rs.getString("password_hash"),
-                rs.getBoolean("disabled"),
-                roles);
+    /*    AppUser appUser = new AppUser();
+        appUser.setAppUserId(rs.getInt("user_id"));
+        appUser.setFirstName(rs.getString("first_name"));
+        appUser.setLastName(rs.getString("last_name"));
+        appUser.setAddress(rs.getString("address"));
+        appUser.setPhone(rs.getString("phone"));
+        appUser.setEmail(rs.getString("email"));
+        appUser.setRoleId(rs.getInt("role_id"));
+                    rs.getInt("app_user_id");
+                    rs.getString("username");
+                    rs.getString("password_hash");
+                    rs.getBoolean("disabled");
+        return appUser;
+
+     */
+        return null;
     }
 }
