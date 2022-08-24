@@ -24,9 +24,6 @@ public class AppUserService implements UserDetailsService {
         this.repository = repository;
         this.encoder = encoder;
     }
-
-
-    /*
     public List<AppUser> findAll() throws DataAccessException {
         return repository.findAll();
     }
@@ -76,7 +73,6 @@ public class AppUserService implements UserDetailsService {
         //if conditions & validations
         return result;
     }
-     */
 
 
 
@@ -103,9 +99,9 @@ public class AppUserService implements UserDetailsService {
 
         String password = encoder.encode(credentials.getPassword());
 
-        //AppUser appUser = new AppUser(0, credentials.getUsername(), password, false, List.of("User"));
+        AppUser appUser = new AppUser(0, credentials.getUsername(), password, false, List.of("User"));
 
-        //result.setPayload(repository.create(appUser));
+        result.setPayload(repository.create(appUser));
 
         return result;
     }
