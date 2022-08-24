@@ -31,7 +31,6 @@ public class AppUserService implements UserDetailsService {
     public List<AppUser> findAll() throws DataAccessException {
         return repository.findAll();
     }
-
     public Result<AppUser> add(AppUser appUser) throws DataAccessException {
         Result<AppUser> result = validate(appUser);
 
@@ -63,7 +62,6 @@ public class AppUserService implements UserDetailsService {
         }
         return result;
     }
-
     public Result<AppUser> delete(int appUserId) throws DataAccessException {
         Result<AppUser> result = new Result<>();
         if (repository.delete(appUserId)) {
@@ -71,7 +69,6 @@ public class AppUserService implements UserDetailsService {
         }
         return result;
     }
-
     private Result<AppUser> validate(AppUser appUser) throws DataAccessException {
         Result<AppUser> result = new Result<>();
         //if conditions & validations
