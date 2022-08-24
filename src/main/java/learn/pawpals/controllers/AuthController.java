@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,17 +32,22 @@ public class AuthController {
         this.service = service;
     }
 
-    @PostMapping("/api/authenticate")
+    @PostMapping("/authenticate")
     public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
         UsernamePasswordAuthenticationToken authToken =
-                new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
-        Authentication authentication = authenticationManager.authenticate(authToken);
+                new UsernamePasswordAuthenticationToken(credentials.get("username"), credentials.get("password"));
 
-        if (authentication.isAuthenticated()) {
-            String jwtToken = jwtConverter.getTokenFromUser((User) authentication.getPrincipal());
-            HashMap<String, String> map = new HashMap<>();
-            map.put("jwt_token", jwtToken);
-            return new ResponseEntity<>(map, HttpStatus.OK);
+        try {
+            Authentication authentication = authenticationManager.authenticate(authToken);
+
+            if (authentication.isAuthenticated()) {
+                String jwtToken = jwtConverter.getTokenFromUser((User) authentication.getPrincipal());
+                HashMap<String, String> map = new HashMap<>();
+                map.put("jwt_token", jwtToken);
+                return new ResponseEntity<>(map, HttpStatus.OK);
+            }
+        } catch (AuthenticationException ex) {
+            System.out.println(ex);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
