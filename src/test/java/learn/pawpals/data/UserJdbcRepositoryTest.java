@@ -44,8 +44,6 @@ public class UserJdbcRepositoryTest {
         AppUser user = new AppUser();
         user.setFirstName("Testing");
         user.setLastName("TestingLastName");
-        user.setEmail("123@gmail.com");
-        user.setRoleId(1);
         AppUser actual = repository.add(user);
 
         assertNotNull(actual);
