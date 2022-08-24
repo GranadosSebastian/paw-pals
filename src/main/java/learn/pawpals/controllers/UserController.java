@@ -3,7 +3,6 @@ package learn.pawpals.controllers;
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
-import learn.pawpals.domain.UserService;
 import learn.pawpals.models.AppUser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
