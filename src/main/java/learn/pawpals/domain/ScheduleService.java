@@ -24,8 +24,8 @@ public class ScheduleService {
     }
 
 /*
-    public List<Schedule> findByTime(LocalTime time) throws DataAccessException {
-        return scheduleRepository.findByTime(time);
+    public List<Schedule> findByDateTime(LocalDateTime dateTime) throws DataAccessException {
+        return scheduleRepository.findByDateTime(dateTime);
     }
 
 

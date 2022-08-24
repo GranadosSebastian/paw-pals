@@ -11,6 +11,6 @@ public interface AppUserRepository {
 
     boolean update(AppUser user);
 
-    boolean delete(AppUser user);
+    boolean delete(int appUserId);
 
 }

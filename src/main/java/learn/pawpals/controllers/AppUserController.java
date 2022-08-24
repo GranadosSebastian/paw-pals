@@ -3,33 +3,27 @@ package learn.pawpals.controllers;
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
-import learn.pawpals.domain.UserService;
-import learn.pawpals.models.Animal;
 import learn.pawpals.models.AppUser;
+import learn.pawpals.security.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/appuser")
+public class AppUserController {
 
-    private final UserService service;
-    public UserController(UserService service) {
+    private final AppUserService service;
+    public AppUserController(AppUserService service) {
         this.service = service;
     }
+
 
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         return service.findAll();
-    }
-
-    @GetMapping("/{roleId}")
-    public List<AppUser> findByRole(@PathVariable int roleId) throws DataAccessException {
-        return service.findByRole(roleId);
     }
 
     @PostMapping
@@ -41,7 +35,7 @@ public class UserController {
         return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{userId}")
+    @PutMapping("/{appUserId}")
     public ResponseEntity<?> update(@PathVariable int appUserId, @RequestBody AppUser appUser) throws DataAccessException {
         if (appUserId != appUser.getAppUserId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -57,13 +51,14 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> delete(int userId) throws DataAccessException {
-        Result<AppUser> result = service.delete((userId));
+    @DeleteMapping("/{appUserId}")
+    public ResponseEntity<Void> delete(int appUserId) throws DataAccessException {
+        Result<AppUser> result = service.delete((appUserId));
         if (result.getResultType() == ResultType.NOT_FOUND) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    */
 
 }

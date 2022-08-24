@@ -1,72 +1,71 @@
 package learn.pawpals.models;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
 public class Schedule {
 
     private int scheduleId;
-    private LocalTime time;
+    private LocalDateTime dateTime;
 
     // variables from other models
     private int animalId;
 
-    private int userId;
+    private int appUserId;
 
     // empty constructor
     public Schedule() {
     }
 
     // constructor
-    public Schedule(int scheduleId, LocalTime time, int animalId, int userId) {
+
+    public Schedule(int scheduleId, LocalTime dateTime, int animalId, int userId) {
         this.scheduleId = scheduleId;
-        this.time = time;
-        this.animalId = animalId;
-        this.userId = userId;
+        this.dateTime = LocalDateTime.from(dateTime);
     }
 
-    // getters
     public int getScheduleId() {
         return scheduleId;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public int getAnimalId() {
         return animalId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    // setters
-    public void setScheduleId(int scheduleId) {
-        this.scheduleId = scheduleId;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-
     public void setAnimalId(int animalId) {
         this.animalId = animalId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getAppUserId() {
+        return appUserId;
     }
+
+    public void setAppUserId(int appUserId) {
+        this.appUserId = appUserId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Schedule that = (Schedule) o;
-        return scheduleId == that.scheduleId && time == that.time && animalId == that.animalId && userId == that.userId;
+        return scheduleId == that.scheduleId && dateTime == that.dateTime && animalId == that.animalId && appUserId == that.appUserId;
     }
     @Override
-    public int hashCode() { return Objects.hash(scheduleId, time, animalId, userId); }
+    public int hashCode() { return Objects.hash(scheduleId, dateTime, animalId, appUserId); }
 
 }

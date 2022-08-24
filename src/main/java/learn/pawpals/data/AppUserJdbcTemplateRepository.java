@@ -88,7 +88,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     }
 
     @Override
-    public boolean delete(AppUser user) {
+    public boolean delete(int appUserId) {
 
 //        @Override
 //        public boolean delete(int appUserId) {
