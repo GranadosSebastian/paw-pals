@@ -19,9 +19,15 @@ public class Schedule {
     }
 
     // constructor
+<<<<<<< HEAD
     public Schedule(int scheduleId, LocalTime dateTime, int animalId, int userId) {
         this.scheduleId = scheduleId;
         this.dateTime = LocalDateTime.from(dateTime);
+=======
+    public Schedule(int scheduleId, LocalDateTime dateTime, int animalId, int userId) {
+        this.scheduleId = scheduleId;
+        this.dateTime = dateTime;
+>>>>>>> ea28e3acd87d4e7f91da11e0ae32fe5a6edd7d66
         this.animalId = animalId;
         this.userId = userId;
     }
