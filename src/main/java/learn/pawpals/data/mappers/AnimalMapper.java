@@ -27,10 +27,10 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setArrivalDate(LocalDate.parse(rs.getString("arrival_date")));
         animal.setFriendliness(rs.getString("friendliness_level"));
         animal.setAvailable(rs.getBoolean("is_available"));
-        String speciesInString = rs.getString("species").toUpperCase();
+        String speciesInString = rs.getString("species");
         Species species = Species.valueOf(speciesInString);
         animal.setSpecies(species);
-        animal.setAppUserId(rs.getInt("user_id"));
+        animal.setAppUserId(rs.getInt("app_user_id"));
 
         return animal;
     }
