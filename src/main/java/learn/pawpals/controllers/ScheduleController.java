@@ -10,13 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-//@RestController
-//@RequestMapping
+@RestController
+@RequestMapping
 public class ScheduleController {
-    /*
+
     private final ScheduleService service;
 
     public ScheduleController(ScheduleService service) {
@@ -28,14 +29,16 @@ public class ScheduleController {
         return service.findAll();
     }
 
+    /*
     @GetMapping("/schedule/{dateTime}")
     public List<Schedule> findByDateTime(@PathVariable LocalDateTime dateTime) {
         return service.findByDateTime(dateTime);
     }
+    */
 
-    @GetMapping("/schedule/{animal}")
-    public List<Schedule> findByAnimal(@PathVariable Animal animal) throws DataAccessException {
-        return service.findByAnimal(animal);
+    @GetMapping("/schedule/{animalId}")
+    public List<Schedule> findByAnimal(@PathVariable int animalId) throws DataAccessException {
+        return service.findByAnimal(animalId);
     }
 
     @PostMapping
@@ -72,6 +75,6 @@ public class ScheduleController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    */
+
 
 }
