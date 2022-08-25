@@ -79,11 +79,11 @@ function Login() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     {/* Includes for/id attributes for basic HTML accessibility ♿. */}
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">Username: fitchyfetch@gmail.com'</label>
                     <input id="username" type="text" className="form-control" onChange={handleUsernameChange} value={username} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password: P@ssw0rd!</label>
                     <input id="password" type="password" className="form-control" onChange={(event) => setPassword(event.target.value)} value={password} />
                 </div>
                 <div className="mt-4">
