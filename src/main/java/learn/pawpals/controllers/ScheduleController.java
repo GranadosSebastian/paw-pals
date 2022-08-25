@@ -15,14 +15,14 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/animal/schedule")
 public class ScheduleController {
     private final ScheduleService service;
     public ScheduleController(ScheduleService service) {
         this.service = service;
     }
 
-    @GetMapping("/schedule")
+    @GetMapping
     public List<Schedule> findAll() throws DataAccessException {
         return service.findAll();
     }
@@ -34,12 +34,12 @@ public class ScheduleController {
     }
     */
 
-    @GetMapping("/schedule/{animalId}")
+    @GetMapping("/{animalId}")
     public List<Schedule> findByAnimal(@PathVariable int animalId) throws DataAccessException {
         return service.findByAnimal(animalId);
     }
 
-    @GetMapping("/schedule/{appUserId}")
+    @GetMapping("/{appUserId}")
     public List<Schedule> findByAdopter(@PathVariable int appUserId) throws DataAccessException {
         return service.findByAdopter(appUserId);
     }
@@ -54,7 +54,7 @@ public class ScheduleController {
     }
 
 
-    @PutMapping("/schedule/{scheduleId}")
+    @PutMapping("/{scheduleId}")
     public ResponseEntity<?> update(@PathVariable int scheduleId, @RequestBody Schedule schedule) throws DataAccessException {
         if (scheduleId != schedule.getScheduleId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -70,7 +70,7 @@ public class ScheduleController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/schedule/{scheduleId}")
+    @DeleteMapping("/{scheduleId}")
     public ResponseEntity<Void> delete(@PathVariable int scheduleId) throws DataAccessException {
         Result<Schedule> result = service.delete((scheduleId));
         if (result.getResultType() == ResultType.NOT_FOUND) {
@@ -78,6 +78,5 @@ public class ScheduleController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
 }
