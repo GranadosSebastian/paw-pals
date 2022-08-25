@@ -61,8 +61,6 @@ public class JwtConverter {
 
             String username = jws.getBody().getSubject();
 
-            String password = jws.getBody().getSubject();
-
             String firstName = (String) jws.getBody().get("firstName");
 
             String lastName = (String) jws.getBody().get("lastName");
@@ -77,7 +75,7 @@ public class JwtConverter {
             List<String> authorities = List.of(authStr.split(","));
 
 
-            return new AppUser(appUserId, username, password, false, firstName, lastName, address, phone, authorities);
+            return new AppUser(appUserId, username, username, false, firstName, lastName, address, phone, authorities);
 
         } catch (JwtException e) {
             System.out.println(e);
