@@ -15,16 +15,15 @@ public interface ScheduleRepository {
     //delete
 
     List<Schedule> findAll();
-    List<Schedule> findByDate();
 
-    List<Schedule> findByAnimal();
+    List<Schedule> findByAnimal(int animalId);
 
-    List<Schedule> findByAdopter();
+    List<Schedule> findByAdopter(int appUserId);
 
-    Schedule add();
+    Schedule add(Schedule schedule);
 
-    boolean update();
+    boolean update(Schedule schedule);
 
-    boolean delete();
+    boolean delete(int scheduleId);
 
 }

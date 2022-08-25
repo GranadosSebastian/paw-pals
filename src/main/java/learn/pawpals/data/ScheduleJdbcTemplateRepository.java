@@ -1,52 +1,94 @@
 package learn.pawpals.data;
 
+import learn.pawpals.data.mappers.ScheduleMapper;
 import learn.pawpals.models.Schedule;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
+@Repository
 public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
-    //findAll
-    //findByDate
-    //findByAnimal
-    //findByAdopter
-    //add
-    //update
-    //delete
+    private final JdbcTemplate jdbcTemplate;
+    private final String SCHEDULESQLCOLS = " schedule_id, `time`, app_user_id, animal_id ";
+
+    public ScheduleJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public List<Schedule> findAll() {
-        return null;
+
+        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule`;";
+        return jdbcTemplate.query(sql, new ScheduleMapper());
+
     }
 
     @Override
-    public List<Schedule> findByDate() {
-        return null;
+    public List<Schedule> findByAnimal(int animalId) {
+        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule` " +
+                "where animal_id = ?;";
+        return jdbcTemplate.query(sql, new ScheduleMapper(), animalId);
+    }
+
+
+    @Override
+    public List<Schedule> findByAdopter(int appUserId) {
+        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule` " +
+                "where app_user_id = ?;";
+        return jdbcTemplate.query(sql, new ScheduleMapper(), appUserId);
     }
 
     @Override
-    public List<Schedule> findByAnimal() {
-        return null;
+    public Schedule add(Schedule schedule) {
+
+        final String sql = "insert into `schedule` (" + SCHEDULESQLCOLS + ") " +
+                "values (?, ?, ?, ?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setObject(1, schedule.getDateTime());
+            ps.setInt(2, schedule.getAppUserId());
+            ps.setInt(3, schedule.getAnimalId());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+
+        schedule.setScheduleId(keyHolder.getKey().intValue());
+
+        return schedule;
     }
 
     @Override
-    public List<Schedule> findByAdopter() {
-        return null;
+    public boolean update(Schedule schedule) {
+        final String sql = "update `schedule` set " +
+                "`time` = ?, " +
+                "app_user_id = ?" +
+                "animal_id = ? " +
+                "where schedule_id = ?;";
+
+        int rowsUpdated = jdbcTemplate.update(sql,
+                schedule.getDateTime(),
+                schedule.getAppUserId(),
+                schedule.getAnimalId(),
+                schedule.getScheduleId());
+
+        return rowsUpdated > 0;
     }
 
     @Override
-    public Schedule add() {
-        return null;
-    }
-
-    @Override
-    public boolean update() {
-        return false;
-    }
-
-    @Override
-    public boolean delete() {
-        return false;
+    public boolean delete(int scheduleId) {
+        final String sql = "delete from `schedule` where schedule_id = ?;";
+        return jdbcTemplate.update(sql, scheduleId) > 0;
     }
 
 }

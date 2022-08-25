@@ -11,15 +11,12 @@ POST {{url}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "animal_name": "Hilde",
-    "breed": "German Shepherd Mix",
-    "age": "1",
-    "size": "Small",
-    "arrival_date": "2022/08/01",
-    "friendliness_level": "Very friendly",
-    "is_available": "True",
-    "species": "Dog",
-    "user_id": 1
+    "first_name": "Joe",
+    "last_name": "Schmoe",
+    "address": "123 Main St.",
+    "phone": "555-123-1234",
+    "email": "joeschmoe@gmail.com",
+    "role_id": 1
 }
 ###
 
@@ -27,16 +24,13 @@ PUT {{url}}/3 HTTP/1.1
 Content-Type: application/json
 
 {
-    "animal_id": 5,
-    "animal_name": "Hilde",
-    "breed": "German Shepherd Mix",
-    "age": "1",
-    "size": "Small",
-    "arrival_date": "2022/08/01",
-    "friendliness_level": "Very friendly",
-    "is_available": "True",
-    "species": "Dog",
-    "user_id": 1
+    "user_id": 1,
+    "first_name": "Bob",
+    "last_name": "Bobsons",
+    "address": "543 Puppy Lane",
+    "phone": "987-654-3210",
+    "email": "bob.bobsons@gmail.com",
+    "role_id": 1
 }
 ###
 

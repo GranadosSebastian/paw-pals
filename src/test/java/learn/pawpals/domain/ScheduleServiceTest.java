@@ -1,6 +1,7 @@
 package learn.pawpals.domain;
 
-import org.testng.annotations.Test;
+
+import org.junit.jupiter.api.Test;
 
 public class ScheduleServiceTest {
     @Test

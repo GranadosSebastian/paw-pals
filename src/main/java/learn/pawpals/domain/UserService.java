@@ -1,10 +1,14 @@
 package learn.pawpals.domain;
 
 import learn.pawpals.data.DataAccessException;
-import learn.pawpals.data.UserRepository;
-import learn.pawpals.models.User;
+
+import learn.pawpals.models.AppUser;
+
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class UserService {
     private final UserRepository userRepository;
 
@@ -12,58 +16,58 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAll() throws DataAccessException {
+    public List<AppUser> findAll() throws DataAccessException {
         return userRepository.findAll();
     }
 
-    public List<User> findByRole(int roleId) throws DataAccessException {
+    public List<AppUser> findByRole(int roleId) throws DataAccessException {
         return userRepository.findByRole(roleId);
 
     }
 
-    public Result<User> add(User user) throws DataAccessException {
-        Result<User> result = validate(user);
+    public Result<AppUser> add(AppUser appUser) throws DataAccessException {
+        Result<AppUser> result = validate(appUser);
 
-        if (user != null && user.getUserId() > 0) {
+        if (appUser != null && appUser.getAppUserId() > 0) {
             result.addErrorMessage("User ID should not be set.", ResultType.INVALID);
         }
 
         if (result.isSuccess()) {
-            user = userRepository.add(user);
-            result.setPayload(user);
+            appUser = userRepository.add(appUser);
+            result.setPayload(appUser);
         }
 
         return result;
     }
 
-    public Result<User> update(User user) throws DataAccessException {
-        Result<User> result = validate(user);
+    public Result<AppUser> update(AppUser appUser) throws DataAccessException {
+        Result<AppUser> result = validate(appUser);
 
-        if (user.getUserId() <= 0) {
+        if (appUser.getAppUserId() <= 0) {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
         }
 
         if (result.isSuccess()) {
-            if (userRepository.update(user)) {
-                result.setPayload(user);
+            if (userRepository.update(appUser)) {
+                result.setPayload(appUser);
             } else {
-                result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, user.getUserId());
+                result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, appUser.getAppUserId());
             }
         }
 
         return result;
     }
 
-    public Result<User> delete(int userId) throws DataAccessException {
-        Result<User> result = new Result<>();
-        if (userRepository.delete(userId)) {
-            result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, userId);
+    public Result<AppUser> delete(int appUserId) throws DataAccessException {
+        Result<AppUser> result = new Result<>();
+        if (userRepository.delete(appUserId)) {
+            result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, appUserId);
         }
         return result;
     }
 
-    private Result<User> validate(User user) throws DataAccessException {
-        Result<User> result = new Result<>();
+    private Result<AppUser> validate(AppUser appUser) throws DataAccessException {
+        Result<AppUser> result = new Result<>();
         //if conditions & validations
         return result;
     }
