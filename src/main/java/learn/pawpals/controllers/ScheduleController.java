@@ -14,7 +14,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 //@RestController
-//@RequestMapping("/api/schedule")
+//@RequestMapping
 public class ScheduleController {
     /*
     private final ScheduleService service;
@@ -28,8 +28,12 @@ public class ScheduleController {
         return service.findAll();
     }
 
+    @GetMapping("/schedule/{dateTime}")
+    public List<Schedule> findByDateTime(@PathVariable LocalDateTime dateTime) {
+        return service.findByDateTime(dateTime);
+    }
 
-    @GetMapping("/{animal}")
+    @GetMapping("/schedule/{animal}")
     public List<Schedule> findByAnimal(@PathVariable Animal animal) throws DataAccessException {
         return service.findByAnimal(animal);
     }
@@ -44,7 +48,7 @@ public class ScheduleController {
     }
 
 
-    @PutMapping("/{scheduleId}")
+    @PutMapping("/schedule/{scheduleId}")
     public ResponseEntity<?> update(@PathVariable int scheduleId, @RequestBody Schedule schedule) throws DataAccessException {
         if (scheduleId != schedule.getScheduleId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -60,7 +64,7 @@ public class ScheduleController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/{scheduleId}")
+    @DeleteMapping("/schedule/{scheduleId}")
     public ResponseEntity<Void> delete(@PathVariable int scheduleId) throws DataAccessException {
         Result<Schedule> result = service.delete((scheduleId));
         if (result.getResultType() == ResultType.NOT_FOUND) {
