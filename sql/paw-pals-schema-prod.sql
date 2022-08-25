@@ -40,7 +40,7 @@ create table animal (
     size char(10) not null,
     arrival_date date not null,
     friendliness_level varchar(10) null,
-    is_available bit null,
+    is_available int not null,
     species varchar(20) not null,
     app_user_id int not null,
 	constraint fk_animal_app_user_id

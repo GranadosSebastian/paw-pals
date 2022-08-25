@@ -12,9 +12,9 @@ public class KnownGoodState {
 
     static boolean hasRun = false;
 
-    public void set() {
+    void set() {
         if (!hasRun) {
-            hasRun = true;
+           // hasRun = true;
             jdbcTemplate.update("call set_known_good_state();");
         }
     }

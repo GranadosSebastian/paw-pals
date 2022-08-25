@@ -10,7 +10,7 @@ function Login() {
     const [errors, setErrors] = useState([]);
 
     const auth = useContext(AuthContext);
-
+    console.log("Top", auth);
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -56,6 +56,8 @@ function Login() {
                     //     {
                     //     "jwt_token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzb2xhci1mYXJtLWFwaSIsInN1YiI6ImpvaG5Ac21pdGguY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX0FETUlOIiwiZXhwIjoxNjYwNzkyMTU2fQ.HXIuh8CoyZCHD2xZtyp2Ad5AI4u-eRw90jc4AH4OSkY"
                     //     }
+
+
                     auth.login(data.jwt_token);
                     navigate('/');
                 } else {
@@ -68,10 +70,6 @@ function Login() {
 
     };
 
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
-    };
-
     return (
         <>
             <h2>Login</h2>
@@ -80,7 +78,7 @@ function Login() {
                 <div className="form-group">
                     {/* Includes for/id attributes for basic HTML accessibility ♿. */}
                     <label htmlFor="username">Username: fitchyfetch@gmail.com'</label>
-                    <input id="username" type="text" className="form-control" onChange={handleUsernameChange} value={username} />
+                    <input id="username" type="text" className="form-control" onChange={(event) => setUsername(event.target.value)} value={username} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password: P@ssw0rd!</label>

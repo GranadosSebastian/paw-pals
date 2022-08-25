@@ -14,7 +14,7 @@ public interface AnimalRepository {
     List<Animal> findAll();
 
 
-    List<Animal> findBySpecies(Species species);
+    List<Animal> findBySpecies(String speciesString);
 
 
     Animal add(Animal animal);
