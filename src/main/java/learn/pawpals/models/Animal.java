@@ -1,7 +1,5 @@
 package learn.pawpals.models;
 
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -24,7 +22,7 @@ public class Animal {
 
     private Species species;
 
-    private int userId;
+    private int AppUserId;
 
     private boolean isAvailable;
 
@@ -33,7 +31,7 @@ public class Animal {
     }
 
     // constructor
-    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, Species species, int userId, boolean isAvailable) {
+    public Animal(int animalId, String animalName, String breed, int age, Size size, LocalDate arrivalDate, String friendliness, Species species, int AppUserId, boolean isAvailable) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.breed = breed;
@@ -42,7 +40,7 @@ public class Animal {
         this.arrivalDate = arrivalDate;
         this.friendliness = friendliness;
         this.species = species;
-        this.userId = userId;
+        this.AppUserId = AppUserId;
         this.isAvailable = isAvailable;
     }
 
@@ -79,8 +77,8 @@ public class Animal {
         return species;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getAppUserId() {
+        return AppUserId;
     }
 
     public boolean isAvailable() {
@@ -120,8 +118,8 @@ public class Animal {
         this.species = species;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setAppUserId(int appUserId) {
+        this.AppUserId = appUserId;
     }
 
     public void setAvailable(boolean available) {
@@ -133,8 +131,8 @@ public class Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal that = (Animal) o;
-        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && isAvailable == that.isAvailable && species == that.species && userId == that.userId;
+        return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size && arrivalDate == that.arrivalDate && friendliness == that.friendliness && isAvailable == that.isAvailable && species == that.species && AppUserId == that.AppUserId;
     }
     @Override
-    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, isAvailable, species, userId); }
+    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, isAvailable, species, AppUserId); }
 }

@@ -21,10 +21,10 @@ public class AppUserController {
     }
 
 
-    @GetMapping
-    public List<AppUser> findAll() throws DataAccessException {
-        return service.findAll();
-    }
+//    @GetMapping
+//    public List<AppUser> findAll() throws DataAccessException {
+//        return service.findAll();
+//    }
 
     @PostMapping
     public ResponseEntity<?> add(@RequestBody AppUser appUser) throws DataAccessException {
@@ -59,6 +59,6 @@ public class AppUserController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    */
+
 
 }

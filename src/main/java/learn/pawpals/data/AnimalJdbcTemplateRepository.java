@@ -21,9 +21,9 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     @Autowired
     private final JdbcTemplate jdbcTemplate;
 
-    private final String FULLANIMALSQLCOLS = " animal_id, animal_name, " +
+    private final String FULLANIMALSQLCOLS = " animal_name, " +
             "breed, age, size, arrival_date, friendliness_level, " +
-            "is_available, species, user_id ";
+            "is_available, species, app_user_id ";
 
     public AnimalJdbcTemplateRepository(final JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -32,15 +32,15 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
 
     @Override
     public List<Animal> findAll() {
-        final String sql = "select" + FULLANIMALSQLCOLS + "from animal;";
+        final String sql = "select animal_id, " + FULLANIMALSQLCOLS + "from animal;";
         return jdbcTemplate.query(sql, new AnimalMapper());
     }
 
     @Override
-    @Transactional
+    //@Transational
     public List<Animal> findBySpecies(Species species) {
 
-        final String sql = "select" + FULLANIMALSQLCOLS +
+        final String sql = "select animal_id, " + FULLANIMALSQLCOLS +
                 "from animal where species = ? ;";
 
 
@@ -54,7 +54,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     public Animal add(Animal animal) {
 
         final String sql = "insert into animal (" + FULLANIMALSQLCOLS + ") " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -67,7 +67,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
             ps.setString(6, animal.getFriendliness());
             ps.setBoolean(7, animal.isAvailable());
             ps.setObject(8, animal.getSpecies());
-            ps.setInt(9, animal.getUserId());
+            ps.setInt(9, animal.getAppUserId());
             return ps;
         }, keyHolder);
 
@@ -87,10 +87,10 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
                 "age = ?, " +
                 "size = ?, " +
                 "arrival_date = ?, " +
-                "friendliness_level = ?," +
-                "is_available = ?," +
+                "friendliness_level = ?, " +
+                "is_available = ?, " +
                 "species = ?, " +
-                "user_id = ? " +
+                "app_user_id = ? " +
                 "where animal_id = ?;";
 
         return jdbcTemplate.update(sql, animal.getAnimalName(),
@@ -101,6 +101,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
                                         animal.getFriendliness(),
                                         animal.isAvailable(),
                                         animal.getSpecies(),
+                                        animal.getAppUserId(),
                                         animal.getAnimalId()) > 0;
     }
 

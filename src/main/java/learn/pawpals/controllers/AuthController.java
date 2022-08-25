@@ -44,16 +44,16 @@ public class AuthController {
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody Credentials credentials) {
-        Result<AppUser> result = service.create(credentials);
-        if (result.isSuccess()) {
-            HashMap<String, Integer> map = new HashMap<>();
-            map.put("app_user_id", result.getPayload().getAppUserId());
-            return new ResponseEntity<>(map, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity<Object> register(@RequestBody Credentials credentials) {
+//        Result<AppUser> result = service.create(credentials);
+//        if (result.isSuccess()) {
+//            HashMap<String, Integer> map = new HashMap<>();
+//            map.put("app_user_id", result.getPayload().getAppUserId());
+//            return new ResponseEntity<>(map, HttpStatus.CREATED);
+//        }
+//        return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
+//    }
 
     @PostMapping("/refresh-token")
     public ResponseEntity<Object> refresh(UsernamePasswordAuthenticationToken principal) {
