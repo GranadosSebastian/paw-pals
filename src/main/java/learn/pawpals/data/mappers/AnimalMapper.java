@@ -28,11 +28,18 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setArrivalDate(LocalDate.parse(rs.getString("arrival_date")));
         animal.setFriendliness(rs.getString("friendliness_level"));
 
+
         if (rs.getInt("is_available") == 0) {
             animal.setAvailable(false);
         } else if (rs.getInt("is_available") == 1) {
             animal.setAvailable(true);
         }
+
+        String speciesInString = rs.getString("species");
+        Species species = Species.valueOf(speciesInString);
+        animal.setSpecies(species);
+
+
 
         String speciesInString = rs.getString("species");
         Species species = Species.valueOf(speciesInString);

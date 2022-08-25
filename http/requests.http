@@ -1,0 +1,72 @@
+@url = http://localhost:8080/api/animal
+
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTQ4MjY1Nn0._KPVUjvh940zpCIYAUKe4K-4gl5tj5OWiD66pkYszIo
+
+### Authenticate
+
+POST http://localhost:8080/api/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "fitchyfetch@gmail.com",
+  "password": "P@ssw0rd!"
+}
+
+### Create AppUser
+
+POST http://localhost:8080/api/appuser HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "username": "test@test.com",
+  "password": "P@ssw0rd!"
+}
+###
+
+GET {{url}} HTTP/1.1
+###
+
+GET {{url}}/species/cat HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+POST {{url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "animalName": "Hilde",
+    "breed": "German Shepherd Mix",
+    "age": 1,
+    "size": "SMALL",
+    "arrivalDate": "2022-08-01",
+    "friendliness": null,
+    "species": "DOG",
+    "appUserId": 1,
+    "available": true
+}
+###
+
+PUT {{url}}/5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "animalId": 5,
+    "animalName": "Rocky",
+    "breed": "German Shepherd Mix",
+    "age": 3,
+    "size": "MEDIUM",
+    "arrivalDate": "2022-12-01",
+    "friendliness": null,
+    "species": "DOG",
+    "appUserId": 1,
+    "available": true
+}
+###
+
+DELETE {{url}}/5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}

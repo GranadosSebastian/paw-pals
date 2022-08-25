@@ -10,7 +10,7 @@ const USER_DEFAULT = {
     lastName: '',
     address: '',
     phone: '',
-    email: '',
+    username: '',
     roleId: 1
 };
 
@@ -18,7 +18,7 @@ function UserForm() {
     const [user, setUser] = useState(USER_DEFAULT);
     const [errors, setErrors] = useState([]);
 
-    // const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext);
 
     const navigate = useNavigate();
     const { userId } = useParams();
@@ -123,7 +123,7 @@ function UserForm() {
 
     return (
         <>
-            <h2 className="mb-4">{userId ? 'Update User' : 'Add User'}</h2>
+            <h2 className="mb-4">Update User</h2>
 
             <Errors errors={errors} />
 
@@ -149,8 +149,8 @@ function UserForm() {
                         value={user.phone} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input id="email" name="email" type="text" className="form-control"
+                    <label htmlFor="username">Email:</label>
+                    <input id="username" name="username" type="text" className="form-control"
                         value={user.email} onChange={handleChange} />
                 </div>
                 <div className="form-group">
@@ -165,7 +165,7 @@ function UserForm() {
                 </div>
                 <div className="mt-4">
                     <button className="btn btn-success mr-2" type="submit">
-                        <i className="bi bi-file-earmark-check"></i> {userId ? 'Update User' : 'Add User'}
+                        <i className="bi bi-file-earmark-check"></i> Update User
                     </button>
                     <Link className="btn btn-warning" to="/users">
                         <i className="bi bi-octagon"></i> Cancel

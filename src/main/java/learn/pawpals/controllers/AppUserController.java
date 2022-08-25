@@ -4,35 +4,37 @@ import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.AppUser;
-import learn.pawpals.security.AppUserService;
+import learn.pawpals.domain.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ValidationException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/appuser")
 public class AppUserController {
-
     private final AppUserService service;
     public AppUserController(AppUserService service) {
         this.service = service;
     }
 
-
+    /*
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         return service.findAll();
     }
+    */
 
-    @PostMapping
-    public ResponseEntity<?> add(@RequestBody AppUser appUser) throws DataAccessException {
-        Result<AppUser> result = service.add(appUser);
-        if (!result.isSuccess()) {
-            return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
+    @PostMapping("/api/appuser")
+    public ResponseEntity<?> add(@RequestBody Map<String, String> body) throws DataAccessException {
+        try {
+            AppUser appUser = service.add(body.get("username"), body.get("password"));
+            return new ResponseEntity<>(appUser, HttpStatus.CREATED); // 201
+        } catch (ValidationException ex) {
+            return new ResponseEntity<>(List.of(ex.getMessage()), HttpStatus.BAD_REQUEST); // 400
         }
-        return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
     }
 
     @PutMapping("/{appUserId}")

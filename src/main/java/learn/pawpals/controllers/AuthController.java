@@ -3,18 +3,21 @@ package learn.pawpals.controllers;
 import learn.pawpals.domain.Result;
 import learn.pawpals.models.AppUser;
 import learn.pawpals.models.Credentials;
-import learn.pawpals.security.AppUserService;
+import learn.pawpals.domain.AppUserService;
 import learn.pawpals.security.JwtConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class AuthController {
     private final AuthenticationManager authenticationManager;
@@ -29,39 +32,26 @@ public class AuthController {
         this.service = service;
     }
 
-    @PostMapping("/authenticate")
-    public ResponseEntity<Object> authenticate(@RequestBody Credentials credentials) {
+    @PostMapping("/api/authenticate")
+    public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
         UsernamePasswordAuthenticationToken authToken =
-                new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
-        Authentication authentication = authenticationManager.authenticate(authToken);
+                new UsernamePasswordAuthenticationToken(credentials.get("username"), credentials.get("password"));
 
-        if (authentication.isAuthenticated()) {
-            String jwtToken = jwtConverter.getTokenFromUser((User) authentication.getPrincipal());
-            HashMap<String, String> map = new HashMap<>();
-            map.put("jwt_token", jwtToken);
-            return new ResponseEntity<>(map, HttpStatus.OK);
+        try {
+            Authentication authentication = authenticationManager.authenticate(authToken);
+
+            if (authentication.isAuthenticated()) {
+                HashMap<String, String> map = new HashMap<>();
+
+                AppUser appUser = (AppUser)authentication.getPrincipal();
+                String token = jwtConverter.getTokenFromUser(appUser);
+                map.put("jwt_token", token);
+
+                return new ResponseEntity<>(map, HttpStatus.OK);
+            }
+        } catch (AuthenticationException ex) {
+            System.out.println(ex);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
-
-    @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody Credentials credentials) {
-        Result<AppUser> result = service.create(credentials);
-        if (result.isSuccess()) {
-            HashMap<String, Integer> map = new HashMap<>();
-            map.put("app_user_id", result.getPayload().getAppUserId());
-            return new ResponseEntity<>(map, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
-    }
-
-    @PostMapping("/refresh-token")
-    public ResponseEntity<Object> refresh(UsernamePasswordAuthenticationToken principal) {
-        User user = new User(principal.getName(), principal.getName(), principal.getAuthorities());
-        String jwtToken = jwtConverter.getTokenFromUser(user);
-        HashMap<String, String> map = new HashMap<>();
-        map.put("jwt_token", jwtToken);
-        return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
 }

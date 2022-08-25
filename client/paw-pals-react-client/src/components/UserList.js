@@ -52,7 +52,7 @@ function UserList() {
     return (
         <>
             <h2 className="mb-4">Users</h2>
-            <Link className="btn btn-primary my-4" to="/users/add">
+            <Link className="btn btn-primary my-4" to="/register">
                 <i className="bi bi-plus-circle"></i> Add User
             </Link>
 

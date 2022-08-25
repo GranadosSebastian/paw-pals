@@ -23,16 +23,17 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-/*
+    public List<Schedule> findByAnimal(int animalId) throws DataAccessException {
 
-
-
-    public List<Schedule> findByAnimal(Animal animal) throws DataAccessException {
-
-          return scheduleRepository.findByAnimal(animal);
+          return scheduleRepository.findByAnimal(animalId);
     }
 
-    public Result<Schedule> add(Schedule schedule) {
+    public List<Schedule> findByAdopter(int appUserId) throws DataAccessException {
+
+        return scheduleRepository.findByAnimal(appUserId);
+    }
+
+    public Result<Schedule> add(Schedule schedule) throws DataAccessException {
         Result<Schedule> result = validate(schedule);
         if (schedule != null && schedule.getScheduleId() > 0) {
             result.addErrorMessage("Schedule id should not be set.", ResultType.INVALID);
@@ -53,7 +54,7 @@ public class ScheduleService {
             if (scheduleRepository.update(schedule)) {
                 result.setPayload(schedule);
             } else {
-                result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, animal.getAnimalId());
+                result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, schedule.getScheduleId());
             }
         }
         return result;
@@ -73,7 +74,7 @@ public class ScheduleService {
         return result;
     }
 
- */
+
 
 }
 
