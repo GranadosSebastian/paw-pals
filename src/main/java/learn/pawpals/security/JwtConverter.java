@@ -32,6 +32,12 @@ public class JwtConverter {
                 .setSubject(appUser.getUsername())
                 .claim("authorities", authorities)
                 .claim("appUserId", appUser.getAppUserId())
+                .claim("username", appUser.getUsername())
+                .claim("passwordHash", appUser.getPassword())
+                .claim("disabled", appUser.isEnabled())
+                .claim("firstName", appUser.getFirstName())
+                .claim("lastName", appUser.getLastName())
+                .claim("address", appUser.getAddress())
                 .claim("phone", appUser.getPhone())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
                 .signWith(key)
@@ -51,19 +57,30 @@ public class JwtConverter {
                     .build()
                     .parseClaimsJws(token.substring(7));
 
+            int appUserId = (int) jws.getBody().get("appUserId");
+
             String username = jws.getBody().getSubject();
+
+            String password = jws.getBody().getSubject();
+
+            String firstName = (String) jws.getBody().get("firstName");
+
+            String lastName = (String) jws.getBody().get("lastName");
+
+            String address = (String) jws.getBody().get("address");
+
+            String phone = (String) jws.getBody().get("phone");
+
 
             String authStr = (String) jws.getBody().get("authorities");
 
-            List<String> authorities = List.of(authStr.split(",");
+            List<String> authorities = List.of(authStr.split(","));
 
-            int appUserId = (int) jws.getBody().get("appUserId");
-            String phone = (String) jws.getBody().get("phone");
 
-            return new AppUser(appUserId, phone, username, username, false, authorities);
+            return new AppUser(appUserId, username, password, false, firstName, lastName, address, phone, authorities);
 
         } catch (JwtException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
 
         return null;

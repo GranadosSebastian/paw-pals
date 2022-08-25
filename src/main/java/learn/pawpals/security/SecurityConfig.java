@@ -1,22 +1,17 @@
 package learn.pawpals.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     private final JwtConverter jwtConverter;
 
     public SecurityConfig(JwtConverter jwtConverter) {
@@ -32,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/authenticate", "/register").permitAll()
-                .antMatchers(HttpMethod.POST, "/refresh-token").authenticated()
+                .antMatchers(HttpMethod.POST,"/api/appuser").permitAll()
+               // .antMatchers(HttpMethod.POST, "/refresh-token").authenticated()
                 .antMatchers(HttpMethod.GET, "/api/animal", "/api/animal/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/animal").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/animal/*").hasAnyRole("USER", "ADMIN")
@@ -58,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    @Autowired
-    private PasswordEncoder encoder;
+//    @Autowired
+//    private PasswordEncoder encoder;
 
 }
