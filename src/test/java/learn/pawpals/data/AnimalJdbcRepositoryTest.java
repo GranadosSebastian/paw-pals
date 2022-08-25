@@ -7,9 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,23 +32,25 @@ public class AnimalJdbcRepositoryTest {
     void shouldFindAll() {
         List<Animal> animals = repository.findAll();
         assertNotNull(animals);
-        assertTrue(animals.size() == 5);
+        assertEquals(5, animals.size());
 
     }
 
     @Test
     void shouldFindSpecies() {
-        List<Animal> animals = repository.findBySpecies(Species.cat);
+        List<Animal> animals = new ArrayList<>();
+        animals = repository.findBySpecies("cat");
         assertEquals(2, animals.size());
     }
     @Test
     void shouldAddAnimal() {
         Animal animal = new Animal();
         animal.setAnimalName("TEST");
-        animal.setSize(Size.MEDIUM);
+        animal.setSize(Size.SMALL);
         animal.setArrivalDate(LocalDate.now());
         animal.setSpecies(Species.bird);
-        animal.setAppUserId(1);
+        animal.setAppUserId(5);
+
         Animal actual = repository.add(animal);
 
         assertNotNull(actual);
@@ -62,6 +64,10 @@ public class AnimalJdbcRepositoryTest {
         Animal animal = new Animal();
         animal.setAnimalId(1);
         animal.setAnimalName("Doggo");
+        animal.setSize(Size.MEDIUM);
+        animal.setArrivalDate(LocalDate.now());
+        animal.setAvailable(true);
+        animal.setSpecies(Species.dog);
         assertTrue(repository.update(animal));
 
     }

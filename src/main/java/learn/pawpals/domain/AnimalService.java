@@ -26,9 +26,9 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public List<Animal> findBySpecies(Species species) throws DataAccessException {
+    public List<Animal> findBySpecies(String speciesString) throws DataAccessException {
 
-        return animalRepository.findBySpecies(species);
+        return animalRepository.findBySpecies(speciesString);
     }
 
     public Result<Animal> add(Animal animal) throws DataAccessException {

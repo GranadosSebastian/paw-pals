@@ -1,14 +1,15 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../AuthContext';
 
 function UserList() {
-    const [users, setUsers] = useState([])
+    const [appUsers, setAppUsers] = useState([])
 
-    // const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext);
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/user')
+        fetch('http://localhost:8080/api/appuser')
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
@@ -16,15 +17,15 @@ function UserList() {
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
             })
-            .then(data => setUsers(data))
+            .then(data => setAppUsers(data))
             .catch(console.log);
     }, []);
 
 
-    const handleDeleteUser = (userId) => {
-        const user = users.find(user => user.userId === userId);
+    const handleDeleteUser = (appUserId) => {
+        const appUser = appUsers.find(appUser => appUser.appUserId === appUserId);
 
-        if (window.confirm(`Delete user ${user.firtName} ${user.lastName}?`)) {
+        if (window.confirm(`Delete user ${appUser.firtName} ${appUser.lastName}?`)) {
             const init = {
                 method: 'DELETE',
                 // headers: {
@@ -32,12 +33,12 @@ function UserList() {
                 // },
             };
 
-            fetch(`http://localhost:8080/api/user/${userId}`, init)
+            fetch(`http://localhost:8080/${appUserId}`, init)
                 .then(response => {
                     if (response.status === 204) {
-                        const newUsers = users.filter(user => user.userId !== userId);
+                        const newAppUsers = appUsers.filter(appUser => appUser.appUserId !== appUserId);
 
-                        setUsers(newUsers);
+                        setAppUsers(newAppUsers);
 
 
                     } else {
@@ -68,16 +69,16 @@ function UserList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (
-                        <tr key={user.userId}>
-                            <td>{user.firstname} {user.lastName}</td>
-                            <td>{user.address}</td>
-                            <td>{user.phone}</td>
-                            <td>{user.email}</td>
-                            <td>{user.roleId}</td>
+                    {appUsers.map((appUser) => (
+                        <tr key={appUser.appUserId}>
+                            <td>{appUser.firstname} {appUser.lastName}</td>
+                            <td>{appUser.address}</td>
+                            <td>{appUser.phone}</td>
+                            <td>{appUser.username}</td>
+                            <td>{appUser.roleId}</td>
                             <td>
                                 <div className="float-right mr-2">
-                                    <Link className="btn btn-primary btn-sm mr-2" to={`/users/edit/${user.userId}`}>
+                                    <Link className="btn btn-primary btn-sm mr-2" to={`/users/edit/${appUser.appUserId}`}>
                                         <i className="bi bi-pencil-square"></i> Edit
                                     </Link>
                                     {/* {auth.user && auth.user.hasRole('ROLE_ADMIN') && (

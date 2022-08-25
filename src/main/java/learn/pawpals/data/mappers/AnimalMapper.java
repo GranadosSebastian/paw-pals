@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Locale;
 
 
 public class AnimalMapper implements RowMapper<Animal> {
@@ -21,17 +20,35 @@ public class AnimalMapper implements RowMapper<Animal> {
         animal.setAnimalName(rs.getString("animal_name"));
         animal.setBreed(rs.getString("breed"));
         animal.setAge(rs.getInt("age"));
-        String sizeInString = rs.getString("size").toUpperCase();
-        Size size = Size.valueOf(sizeInString);
+
+        String sizeInString = rs.getString("size");
+        Size size = Size.valueOf(sizeInString.toUpperCase());
         animal.setSize(size);
+
         animal.setArrivalDate(LocalDate.parse(rs.getString("arrival_date")));
         animal.setFriendliness(rs.getString("friendliness_level"));
-        animal.setAvailable(rs.getBoolean("is_available"));
+
+
+        if (rs.getInt("is_available") == 0) {
+            animal.setAvailable(false);
+        } else if (rs.getInt("is_available") == 1) {
+            animal.setAvailable(true);
+        }
+
         String speciesInString = rs.getString("species");
         Species species = Species.valueOf(speciesInString);
         animal.setSpecies(species);
+
+
+
+        String speciesInString = rs.getString("species");
+        Species species = Species.valueOf(speciesInString);
+        animal.setSpecies(species);
+
         animal.setAppUserId(rs.getInt("app_user_id"));
 
         return animal;
     }
+
 }
+
