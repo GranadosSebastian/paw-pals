@@ -39,7 +39,7 @@ public class ScheduleService {
             result.addErrorMessage("Schedule id should not be set.", ResultType.INVALID);
         }
         if (result.isSuccess()) {
-        //    schedule = scheduleRepository.add(schedule);
+            schedule = scheduleRepository.add(schedule);
             result.setPayload(schedule);
         }
         return result;
@@ -70,7 +70,22 @@ public class ScheduleService {
 
     private Result<Schedule> validate(Schedule schedule) throws DataAccessException {
         Result<Schedule> result = new Result();
-        //if conditions & validations
+
+        if (schedule == null) {
+            result.addErrorMessage("Schedule cannot be null.", ResultType.INVALID);
+            return result;
+        }
+        if (String.valueOf(schedule.getDateTime()).isBlank()) {
+            result.addErrorMessage("Date and time are required", ResultType.INVALID);
+        }
+        if (schedule.getAnimalId() <= 0) {
+            result.addErrorMessage("Animal ID is required.", ResultType.INVALID);
+        }
+        if (schedule.getAppUserId() <= 0) {
+            result.addErrorMessage("User ID is required.", ResultType.INVALID);
+
+        }
+
         return result;
     }
 

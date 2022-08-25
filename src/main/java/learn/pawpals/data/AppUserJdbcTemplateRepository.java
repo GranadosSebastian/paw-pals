@@ -27,7 +27,9 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
+    public List<AppUser> findAll() {
+        return null;
+    }
     @Transactional
     @Override
     public AppUser findByUsername(String username) {
