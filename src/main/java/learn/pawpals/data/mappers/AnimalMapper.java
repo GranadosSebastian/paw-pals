@@ -30,7 +30,7 @@ public class AnimalMapper implements RowMapper<Animal> {
         String speciesInString = rs.getString("species").toUpperCase();
         Species species = Species.valueOf(speciesInString);
         animal.setSpecies(species);
-        animal.setUserId(rs.getInt("user_id"));
+        animal.setAppUserId(rs.getInt("user_id"));
 
         return animal;
     }

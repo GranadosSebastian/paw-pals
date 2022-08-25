@@ -48,7 +48,7 @@ public class AnimalJdbcRepositoryTest {
         animal.setSize(Size.MEDIUM);
         animal.setArrivalDate(LocalDate.now());
         animal.setSpecies(Species.bird);
-        animal.setUserId(1);
+        animal.setAppUserId(1);
         Animal actual = repository.add(animal);
 
         assertNotNull(actual);
