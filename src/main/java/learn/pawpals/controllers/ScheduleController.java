@@ -27,6 +27,7 @@ public class ScheduleController {
     public List<Schedule> findAll() throws DataAccessException {
         return service.findAll();
     }
+
     @GetMapping("/schedule/{dateTime}")
     public List<Schedule> findByDateTime(@PathVariable LocalDateTime dateTime) {
         return service.findByDateTime(dateTime);
