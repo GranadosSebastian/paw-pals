@@ -1,6 +1,7 @@
 package learn.pawpals.security;
 
 import learn.pawpals.data.AppUserRepository;
+import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.AppUser;
@@ -23,6 +24,60 @@ public class AppUserService implements UserDetailsService {
         this.repository = repository;
         this.encoder = encoder;
     }
+    
+    
+    
+
+    public List<AppUser> findAll() throws DataAccessException {
+        return repository.findAll();
+    }
+    public Result<AppUser> add(AppUser appUser) throws DataAccessException {
+        Result<AppUser> result = validate(appUser);
+
+        if (appUser != null && appUser.getAppUserId() > 0) {
+            result.addErrorMessage("User ID should not be set.", ResultType.INVALID);
+        }
+
+        if (result.isSuccess()) {
+            appUser = repository.add(appUser);
+            result.setPayload(appUser);
+        }
+
+        return result;
+    }
+
+    public Result<AppUser> update(AppUser appUser) throws DataAccessException {
+        Result<AppUser> result = validate(appUser);
+
+        if (appUser.getAppUserId() <= 0) {
+            result.addErrorMessage("User ID is required.", ResultType.INVALID);
+        }
+
+        if (result.isSuccess()) {
+            if (repository.update(appUser)) {
+                result.setPayload(appUser);
+            } else {
+                result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, appUser.getAppUserId());
+            }
+        }
+        return result;
+    }
+    public Result<AppUser> delete(int appUserId) throws DataAccessException {
+        Result<AppUser> result = new Result<>();
+        if (repository.delete(appUserId)) {
+            result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, appUserId);
+        }
+        return result;
+    }
+    private Result<AppUser> validate(AppUser appUser) throws DataAccessException {
+        Result<AppUser> result = new Result<>();
+        //if conditions & validations
+        return result;
+    }
+
+
+
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,7 +103,7 @@ public class AppUserService implements UserDetailsService {
 
         AppUser appUser = new AppUser(0, credentials.getUsername(), password, false, List.of("User"));
 
-        result.setPayload(repository.create(appUser));
+        result.setPayload(repository.add(appUser));
 
         return result;
     }

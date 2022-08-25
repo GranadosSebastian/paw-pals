@@ -13,32 +13,28 @@ import java.util.stream.Collectors;
 public class AppUser extends User {
 
     private static final String AUTHORITY_PREFIX = "ROLE_";
-
     private int appUserId;
 
+    private List<String> roles = new ArrayList<>();
     private String firstName;
     private String lastName;
     private String address;
     private String phone;
-    private String email;
     private int roleId;
 
+
     public AppUser(int appUserId, String username, String password,
-                   boolean disabled, List<String> roles) {
+                   boolean disabled, String firstName, String lastName,
+                   String address, String phone, List<String> roles) {
+
         super(username, password, !disabled,
                 true, true, true,
                 convertRolesToAuthorities(roles));
-        this.appUserId = appUserId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
-        this.email = email;
-        this.roleId = roleId;
     }
-
-
-    private List<String> roles = new ArrayList<>();
 
     public int getAppUserId() {
         return appUserId;
@@ -46,6 +42,14 @@ public class AppUser extends User {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public String getFirstName() {
@@ -79,21 +83,6 @@ public class AppUser extends User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId; }
 
     public static List<GrantedAuthority> convertRolesToAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>(roles.size());

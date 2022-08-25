@@ -27,10 +27,7 @@ public class ScheduleController {
     public List<Schedule> findAll() throws DataAccessException {
         return service.findAll();
     }
-    @GetMapping("/{time}")
-    public List<Schedule> findByTime(@PathVariable LocalTime time) {
-        return service.findByTime(time);
-    }
+
 
     @GetMapping("/{animal}")
     public List<Schedule> findByAnimal(@PathVariable Animal animal) throws DataAccessException {

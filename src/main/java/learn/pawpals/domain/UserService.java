@@ -1,8 +1,9 @@
 package learn.pawpals.domain;
 
 import learn.pawpals.data.DataAccessException;
-import learn.pawpals.data.UserRepository;
+
 import learn.pawpals.models.AppUser;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
