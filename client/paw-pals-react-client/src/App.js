@@ -12,6 +12,7 @@ import UserList from './components/UserList';
 import Login from './components/Login';
 import ScheduleForm from './components/ScheduleForm';
 import Register from './components/Register';
+import AuthContext from './AuthContext';
 
 const LOCAL_STORAGE_TOKEN_KEY = 'pawPalsToken';
 
@@ -72,10 +73,12 @@ function App() {
   }
 
   return (
-    <>
+
+    <AuthContext.Provider value={auth}>
       <Navbar />
 
       <h1>Paw Pals</h1>
+
       <Routes>
         <Route path='/' element={<Home />} exact />
 
@@ -99,7 +102,9 @@ function App() {
 
         <Route path='/login' element={<Login />} />
       </Routes>
-    </>
+    </AuthContext.Provider>
+
+
   );
 }
 
