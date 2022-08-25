@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import AuthContext from '../AuthContext';
+
 function Navbar() {
+    const auth = useContext(AuthContext);
+
     return (
 
         <nav className="navbar navbar-expand-lg bg-light">
@@ -21,15 +26,25 @@ function Navbar() {
                             <Link className="nav-link" to='/users'>Users</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/login'>Login</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/users/add'>Sign Up</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link className="nav-link" to='/schedule'>Schedule</Link>
                         </li>
+                        {!auth.user && (
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to='/login'>Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to='/register'>Register</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
+                    {auth.user && (
+                        <div>
+                            Welcome {auth.user.username}!
+                            <button onClick={() => auth.logout()}>Logout</button>
+                        </div>
+                    )}
                 </div>
             </div>
         </nav>
