@@ -77,7 +77,7 @@ function Login() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     {/* Includes for/id attributes for basic HTML accessibility ♿. */}
-                    <label htmlFor="username">Username: fitchyfetch@gmail.com'</label>
+                    <label htmlFor="username">Username: fitchyfetch@gmail.com</label>
                     <input id="username" type="text" className="form-control" onChange={(event) => setUsername(event.target.value)} value={username} />
                 </div>
                 <div className="form-group">
