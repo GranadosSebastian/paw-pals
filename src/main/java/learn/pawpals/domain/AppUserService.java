@@ -135,8 +135,4 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
-    public List<AppUser> findAll() {
-        return null;
-    }
-
 }
