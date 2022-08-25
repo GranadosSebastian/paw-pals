@@ -17,14 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping
 public class ScheduleController {
-
     private final ScheduleService service;
-
     public ScheduleController(ScheduleService service) {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/schedule")
     public List<Schedule> findAll() throws DataAccessException {
         return service.findAll();
     }
@@ -39,6 +37,11 @@ public class ScheduleController {
     @GetMapping("/schedule/{animalId}")
     public List<Schedule> findByAnimal(@PathVariable int animalId) throws DataAccessException {
         return service.findByAnimal(animalId);
+    }
+
+    @GetMapping("/schedule/{appUserId}")
+    public List<Schedule> findByAdopter(@PathVariable int appUserId) throws DataAccessException {
+        return service.findByAdopter(appUserId);
     }
 
     @PostMapping

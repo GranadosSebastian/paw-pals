@@ -22,7 +22,8 @@ Authorization: Bearer {{token}}
   "username": "test@test.com",
   "password": "P@ssw0rd!"
 }
-###
+
+### Animal CRUD
 
 GET {{url}} HTTP/1.1
 ###
@@ -70,3 +71,44 @@ Authorization: Bearer {{token}}
 DELETE {{url}}/5 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+### Schedule CRUD
+
+GET {{url}}/schedule HTTP/1.1
+###
+
+GET {{url}}/schedule/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+POST {{url}}/schedule HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "time": "",
+  "appUserId": 1,
+  "animalId": 1
+}
+
+###
+
+PUT {{url}}/schedule/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "scheduleId": 1,
+  "time": "",
+  "appUserId": 1,
+  "animalId": 1
+}
+
+###
+
+DELETE {{url}}/4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
