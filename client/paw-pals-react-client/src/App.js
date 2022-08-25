@@ -9,6 +9,8 @@ import UserList from './components/UserList';
 import Login from './components/Login';
 import ScheduleForm from './components/ScheduleForm';
 
+const LOCAL_STORAGE_TOKEN_KEY = 'pawPalsToken';
+
 function App() {
   return (
     <>
