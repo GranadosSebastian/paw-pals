@@ -6,12 +6,15 @@ import learn.pawpals.domain.AnimalService;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.Animal;
+import learn.pawpals.models.AppUser;
 import learn.pawpals.models.Species;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/animal")
@@ -26,9 +29,20 @@ public class AnimalController {
         return service.findAll();
     }
 
-    @GetMapping("/{species}")
+    @GetMapping("/species/{species}")
     public List<Animal> findBySpecies(@PathVariable Species species) throws DataAccessException {
         return service.findBySpecies(species);
+    }
+
+    @GetMapping("/user")
+    public List<Animal> findByUser(UsernamePasswordAuthenticationToken principal) throws DataAccessException {
+        AppUser appUser = (AppUser) principal.getPrincipal();
+
+        // TODO add repo method to get solar panels by user
+
+        return service.findAll().stream()
+                .filter(animal -> animal.getAppUser().getAppUserId() == appUser.getAppUserId())
+                .collect(Collectors.toList());
     }
 
     @PostMapping

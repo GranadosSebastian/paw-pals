@@ -101,7 +101,7 @@ public class AnimalService {
             result.addErrorMessage("Arrival date is required", ResultType.INVALID);
         }
 
-        if (animal.getUserId() <= 0) {
+        if (animal.getAppUserId() <= 0) {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
 
         }

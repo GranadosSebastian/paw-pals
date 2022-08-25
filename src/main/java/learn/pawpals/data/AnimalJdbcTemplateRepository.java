@@ -67,7 +67,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
             ps.setString(6, animal.getFriendliness());
             ps.setBoolean(7, animal.isAvailable());
             ps.setObject(8, animal.getSpecies());
-            ps.setInt(9, animal.getUserId());
+            ps.setInt(9, animal.getAppUserId());
             return ps;
         }, keyHolder);
 
