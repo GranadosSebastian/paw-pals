@@ -1,4 +1,4 @@
-package learn.pawpals.security;
+package learn.pawpals.domain;
 
 import learn.pawpals.data.AppUserRepository;
 import learn.pawpals.data.DataAccessException;
@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ValidationException;
 import java.util.List;
 
 @Service
@@ -24,30 +25,30 @@ public class AppUserService implements UserDetailsService {
         this.repository = repository;
         this.encoder = encoder;
     }
-    
-    
-    
 
-    public List<AppUser> findAll() throws DataAccessException {
-        return repository.findAll();
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        AppUser appUser = repository.findByUsername(username);
+
+        if (appUser == null || !appUser.isEnabled()) {
+            throw new UsernameNotFoundException(username + " not found");
+        }
+        return appUser;
     }
-    public Result<AppUser> add(AppUser appUser) throws DataAccessException {
-        Result<AppUser> result = validate(appUser);
 
-        if (appUser != null && appUser.getAppUserId() > 0) {
-            result.addErrorMessage("User ID should not be set.", ResultType.INVALID);
-        }
+    public AppUser add(String username, String password) {
+        validate(username);
+        validatePassword(password);
 
-        if (result.isSuccess()) {
-            appUser = repository.add(appUser);
-            result.setPayload(appUser);
-        }
+        password = encoder.encode(password);
 
-        return result;
+        AppUser appUser = new AppUser(0, "username", "", false, null, null, null, null, List.of());
+
+        return repository.add(appUser);
     }
 
     public Result<AppUser> update(AppUser appUser) throws DataAccessException {
-        Result<AppUser> result = validate(appUser);
+        Result<AppUser> result = validation(appUser);
 
         if (appUser.getAppUserId() <= 0) {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
@@ -62,6 +63,8 @@ public class AppUserService implements UserDetailsService {
         }
         return result;
     }
+
+
     public Result<AppUser> delete(int appUserId) throws DataAccessException {
         Result<AppUser> result = new Result<>();
         if (repository.delete(appUserId)) {
@@ -69,59 +72,32 @@ public class AppUserService implements UserDetailsService {
         }
         return result;
     }
-    private Result<AppUser> validate(AppUser appUser) throws DataAccessException {
+
+    private Result<AppUser> validation(AppUser appUser) {
         Result<AppUser> result = new Result<>();
-        //if conditions & validations
-        return result;
-    }
-
-
-
-
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = repository.findByUsername(username);
-
-        if (appUser == null || !appUser.isEnabled()) {
-            throw new UsernameNotFoundException(username + " not found");
-        }
-        return appUser;
-    }
-
-    public Result<AppUser> create(Credentials credentials) {
-        Result<AppUser> result = validate(credentials.getUsername());
-        if (!result.isSuccess()) {
-            return result;
-        }
-        result = validatePassword(credentials.getPassword());
-        if (!result.isSuccess()) {
-            return result;
-        }
-
-        String password = encoder.encode(credentials.getPassword());
-
-        AppUser appUser = new AppUser(0, credentials.getUsername(), password, false, List.of("User"));
-
-        result.setPayload(repository.add(appUser));
-
-        return result;
-    }
-
-    private Result<AppUser> validate(String username) {
-        Result<AppUser> result = new Result<>();
-        if (username == null || username.isBlank()) {
+        if (appUser.getUsername() == null || appUser.getUsername().isBlank()) {
             result.addErrorMessage("username is required",
                     ResultType.INVALID);
             return result;
         }
 
-        if (username.length() > 50) {
+        if (appUser.getUsername().length() > 50) {
             result.addErrorMessage("username must be less than 50 characters",
                     ResultType.INVALID);
         }
         return result;
     }
+
+    private void validate(String username) {
+        if (username == null || username.isBlank()) {
+            throw new ValidationException("username is required");
+        }
+
+        if (username.length() > 255) {
+            throw new ValidationException("username must be less than 255 characters");
+        }
+    }
+
 
     private Result<AppUser> validatePassword(String password) {
         Result<AppUser> result = new Result<>();
@@ -152,6 +128,5 @@ public class AppUserService implements UserDetailsService {
 
         return result;
     }
-
 
 }
