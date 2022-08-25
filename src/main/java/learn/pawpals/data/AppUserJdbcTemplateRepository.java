@@ -27,8 +27,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
     public List<AppUser> findAll() {
-        return null;
+
+        List<String> roles = getRolesByAppUserId();
+        final String sql = "select" + APPUSERCOLS + "from app_user;";
+
+        return jdbcTemplate.query(sql, new AppUserMapper(roles));
     }
     @Transactional
     @Override
@@ -110,6 +115,19 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 where au.username = ?;
                 """;
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
+    }
+
+    private List<String> getRolesByAppUserId() {
+        final String sql = """
+                select
+                    r.name
+                from app_user_role ur
+                inner join app_role r on ur.app_role_id = r.app_role_id
+                inner join app_user au on ur.app_user_id = au.app_user_id
+                order by ur.app_user_id;
+               
+                """;
+        return jdbcTemplate.query(sql,(rs, rowId) -> rs.getString("name") );
     }
 
     private void updateRoles(AppUser user) {
