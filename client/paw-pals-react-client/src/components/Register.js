@@ -131,19 +131,19 @@ function Register() {
             <Errors errors={errors} />
 
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label htmlFor="username">Email:</label>
-                    <input id="username" type="text"
+                    <input id="username" type="text" className="form-control"
                         onChange={handleUsernameChange} value={username} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="password">Password:</label>
-                    <input id="password" type="password"
+                    <input id="password" type="password" className="form-control"
                         onChange={(event) => setPassword(event.target.value)} value={password} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="confirmPassword">Confirm Password:</label>
-                    <input id="confirmPassword" type="password"
+                    <input id="confirmPassword" type="password" className="form-control"
                         onChange={(event) => setConfirmPassword(event.target.value)} value={confirmPassword} />
                 </div>
                 <div className="form-group">
@@ -161,9 +161,9 @@ function Register() {
                     <input id="address" name="address" type="text" className="form-control"
                         onChange={(event) => setAddress(event.target.value)} value={address} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input id="phoneNumber" type="text"
+                    <input id="phoneNumber" type="text" className="form-control"
                         onChange={(event) => setPhone(event.target.value)} value={phone} />
                 </div>
                 <div className="form-group">
@@ -176,8 +176,8 @@ function Register() {
                         <option value="4">Adopter</option>
                     </select>
                 </div>
-                <div>
-                    <button type="submit">Register</button>
+                <div className="mt-4">
+                    <button className="btn btn-success mr-2" type="submit">Register</button>
                     <Link to="/login">I have an existing account</Link>
                 </div>
             </form>
