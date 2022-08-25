@@ -27,8 +27,8 @@ public class AnimalController {
     }
 
     @GetMapping("/{species}")
-    public List<Animal> findBySpecies(@PathVariable Species species) throws DataAccessException {
-        return service.findBySpecies(species);
+    public List<Animal> findBySpecies(@PathVariable String speciesString) throws DataAccessException {
+        return service.findBySpecies(speciesString);
     }
 
     @PostMapping

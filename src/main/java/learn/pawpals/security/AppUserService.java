@@ -85,24 +85,24 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
-//    public Result<AppUser> create(Credentials credentials) {
-//        Result<AppUser> result = validate(credentials.getUsername());
-//        if (!result.isSuccess()) {
-//            return result;
-//        }
-//        result = validatePassword(credentials.getPassword());
-//        if (!result.isSuccess()) {
-//            return result;
-//        }
-//
-//        String password = encoder.encode(credentials.getPassword());
-//
-//       // AppUser appUser = new AppUser(0, credentials.getUsername(), password, false, List.of("User"));
-//
-//        result.setPayload(repository.add(appUser));
-//
-//        return result;
-//    }
+    public Result<AppUser> create(Credentials credentials) {
+        Result<AppUser> result = validate(credentials.getUsername());
+        if (!result.isSuccess()) {
+            return result;
+        }
+        result = validatePassword(credentials.getPassword());
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        String password = encoder.encode(credentials.getPassword());
+
+        AppUser appUser = new AppUser(0, credentials.getUsername(), password, false, List.of("User"));
+
+        result.setPayload(repository.add(appUser));
+
+        return result;
+    }
 
     private Result<AppUser> validate(String username) {
         Result<AppUser> result = new Result<>();
@@ -150,4 +150,7 @@ public class AppUserService implements UserDetailsService {
     }
 
 
+    public List<AppUser> findAll() {
+        return null;
+    }
 }

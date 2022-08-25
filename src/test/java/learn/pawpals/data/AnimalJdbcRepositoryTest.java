@@ -39,7 +39,7 @@ public class AnimalJdbcRepositoryTest {
     @Test
     void shouldFindSpecies() {
         List<Animal> animals = new ArrayList<>();
-        animals = repository.findBySpecies(Species.cat);
+        animals = repository.findBySpecies("cat");
         assertEquals(2, animals.size());
     }
     @Test
@@ -49,7 +49,8 @@ public class AnimalJdbcRepositoryTest {
         animal.setSize(Size.SMALL);
         animal.setArrivalDate(LocalDate.now());
         animal.setSpecies(Species.bird);
-        animal.setAppUserId(1);
+        animal.setAppUserId(5);
+
         Animal actual = repository.add(animal);
 
         assertNotNull(actual);
