@@ -103,7 +103,6 @@ public class AnimalService {
 
         if (animal.getAppUserId() <= 0) {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
-
         }
 
         return result;
