@@ -37,8 +37,8 @@ public class AppUserJdbcRepositoryTest {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.delete(5));
-        assertFalse(repository.delete(5));
+        assertTrue(repository.delete(3));
+        assertFalse(repository.delete(3));
 
     }
 

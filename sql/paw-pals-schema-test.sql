@@ -1,6 +1,6 @@
-drop database if exists paw_pals;
-create database paw_pals;
-use paw_pals;
+drop database if exists paw_pals_test;
+create database paw_pals_test;
+use paw_pals_test;
 
 create table app_user (
     app_user_id int primary key auto_increment,
@@ -35,6 +35,7 @@ create table app_user_role (
 
 
 
+
 create table animal (
     animal_id int primary key auto_increment,
     animal_name varchar(25) not null,
@@ -43,7 +44,7 @@ create table animal (
     size char(10) not null,
     arrival_date date not null,
     friendliness_level varchar(10) null,
-    is_available bit null,
+    is_available int not null,
     species varchar(20) not null,
     app_user_id int not null,
 	constraint fk_animal_app_user_id
@@ -93,7 +94,7 @@ insert into app_user (username, password_hash, disabled, first_name, last_name, 
     ('grandoltime@aol.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0, 'Sebastian', 'Granados', null, null ),
     ('saladdressing@aol.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0,'Keri', 'Salanik', null, null );
 
-insert into app_user_role
+insert into app_user_role 
     values
     (1, 3),
     (2, 1),
@@ -104,15 +105,20 @@ insert into app_user_role
 
 insert into animal (animal_name, breed, age, size, arrival_date, is_available, species, app_user_id)
 values
-('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 'dog', 6),
-('Zazu', 'tabby', 1, 'small', '2022-02-15', 1, 'cat', 1),
-('Missy', 'calico', 6, 'small', '2008-09-09', 0, 'cat', 3),
-('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 6),
-('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
+('Bella', 'mixed', 8, 'MEDIUM', '2020-12-25', 1, 'dog', 6),
+('Zazu', 'tabby', 1, 'SMALL', '2022-02-15', 1, 'cat', 1),
+('Missy', 'calico', 6, 'SMALL', '2008-09-09', 0, 'cat', 3),
+('Bruno', 'chihuahua', 5,'SMALL', '2010-10-23', 1, 'dog', 6),
+('Rocky', 'german shepard', 10,'LARGE', '2016-12-24', 1, 'reptile', 1);
 
 		
 
 end //
 
 delimiter ;		
+
+
+
+
+
 
