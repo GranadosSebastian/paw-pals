@@ -20,7 +20,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final String APPUSERCOLS = " app_user_id, username, password_hash, disabled," +
+    private final String APPUSERCOLS = " username, password_hash, disabled," +
             "first_name, last_name, address, phone ";
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
@@ -31,7 +31,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public List<AppUser> findAll() {
 
         List<String> roles = getRolesByAppUserId();
-        final String sql = "select" + APPUSERCOLS + "from app_user;";
+        final String sql = "select app_user_id," + APPUSERCOLS + "from app_user;";
 
         return jdbcTemplate.query(sql, new AppUserMapper(roles));
     }
@@ -40,7 +40,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public AppUser findByUsername(String username) {
         List<String> roles = getRolesByUsername(username);
 
-        final String sql = "select " + APPUSERCOLS + "from app_user " +
+        final String sql = "select app_user_id," + APPUSERCOLS + "from app_user " +
                 "where username = ?;";
         return jdbcTemplate.query(sql, new AppUserMapper(roles), username)
                 .stream()
@@ -53,7 +53,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public AppUser add(AppUser user) {
 
         final String sql = "insert into app_user (" + APPUSERCOLS + ") " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?);";
+                "values (?, ?, ?, ?, ?, ?, ?);";
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -95,16 +95,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         return updated;
     }
 
-    @Override
-    public boolean delete(int appUserId) {
 
-//        @Override
-//        public boolean delete(int appUserId) {
-//            jdbcTemplate.update("delete from animal where user_id = ?", appUserId);
-//            return jdbcTemplate.update("delete from `user` where user_id = ?", appUserId) > 0;
-//        }
-        return false;
-    }
+
+        @Override
+        public boolean delete(int appUserId) {
+            jdbcTemplate.update("delete from animal where app_user_id = ?", appUserId);
+            return jdbcTemplate.update("delete from `user` where app_user_id = ?", appUserId) > 0;
+        }
 
     private List<String> getRolesByUsername(String username) {
         final String sql = """

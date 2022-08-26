@@ -1,6 +1,19 @@
 @url = http://localhost:8080/api/animal
 
-@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU2MjE5Nn0.VbdvokT1QZ3a0v4OqLL62_iI9Ox9mQRSPKULFy1H8Kc
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU2NjgzMH0.-HOo4mEeJTnb4qntcUNkwsJPUp7Rjes1-WwH4GFXxfw
+=======
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU2NjMzMn0.g7ZbMf9lgc_yq3VMgXaJQDZTWRUqKNvA19kvF4qY5jg
+>>>>>>> 70c817a5d55ef37891d93b4e7b1a2f370fd0363a
+=======
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU2OTQ3MH0.Hk2N9FABXDSTlvmOzqfGo2LlN3hgkELJcqPpKhbgHkg
+=======
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU3MTQ1NX0.HLmovWWImiSIMFnZUsZHkkdQAvHo5WZbhWOcMVzGdG8
+>>>>>>> 92091026d6ae5426e24b9949649bba89121156ca
+
+>>>>>>> 24091f55aa2bd066cb4ececcd59a1a70af13e57b
 ### Authenticate
 
 POST http://localhost:8080/api/authenticate HTTP/1.1
@@ -11,16 +24,43 @@ Content-Type: application/json
   "password": "P@ssw0rd!"
 }
 
-### Create AppUser
+### AppUser CRUD
 
-POST http://localhost:8080/api/appuser HTTP/1.1
+GET {{url}}/appuser HTTP/1.1
+###
+
+POST {{url}}/appuser HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "username": "test@test.com",
-  "password": "P@ssw0rd!"
+  "username": "George@test.com",
+  "password": "P@ssw0rd!",
+  "firstName": "Bob",
+  "lastName": "Bobson"
 }
+
+### 
+
+PUT {{url}}/appuser/5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "appUserId": 5,
+  "username": "Tom@test.com",
+  "password": "P@ssw0rd!",
+  "disabled": false,
+  "firstName": "Fred",
+  "lastName": "McTest",
+  "address": "123 Lane",
+  "phone": ""
+}
+
+###
+
+DELETE {{url}}/appuser/7 HTTP/1.1
+Authorization: Bearer {{token}}
 
 ### Animal CRUD
 
@@ -92,21 +132,21 @@ Authorization: Bearer {{token}}
 
 {
   "dateTime": "2022-10-06T10:00:00",
-  "appUserId": 1,
-  "animalId": 1
+  "appUserId": 2,
+  "animalId": 2
 }
 
 ###
 
-PUT {{url}}/schedule/1 HTTP/1.1
+PUT {{url}}/schedule/6 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "scheduleId": 1,
+  "scheduleId": 6,
   "dateTime": "2024-07-07T10:00:00",
-  "appUserId": 1,
-  "animalId": 1
+  "appUserId": 3,
+  "animalId": 4
 }
 
 ###

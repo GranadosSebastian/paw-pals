@@ -42,13 +42,13 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
-    public AppUser add(String username, String password) {
+    public AppUser add(String username, String password, String firstName, String lastName) {
         validate(username);
         validatePassword(password);
 
         password = encoder.encode(password);
 
-        AppUser appUser = new AppUser(0, "username", "", false, null, null, null, null, List.of());
+        AppUser appUser = new AppUser(0, username, "", false, firstName, lastName, null, null, List.of());
 
         return repository.add(appUser);
     }

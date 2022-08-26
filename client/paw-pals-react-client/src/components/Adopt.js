@@ -57,10 +57,10 @@ function Adopt() {
 
         <>
             {animals.map((animal) =>
-                <div class="card" style={{ width: "18rem" }}>
+                <div key={animal.animalId} className="card" style={{ width: "18rem" }}>
                     <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle" alt="..." />
                     <div className="card-body">
-                        <h5 class="card-title">{animal.animalName}</h5>
+                        <h5 className="card-title">{animal.animalName}</h5>
                         <ul>
                             <li>{animal.age}</li>
                             <li>{animal.breed}</li>
@@ -68,6 +68,7 @@ function Adopt() {
                             <li>{animal.friendliness}</li>
                             <li>{animal.arrivalDate}</li>
                         </ul>
+
                         <div>
                             <Link className="btn btn-success ml-1" to={`/schedule`}>Visit</Link>
                             {auth.user && auth.user.appUserId === animal.appUserId && (
@@ -81,6 +82,11 @@ function Adopt() {
                                 </button>
                             )}
                         </div>
+
+                        <Link className="btn btn-success ml-1" to={`/schedule/add`}>Visit</Link>
+                        <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>Edit</Link>
+                        <button className="btn btn-success ml-1" onClick={() => handleDeleteAnimal(animal.animalId)}>Delete</button>
+
                     </div>
                 </div>
             )}
