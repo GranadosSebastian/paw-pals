@@ -31,11 +31,28 @@ public class AppUserJdbcRepositoryTest {
         assertNotNull(appUsers);
         assertEquals(6, appUsers.size());
     }
+
     @Test
-    void shouldAdd() {
-
-
+    void shouldFindByUsername() {
+        AppUser user = repository.findByUsername("saladdressing@aol.com");
+        assertNotNull(user);
+        assertEquals(6, user.getAppUserId());
     }
+//    @Test
+//    void shouldAdd() {
+//        AppUser user = new AppUser();
+//        user.setFirstName("Test");
+//        user.setLastName("Test");
+//        user.setAddress(null);
+//        user.setPhone(null);
+//
+//        AppUser actual = repository.add(user);
+//
+//        assertNotNull(actual);
+//        assertEquals("Test", actual.getFirstName());
+//
+//
+//    }
 
     @Test
     void shouldUpdateUser() {
