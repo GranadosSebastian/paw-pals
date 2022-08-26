@@ -5,14 +5,17 @@ import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.domain.ScheduleService;
 import learn.pawpals.models.Animal;
+import learn.pawpals.models.AppUser;
 import learn.pawpals.models.Schedule;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping
@@ -41,6 +44,13 @@ public class ScheduleController {
         return service.findByAnimal(animalId);
     }
 
+    @GetMapping("/user")
+    public List<Schedule> findByUser(UsernamePasswordAuthenticationToken principal) throws DataAccessException {
+        AppUser appUser = (AppUser) principal.getPrincipal();
+        return service.findAll()
+                .stream().filter(sp -> sp.getAppUserId() == appUser.getAppUserId())
+                .collect(Collectors.toList());
+    }
     @PostMapping
     public ResponseEntity<?> add(@RequestBody Schedule schedule) throws DataAccessException {
         Result<Schedule> result = service.add(schedule);

@@ -60,6 +60,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
+            ps.setBoolean(3, user.isEnabled());
             ps.setString(4, user.getFirstName());
             ps.setString(5, user.getLastName());
             ps.setString(6, user.getAddress());
