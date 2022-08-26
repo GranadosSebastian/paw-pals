@@ -48,17 +48,19 @@ create table animal (
 		references app_user(app_user_id)
 );
 
-create table `schedule` (
+create table schedule (
 schedule_id int primary key auto_increment,
-`time` datetime not null,
-app_user_id int not null,
+`datetime` datetime not null,
 animal_id int not null,
-constraint fk_schedule_app_user_id
-	foreign key (app_user_id)
-	references app_user(app_user_id),
+adopter_id int not null,
 constraint fk_schedule_animal_id
 	foreign key (animal_id)
-	references animal(animal_id)
+    references animal(animal_id),
+constraint fk_schedule_adopter_id
+	foreign key (adopter_id)
+    references app_user(app_user_id)
+
+
 );
 
 
@@ -89,13 +91,17 @@ insert into app_user_role
 
 insert into animal (animal_name, breed, age, size, arrival_date, is_available, species, app_user_id)
 values
-('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 'dog', 6),
+('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 'dog', 2),
 ('Zazu', 'tabby', 1, 'small', '2022-02-15', 1, 'cat', 1),
-('Missy', 'calico', 6, 'small', '2008-09-09', 0, 'cat', 3),
-('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 6),
+('Missy', 'calico', 6, 'small', '2008-09-09', 0, 'cat', 5),
+('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 4),
 ('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
 
-		
+insert into `schedule` (`datetime`, animal_id, adopter_id)
+values
+			('2023-06-06 10:00:00', 4, 3),
+            ('2023-06-06 11:00:00', 1, 6),
+            ('2023-06-07 11:30:00', 2, 3);	
 
 
 

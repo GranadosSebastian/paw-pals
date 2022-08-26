@@ -24,30 +24,84 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     @Override
     public List<Schedule> findAll() {
 
-        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule`;";
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule`;";
+//        final String sql = """
+//                SELECT
+//                sch.schedule_id,
+//                sch.`datetime`,
+//                an.animal_name,
+//                appf.first_name AS foster_first,
+//                appf.last_name AS foster_last,
+//                appa.first_name AS adopter_first,
+//                appa.last_name AS adopter_last,
+//                appa.phone AS adopter_phone,
+//                appf.phone AS foster_phone
+//                from `schedule` sch
+//                inner join app_user appa on appa.app_user_id = sch.adopter_id
+//                inner join animal an on an.animal_id = sch.animal_id
+//                inner join app_user appf on appf.app_user_id = an.app_user_id;
+//
+//                """;
         return jdbcTemplate.query(sql, new ScheduleMapper());
 
     }
 
     @Override
     public List<Schedule> findByAnimal(int animalId) {
-        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule` " +
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
                 "where animal_id = ?;";
+//        final String sql = """
+//                SELECT
+//                sch.schedule_id,
+//                sch.`datetime`,
+//                an.animal_name,
+//                appf.first_name AS foster_first,
+//                appf.last_name AS foster_last,
+//                appa.first_name AS adopter_first,
+//                appa.last_name AS adopter_last,
+//                appa.phone AS adopter_phone,
+//                appf.phone AS foster_phone
+//                from `schedule` sch
+//                inner join app_user appa on appa.app_user_id = sch.adopter_id
+//                inner join animal an on an.animal_id = sch.animal_id
+//                inner join app_user appf on appf.app_user_id = an.app_user_id
+//                where an.animal_id = ?;
+//
+//                """;
         return jdbcTemplate.query(sql, new ScheduleMapper(), animalId);
     }
 
 
     @Override
     public List<Schedule> findByAdopter(int appUserId) {
-        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule` " +
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
                 "where app_user_id = ?;";
+//        final String sql = """
+//                SELECT
+//                sch.schedule_id,
+//                sch.`datetime`,
+//                an.animal_name,
+//                appf.first_name AS foster_first,
+//                appf.last_name AS foster_last,
+//                appa.first_name AS adopter_first,
+//                appa.last_name AS adopter_last,
+//                appa.phone AS adopter_phone,
+//                appf.phone AS foster_phone
+//                from `schedule` sch
+//                inner join app_user appa on appa.app_user_id = sch.adopter_id
+//                inner join animal an on an.animal_id = sch.animal_id
+//                inner join app_user appf on appf.app_user_id = an.app_user_id
+//                where appa.app_user_id = ?;
+//
+//                """;
+
         return jdbcTemplate.query(sql, new ScheduleMapper(), appUserId);
     }
 
     @Override
     public Schedule add(Schedule schedule) {
 
-        final String sql = "insert into `schedule` (" + SCHEDULESQLCOLS + ") " +
+        final String sql = "insert into `schedule` (`datetime`, animal_id, adopter_id) " +
                 "values (?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
