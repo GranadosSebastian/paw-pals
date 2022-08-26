@@ -65,9 +65,9 @@ function Adopt() {
                             <li>{animal.friendliness}</li>
                             <li>{animal.arrivalDate}</li>
                         </ul>
-                        <Link to={`/schedule`}>Visit</Link>
-                        <Link to={`/animals/edit/${animal.animalId}`}>Edit</Link>
-                        <button onClick={() => handleDeleteAnimal(animal.animalId)}>Delete</button>
+                        <Link className="btn btn-success ml-1" to={`/schedule`}>Visit</Link>
+                        <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>Edit</Link>
+                        <button className="btn btn-success ml-1" onClick={() => handleDeleteAnimal(animal.animalId)}>Delete</button>
                     </div>
                 </div>
             )}

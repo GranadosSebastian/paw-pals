@@ -101,8 +101,13 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     @Override
     public Schedule add(Schedule schedule) {
 
+<<<<<<< HEAD
         final String sql = "insert into `schedule` (`datetime`, animal_id, adopter_id) " +
                 "values (?, ?, ?, ?);";
+=======
+        final String sql = "insert into `schedule` (" + SCHEDULESQLCOLS + ") " +
+                "values (?, ?, ?);";
+>>>>>>> deb4d282020566ba86aa3884ac2452cacdcee5f3
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {

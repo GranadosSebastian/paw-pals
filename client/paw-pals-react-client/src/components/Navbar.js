@@ -28,13 +28,13 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to='/schedule'>Schedule</Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to='/login'>Login</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to='/register'>Register</Link>
-                        </li>
-                        {/* {!auth.user && (
+                        </li> */}
+                        {!auth.user && (
                             <>
                                 <li className="nav-item">
                                     <Link className="nav-link" to='/login'>Login</Link>
@@ -43,14 +43,14 @@ function Navbar() {
                                     <Link className="nav-link" to='/register'>Register</Link>
                                 </li>
                             </>
-                        )} */}
+                        )}
                     </ul>
-                    {/* {auth.user && (
+                    {auth.user && (
                         <div>
                             Welcome, {auth.user.firstName} {auth.user.lastName}
-                            <button onClick={() => auth.logout()}>Logout</button>
+                            <button className="btn btn-success mr-2 ml-3" onClick={() => auth.logout()}>Logout</button>
                         </div>
-                    )} */}
+                    )}
                 </div>
             </div>
         </nav>
