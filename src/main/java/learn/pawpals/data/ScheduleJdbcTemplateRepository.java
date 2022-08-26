@@ -2,6 +2,7 @@ package learn.pawpals.data;
 
 import learn.pawpals.data.mappers.ScheduleMapper;
 import learn.pawpals.models.Schedule;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -9,13 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
 public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
-    private final String SCHEDULESQLCOLS = " schedule_id, `time`, app_user_id, animal_id ";
+    private final String SCHEDULESQLCOLS = "`time`, app_user_id, animal_id ";
 
     public ScheduleJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -24,14 +27,14 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     @Override
     public List<Schedule> findAll() {
 
-        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule`;";
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule`;";
         return jdbcTemplate.query(sql, new ScheduleMapper());
 
     }
 
     @Override
     public List<Schedule> findByAnimal(int animalId) {
-        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule` " +
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
                 "where animal_id = ?;";
         return jdbcTemplate.query(sql, new ScheduleMapper(), animalId);
     }
@@ -39,7 +42,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
     @Override
     public List<Schedule> findByAdopter(int appUserId) {
-        final String sql = "select" + SCHEDULESQLCOLS + "from `schedule` " +
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
                 "where app_user_id = ?;";
         return jdbcTemplate.query(sql, new ScheduleMapper(), appUserId);
     }
@@ -53,7 +56,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setObject(1, schedule.getDateTime());
+            ps.setTimestamp(1, Timestamp.valueOf(schedule.getDateTime()));
             ps.setInt(2, schedule.getAppUserId());
             ps.setInt(3, schedule.getAnimalId());
             return ps;
