@@ -54,9 +54,64 @@ function ScheduleForm() {
     };
 
     const addAnimal = () => {
+        const init = {
+            method: 'POST',
+            header: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.user.token}`
+            },
+            body: JSON.stringify(schedule)
+        };
+        fetch('http://localhost:8080/api/animal/schedule', init)
+            .then(response => {
+                if (response.status === 201 || response.status === 400) {
+                    return response.json();
+                } else {
+                    return Promise.reject(`Unexpected status code: ${response.status}`);
+                }
+            })
+            .then(data => {
+                if (data.scheduleId) {
+
+                    navigate('/animal/schedule');
+                } else {
+
+                    setErrors(data);
+                }
+            })
+            .catch(console.log);
     }
 
     const updateAnimal = () => {
+        schedule.scheduleId = scheduleId;
+
+        const init = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.user.token}`
+            },
+            body: JSON.stringify(schedule)
+        };
+
+        fetch(`http://localhost:8080/api/animal/schedule/${scheduleId}`, init)
+            .then(response => {
+                if (response.status === 204) {
+                    return null;
+                } else if (response.status === 400) {
+                    return response.json();
+                } else {
+                    return Promise.reject(`Unexpected status code: ${response.status}`);
+                }
+            })
+            .then(data => {
+                if (!data) {
+                    navigate('/animal/schedule')
+                } else {
+                    setErrors(data);
+                }
+            })
+            .catch(console.log);
     }
 
     return (
@@ -65,7 +120,6 @@ function ScheduleForm() {
             <p>Schedule link will only display for foster pet parents that are logged in to
                 select available date/times
             </p>
-
             <h2 className="mb-4">{scheduleId ? 'Update Schedule' : 'Add Schedule'}</h2>
 
             <Errors erros={errors} />
@@ -73,15 +127,18 @@ function ScheduleForm() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor='dateTime'>Date and Time</label>
-                    <input id="dateTime" name="dateTime" type="text" className="form-control"></input>
+                    <input id="dateTime" name="dateTime" type="text" className="form-control"
+                    value={schedule.dateTime} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor='appUserId'>User Id</label>
-                    <input id="appUserId" name="appUserId" type="text" className="form-control"></input>
+                    <input id="appUserId" name="appUserId" type="text" className="form-control"
+                    value={schedule.dateTime} onChange={handleChange}  />
                 </div>
                 <div className="form-group">
                     <label htmlFor='animalId'>Animal Id</label>
-                    <input id="animalId" name="animalId" type="text" className="form-control"></input>
+                    <input id="animalId" name="animalId" type="text" className="form-control"
+                    value={schedule.dateTime} onChange={handleChange}  />
                 </div>
                 <div>
                     <button className="btn btn-success mr-2" type="submit">

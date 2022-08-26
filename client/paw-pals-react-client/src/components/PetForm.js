@@ -118,12 +118,7 @@ function PetForm() {
     }
 
 
-
-
-
     return (
-
-
         <>
             <h2 className="mb-4">{animalId ? 'Update Pet' : 'Add Pet'}</h2>
 
