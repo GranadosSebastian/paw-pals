@@ -9,7 +9,13 @@ function UserList() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/appuser')
+        const init = {
+            headers: {
+                'Authorization': `Bearer ${auth.user.token}`
+            },
+        };
+
+        fetch('http://localhost:8080/api/animal/appuser', init)
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
@@ -19,7 +25,7 @@ function UserList() {
             })
             .then(data => setAppUsers(data))
             .catch(console.log);
-    }, []);
+    }, [auth.user.token]);
 
 
     const handleDeleteUser = (appUserId) => {
@@ -28,9 +34,9 @@ function UserList() {
         if (window.confirm(`Delete user ${appUser.firtName} ${appUser.lastName}?`)) {
             const init = {
                 method: 'DELETE',
-                // headers: {
-                //     'Authorization': `Bearer ${auth.user.token}`
-                // },
+                headers: {
+                    'Authorization': `Bearer ${auth.user.token}`
+                },
             };
 
             fetch(`http://localhost:8080/${appUserId}`, init)
@@ -71,7 +77,7 @@ function UserList() {
                 <tbody>
                     {appUsers.map((appUser) => (
                         <tr key={appUser.appUserId}>
-                            <td>{appUser.firstname} {appUser.lastName}</td>
+                            <td>{appUser.firstName} {appUser.lastName}</td>
                             <td>{appUser.address}</td>
                             <td>{appUser.phone}</td>
                             <td>{appUser.username}</td>
@@ -81,11 +87,11 @@ function UserList() {
                                     <Link className="btn btn-primary btn-sm mr-2" to={`/users/edit/${appUser.appUserId}`}>
                                         <i className="bi bi-pencil-square"></i> Edit
                                     </Link>
-                                    {/* {auth.user && auth.user.hasRole('ROLE_ADMIN') && (
-                                        <button className="btn btn-danger btn-sm" onClick={() => handleDeleteUser(user.userId)}>
+                                    {auth.user && auth.user.hasRole('ROLE_staff') && (
+                                        <button className="btn btn-danger btn-sm" onClick={() => handleDeleteUser(appUser.appUserId)}>
                                             <i className="bi bi-trash"></i> Delete
                                         </button>
-                                    )} */}
+                                    )}
                                 </div>
                             </td>
                         </tr>
