@@ -100,7 +100,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         @Override
         public boolean delete(int appUserId) {
             jdbcTemplate.update("delete from animal where app_user_id = ?", appUserId);
-            return jdbcTemplate.update("delete from `user` where app_user_id = ?", appUserId) > 0;
+            return jdbcTemplate.update("delete from app_user where app_user_id = ?", appUserId) > 0;
         }
 
     private List<String> getRolesByUsername(String username) {

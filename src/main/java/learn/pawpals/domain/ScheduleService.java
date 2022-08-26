@@ -62,7 +62,7 @@ public class ScheduleService {
 
     public Result<Schedule> delete(int scheduleId) throws DataAccessException {
         Result<Schedule> result = new Result();
-        if (scheduleRepository.delete(scheduleId)) {
+        if (!scheduleRepository.delete(scheduleId)) {
             result.addErrorMessage("Schedule ID %s was not found.", ResultType.NOT_FOUND, scheduleId);
         }
         return result;
