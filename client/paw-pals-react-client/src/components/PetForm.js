@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import AuthContext from '../AuthContext';
+import Errors from './Errors';
 
 const ANIMAL_DEFAULT = {
     animalName: '',
@@ -15,7 +17,7 @@ function PetForm() {
     const [animal, setAnimal] = useState(ANIMAL_DEFAULT);
     const [errors, setErrors] = useState([]);
 
-    // const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext);
 
     const navigate = useNavigate();
     const { animalId } = useParams();
@@ -57,7 +59,8 @@ function PetForm() {
         const init = {
             method: 'POST',
             header: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.user.token}`
             },
             body: JSON.stringify(animal)
         };
@@ -88,7 +91,8 @@ function PetForm() {
         const init = {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.user.token}`
             },
             body: JSON.stringify(animal)
         };
@@ -123,18 +127,9 @@ function PetForm() {
         <>
             <h2 className="mb-4">{animalId ? 'Update Pet' : 'Add Pet'}</h2>
 
-            {errors.length > 0 && (
-                <div className="alert alert-danger">
-                    <p>The following errors were found:</p>
-                    <ul>
-                        {errors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            <Errors erros={errors} />
 
-            <form id="form" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="animalName">Pet Name:</label>
                     <input id="animalName" name="animalName" type="text" className="form-control"
