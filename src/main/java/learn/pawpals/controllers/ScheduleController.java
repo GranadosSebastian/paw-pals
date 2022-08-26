@@ -37,11 +37,12 @@ public class ScheduleController {
     }
     */
 
-    @GetMapping("/{animalId}")
+    @GetMapping("/animalId/{animalId}")
     public List<Schedule> findByAnimal(@PathVariable int animalId) throws DataAccessException {
         return service.findByAnimal(animalId);
     }
 
+    /*
     @GetMapping("/user")
     public List<Schedule> findByUser(UsernamePasswordAuthenticationToken principal) throws DataAccessException {
         AppUser appUser = (AppUser) principal.getPrincipal();
@@ -49,12 +50,12 @@ public class ScheduleController {
                 .stream().filter(sp -> sp.getAppUserId() == appUser.getAppUserId())
                 .collect(Collectors.toList());
     }
+    */
 
-    @GetMapping("/{appUserId}")
+    @GetMapping("/appUserId/{appUserId}")
     public List<Schedule> findByAdopter(@PathVariable int appUserId) throws DataAccessException {
         return service.findByAdopter(appUserId);
     }
-
 
     @PostMapping
     public ResponseEntity<?> add(@RequestBody Schedule schedule) throws DataAccessException {
@@ -64,7 +65,6 @@ public class ScheduleController {
         }
         return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
     }
-
 
     @PutMapping("/{scheduleId}")
     public ResponseEntity<?> update(@PathVariable int scheduleId, @RequestBody Schedule schedule) throws DataAccessException {
