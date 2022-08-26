@@ -55,7 +55,7 @@ public class AppUserController {
     }
 
     @DeleteMapping("/{appUserId}")
-    public ResponseEntity<Void> delete(int appUserId) throws DataAccessException {
+    public ResponseEntity<Void> delete(@PathVariable int appUserId) throws DataAccessException {
         Result<AppUser> result = service.delete((appUserId));
         if (result.getResultType() == ResultType.NOT_FOUND) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
