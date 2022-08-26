@@ -73,7 +73,7 @@ public class AppUserService implements UserDetailsService {
 
     public Result<AppUser> delete(int appUserId) throws DataAccessException {
         Result<AppUser> result = new Result<>();
-        if (repository.delete(appUserId)) {
+        if (!repository.delete(appUserId)) {
             result.addErrorMessage("User ID %s was not found.", ResultType.NOT_FOUND, appUserId);
         }
         return result;

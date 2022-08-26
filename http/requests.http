@@ -1,6 +1,6 @@
 @url = http://localhost:8080/api/animal
 
-@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU3MTQ1NX0.HLmovWWImiSIMFnZUsZHkkdQAvHo5WZbhWOcMVzGdG8
+@token = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhbmltYWwtYXBpIiwic3ViIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX2Zvc3Rlcl9wYXJlbnQiLCJhcHBVc2VySWQiOjEsInVzZXJuYW1lIjoiZml0Y2h5ZmV0Y2hAZ21haWwuY29tIiwiZGlzYWJsZWQiOnRydWUsImZpcnN0TmFtZSI6IkRleCIsImxhc3ROYW1lIjoiRml0Y2giLCJhZGRyZXNzIjoiMTIzIE5vd2hlcmUgTGFuZSIsInBob25lIjoiMTIzNDU2Nzg5MCIsImV4cCI6MTY2MTU3NDAwNX0.NJGi4ILxFusYfUQ4468TP4FzBgO7BSJiMgniAQUvXIo
 
 ### Authenticate
 
@@ -95,7 +95,7 @@ Authorization: Bearer {{token}}
 }
 ###
 
-DELETE {{url}}/8 HTTP/1.1
+DELETE {{url}}/11 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -139,7 +139,7 @@ Authorization: Bearer {{token}}
 
 ###
 
-DELETE {{url}}/schedule/5 HTTP/1.1
+DELETE {{url}}/schedule/8 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
