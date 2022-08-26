@@ -13,6 +13,7 @@ import Login from './components/Login';
 import ScheduleForm from './components/ScheduleForm';
 import Register from './components/Register';
 import AuthContext from './AuthContext';
+import ScheduleList from './components/ScheduleList';
 
 const LOCAL_STORAGE_TOKEN_KEY = 'pawPalsToken';
 
@@ -96,7 +97,9 @@ function App() {
 
         <Route path='/users' element={<UserList />} />
 
-        <Route path='/schedule' element={<ScheduleForm />} />
+        <Route path='/schedule' element={<ScheduleList />} />
+
+        <Route path='/schedule/add' element={<ScheduleForm />} />
 
         <Route path='*' element={<NotFound />} />
 
