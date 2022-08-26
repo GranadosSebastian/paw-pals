@@ -1,10 +1,17 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import AuthContext from '../AuthContext';
 
 function Navbar() {
     const auth = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        auth.logout();
+        navigate("/");
+    }
 
     return (
 
@@ -22,18 +29,16 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to='/animals'>Adopt</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/users'>Users</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/schedule'>Schedule</Link>
-                        </li>
-                        {/* <li className="nav-item">
-                            <Link className="nav-link" to='/login'>Login</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/register'>Register</Link>
-                        </li> */}
+                        {auth.user && (
+                            <li className="nav-item">
+                                <Link className="nav-link" to='/users'>Users</Link>
+                            </li>
+                        )}
+                        {auth.user && (
+                            <li className="nav-item">
+                                <Link className="nav-link" to='/schedule'>Schedule</Link>
+                            </li>
+                        )}
                         {!auth.user && (
                             <>
                                 <li className="nav-item">
@@ -48,7 +53,7 @@ function Navbar() {
                     {auth.user && (
                         <div>
                             Welcome, {auth.user.firstName} {auth.user.lastName}
-                            <button className="btn btn-success mr-2 ml-3" onClick={() => auth.logout()}>Logout</button>
+                            <button className="btn btn-success mr-2 ml-3" onClick={() => handleLogout()}>Logout</button>
                         </div>
                     )}
                 </div>
