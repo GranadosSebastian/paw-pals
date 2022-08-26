@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api/animal/appuser")
 public class AppUserController {
     private final AppUserService service;
     public AppUserController(AppUserService service) {
@@ -27,7 +28,7 @@ public class AppUserController {
     }
 
 
-    @PostMapping("/api/appuser")
+    @PostMapping()
     public ResponseEntity<?> add(@RequestBody Map<String, String> body) throws DataAccessException {
         try {
             AppUser appUser = service.add(body.get("username"), body.get("password"));
