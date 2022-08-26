@@ -95,16 +95,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         return updated;
     }
 
-    @Override
-    public boolean delete(int appUserId) {
 
-//        @Override
-//        public boolean delete(int appUserId) {
-//            jdbcTemplate.update("delete from animal where user_id = ?", appUserId);
-//            return jdbcTemplate.update("delete from `user` where user_id = ?", appUserId) > 0;
-//        }
-        return false;
-    }
+
+        @Override
+        public boolean delete(int appUserId) {
+            jdbcTemplate.update("delete from animal where app_user_id = ?", appUserId);
+            return jdbcTemplate.update("delete from `user` where app_user_id = ?", appUserId) > 0;
+        }
 
     private List<String> getRolesByUsername(String username) {
         final String sql = """
