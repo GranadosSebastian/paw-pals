@@ -17,11 +17,47 @@ function ScheduleForm() {
     const navigate = useNavigate();
     const { scheduleId } = useParams();
 
-    //useEffect
-    //handle change
-    //handle submit
     //add
     //update
+
+    useEffect(() => {
+        if (scheduleId) {
+            fetch(`http://localhost:8080/api/animal/schedule/${scheduleId}`)
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        return Promise.reject(`Unexpected status code: ${response.status}`)
+                    }
+                })
+                .then(data => setSchedule(data))
+                .catch(console.log)
+        }
+    }, [animalId]);
+
+    const handleChange = (event) => {
+        const newSchedule = { ...schedule };
+
+        newSchedule[event.target.name] = event.target.value;
+
+        setSchedule(newSchedule);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (scheduleId) {
+            updateSchedule();
+        } else {
+            addSchedule();
+        }
+    };
+
+    const addAnimal = () => {
+    }
+
+    const updateAnimal = () => {
+    }
 
     return (
         <>
