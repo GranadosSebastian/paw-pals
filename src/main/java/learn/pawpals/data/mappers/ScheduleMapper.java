@@ -1,3 +1,4 @@
+
 package learn.pawpals.data.mappers;
 
 import learn.pawpals.models.Schedule;
@@ -13,7 +14,9 @@ public class ScheduleMapper implements RowMapper<Schedule> {
     public Schedule mapRow(ResultSet rs, int rowNum) throws SQLException {
         Schedule schedule = new Schedule();
         schedule.setScheduleId(rs.getInt("schedule_id"));
+
         schedule.setDateTime(rs.getTimestamp("time").toLocalDateTime());
+
         schedule.setAppUserId(rs.getInt("app_user_id"));
         schedule.setAnimalId(rs.getInt("animal_id"));
         return schedule;
