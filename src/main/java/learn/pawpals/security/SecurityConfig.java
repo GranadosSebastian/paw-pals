@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/appuser").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/animal", "/api/animal/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/animal", "/api/animal/*", "/api/animal/schedule", "/api/animal/schedule/*", "/api/animal/schedule/animalId/*", "/api/animal/schedule/appUserId/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/animal", "/api/animal/schedule").hasAnyRole("staff", "volunteer", "foster_parent", "adopter")
                 .antMatchers(HttpMethod.PUT, "/api/animal/*", "/api/animal/schedule/*").hasAnyRole("staff", "volunteer", "foster_parent", "adopter")
                 .antMatchers(HttpMethod.DELETE, "/api/animal/*", "api/animal/schedule/*").hasAnyRole("staff", "volunteer", "foster_parent", "adopter")

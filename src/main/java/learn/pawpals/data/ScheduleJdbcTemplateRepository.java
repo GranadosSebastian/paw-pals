@@ -75,7 +75,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     public boolean update(Schedule schedule) {
         final String sql = "update `schedule` set " +
                 "`time` = ?, " +
-                "app_user_id = ?" +
+                "app_user_id = ?, " +
                 "animal_id = ? " +
                 "where schedule_id = ?;";
 
