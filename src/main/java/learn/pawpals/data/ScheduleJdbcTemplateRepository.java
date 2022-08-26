@@ -2,6 +2,7 @@ package learn.pawpals.data;
 
 import learn.pawpals.data.mappers.ScheduleMapper;
 import learn.pawpals.models.Schedule;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -9,13 +10,15 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
 public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
-    private final String SCHEDULESQLCOLS = " schedule_id, `time`, app_user_id, animal_id ";
+    private final String SCHEDULESQLCOLS = "`time`, app_user_id, animal_id ";
 
     public ScheduleJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -25,6 +28,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     public List<Schedule> findAll() {
 
         final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule`;";
+
 //        final String sql = """
 //                SELECT
 //                sch.schedule_id,
@@ -42,6 +46,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 //                inner join app_user appf on appf.app_user_id = an.app_user_id;
 //
 //                """;
+
         return jdbcTemplate.query(sql, new ScheduleMapper());
 
     }
@@ -101,18 +106,15 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     @Override
     public Schedule add(Schedule schedule) {
 
-<<<<<<< HEAD
+
         final String sql = "insert into `schedule` (`datetime`, animal_id, adopter_id) " +
                 "values (?, ?, ?, ?);";
-=======
-        final String sql = "insert into `schedule` (" + SCHEDULESQLCOLS + ") " +
-                "values (?, ?, ?);";
->>>>>>> deb4d282020566ba86aa3884ac2452cacdcee5f3
+
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setObject(1, schedule.getDateTime());
+            ps.setTimestamp(1, Timestamp.valueOf(schedule.getDateTime()));
             ps.setInt(2, schedule.getAppUserId());
             ps.setInt(3, schedule.getAnimalId());
             return ps;
@@ -131,7 +133,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     public boolean update(Schedule schedule) {
         final String sql = "update `schedule` set " +
                 "`time` = ?, " +
-                "app_user_id = ?" +
+                "app_user_id = ?, " +
                 "animal_id = ? " +
                 "where schedule_id = ?;";
 

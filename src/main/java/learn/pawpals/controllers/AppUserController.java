@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api/animal/appuser")
 public class AppUserController {
     private final AppUserService service;
     public AppUserController(AppUserService service) {
@@ -27,10 +28,10 @@ public class AppUserController {
     }
 
 
-    @PostMapping("/api/appuser")
+    @PostMapping()
     public ResponseEntity<?> add(@RequestBody Map<String, String> body) throws DataAccessException {
         try {
-            AppUser appUser = service.add(body.get("username"), body.get("password"));
+            AppUser appUser = service.add(body.get("username"), body.get("password"), body.get("firstName"), body.get("lastName"));
             return new ResponseEntity<>(appUser, HttpStatus.CREATED); // 201
         } catch (ValidationException ex) {
             return new ResponseEntity<>(List.of(ex.getMessage()), HttpStatus.BAD_REQUEST); // 400
@@ -54,13 +55,12 @@ public class AppUserController {
     }
 
     @DeleteMapping("/{appUserId}")
-    public ResponseEntity<Void> delete(int appUserId) throws DataAccessException {
+    public ResponseEntity<Void> delete(@PathVariable int appUserId) throws DataAccessException {
         Result<AppUser> result = service.delete((appUserId));
         if (result.getResultType() == ResultType.NOT_FOUND) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
 }
