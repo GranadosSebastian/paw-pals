@@ -12,12 +12,8 @@ import java.util.List;
 
 @Service
 public class AnimalService {
-
     private final AnimalRepository animalRepository;
-
     private LocalDate today = LocalDate.now();
-
-
     public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
     }
