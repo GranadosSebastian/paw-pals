@@ -48,7 +48,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     public Schedule add(Schedule schedule) {
 
         final String sql = "insert into `schedule` (" + SCHEDULESQLCOLS + ") " +
-                "values (?, ?, ?, ?);";
+                "values (?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {

@@ -40,7 +40,7 @@ public class AnimalController {
     public List<Animal> findByUser(UsernamePasswordAuthenticationToken principal) throws DataAccessException {
         AppUser appUser = (AppUser) principal.getPrincipal();
 
-        // TODO add repo method to get solar panels by user
+        // TODO add repo method to get by user
 
         return service.findAll().stream()
                 .filter(animal -> animal.getAppUser().getAppUserId() == appUser.getAppUserId())

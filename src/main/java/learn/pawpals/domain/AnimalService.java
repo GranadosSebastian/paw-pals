@@ -12,12 +12,8 @@ import java.util.List;
 
 @Service
 public class AnimalService {
-
     private final AnimalRepository animalRepository;
-
     private LocalDate today = LocalDate.now();
-
-
     public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
     }
@@ -103,7 +99,6 @@ public class AnimalService {
 
         if (animal.getAppUserId() <= 0) {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
-
         }
 
         return result;

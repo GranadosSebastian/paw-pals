@@ -11,9 +11,9 @@ function Home() {
 
     return (
         <>
-            <h2>Home</h2>
-            <p>welcome page with Adopt button and a small list of available pets</p>
-            <button type='button' onClick={navigateToAdopt}>Adopt</button>
+            <h2>Welcome to Paw Pals!</h2>
+            <p></p>
+            <button className="btn btn-success mr-2 ml-3" type='button' onClick={navigateToAdopt}>Adopt</button>
         </>
     );
 }

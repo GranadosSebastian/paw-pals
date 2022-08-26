@@ -20,12 +20,12 @@ public class AppUserController {
         this.service = service;
     }
 
-    /*
+
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         return service.findAll();
     }
-    */
+
 
     @PostMapping("/api/appuser")
     public ResponseEntity<?> add(@RequestBody Map<String, String> body) throws DataAccessException {
