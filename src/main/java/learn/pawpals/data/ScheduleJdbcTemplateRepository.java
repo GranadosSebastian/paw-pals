@@ -86,7 +86,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
 
     @Override
-    public List<Schedule> findByAdopter(int appUserId) {
+    public List<Schedule> findByAppUser(int appUserId) {
         final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
                 "where app_user_id = ?;";
 //        final String sql = """
