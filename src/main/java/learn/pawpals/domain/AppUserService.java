@@ -32,8 +32,8 @@ public class AppUserService implements UserDetailsService {
         return repository.findAll();
     }
 
-    public List<AppUser> findByAppUserId(int appUserId) throws DataAccessException {
-        return repository.findByAppUserId(appUserId);
+    public AppUser findByAppUserId(int appUserId) throws DataAccessException {
+        return repository.findById(appUserId);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class AppUserController {
     }
 
     @GetMapping("/{appUserId}")
-    public List<AppUser> findByAppUserId(@PathVariable int appUserId) throws DataAccessException {
+    public AppUser findByAppUserId(@PathVariable int appUserId) throws DataAccessException {
         return service.findByAppUserId(appUserId);
     }
 
