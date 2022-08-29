@@ -20,7 +20,7 @@ public interface ScheduleRepository {
 
     List<Schedule> findByAnimal(int animalId);
 
-    List<Schedule> findByAdopter(int appUserId);
+    List<Schedule> findByAppUser(int appUserId);
 
     Schedule add(Schedule schedule);
 
