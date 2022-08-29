@@ -29,7 +29,7 @@ public class AnimalController {
         return service.findAll();
     }
 
-    @GetMapping("{/animalId}")
+    @GetMapping("/{animalId}")
     public Animal findByAnimalId(@PathVariable int animalId) throws DataAccessException {
         return service.findByAnimalId(animalId);
     }
