@@ -23,7 +23,6 @@ public class AppUserController {
         this.service = service;
     }
 
-
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         return service.findAll();
@@ -38,7 +37,6 @@ public class AppUserController {
     public AppUser findByUsername(@PathVariable String username) throws DataAccessException {
         return service.loadUserByUsername(username);
     }
-
 
     @PostMapping()
     public ResponseEntity<?> add(@RequestBody Map<String, String> body) throws DataAccessException {
