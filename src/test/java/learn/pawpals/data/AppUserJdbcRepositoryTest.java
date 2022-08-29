@@ -40,11 +40,11 @@ public class AppUserJdbcRepositoryTest {
     }
 //    @Test
 //    void shouldAdd() {
-//        AppUser user = new AppUser();
-//        user.setFirstName("Test");
-//        user.setLastName("Test");
-//        user.setAddress(null);
-//        user.setPhone(null);
+//        AppUser user = new AppUser("testingtest@gmail.com", "$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa",
+//                );
+//
+//
+//
 //
 //        AppUser actual = repository.add(user);
 //
