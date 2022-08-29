@@ -42,7 +42,7 @@ public class ScheduleController {
         return service.findByAnimal(animalId);
     }
 
-    /*
+
     @GetMapping("/user")
     public List<Schedule> findByUser(UsernamePasswordAuthenticationToken principal) throws DataAccessException {
         AppUser appUser = (AppUser) principal.getPrincipal();
@@ -50,7 +50,7 @@ public class ScheduleController {
                 .stream().filter(sp -> sp.getAppUserId() == appUser.getAppUserId())
                 .collect(Collectors.toList());
     }
-    */
+    
 
     @GetMapping("/appUserId/{appUserId}")
     public List<Schedule> findByAdopter(@PathVariable int appUserId) throws DataAccessException {

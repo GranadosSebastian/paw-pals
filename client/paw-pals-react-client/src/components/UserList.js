@@ -45,7 +45,7 @@ function UserList() {
 
             };
 
-            fetch(`http://localhost:8080/${appUserId}`, init)
+            fetch(`http://localhost:8080/api/animal/appuser${appUserId}`, init)
                 .then(response => {
                     if (response.status === 204) {
                         const newAppUsers = appUsers.filter(appUser => appUser.appUserId !== appUserId);
