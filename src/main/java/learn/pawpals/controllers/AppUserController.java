@@ -1,5 +1,6 @@
 package learn.pawpals.controllers;
 
+import learn.pawpals.App;
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
@@ -25,6 +26,11 @@ public class AppUserController {
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         return service.findAll();
+    }
+
+    @GetMapping("/{username}")
+    public AppUser findByUsername(@PathVariable String username) throws DataAccessException {
+        return service.loadUserByUsername(username);
     }
 
 
