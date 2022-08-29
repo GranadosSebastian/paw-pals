@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ValidationException;
+import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,11 @@ public class AppUserController {
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         return service.findAll();
+    }
+
+    @GetMapping("/{appUserId}")
+    public List<AppUser> findByAppUserId(@PathVariable int appUserId) throws DataAccessException {
+        return service.findByAppUserId(appUserId);
     }
 
     @GetMapping("/{username}")
