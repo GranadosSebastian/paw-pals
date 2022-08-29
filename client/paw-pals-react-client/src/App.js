@@ -78,7 +78,7 @@ function App() {
     <AuthContext.Provider value={auth}>
       <Navbar />
 
-      <h1>Paw Pals</h1>
+      <h1 className="text-center">Paw Pals</h1>
 
       <Routes>
         <Route path='/' element={<Home />} exact />

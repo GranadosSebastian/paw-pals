@@ -33,7 +33,7 @@ function ScheduleForm() {
                 .then(data => setSchedule(data))
                 .catch(console.log)
         }
-    }, [animalId]);
+    }, [scheduleId]);
 
     const handleChange = (event) => {
         const newSchedule = { ...schedule };
@@ -53,7 +53,7 @@ function ScheduleForm() {
         }
     };
 
-    const addAnimal = () => {
+    const addSchedule = () => {
         const init = {
             method: 'POST',
             header: {
@@ -82,7 +82,7 @@ function ScheduleForm() {
             .catch(console.log);
     }
 
-    const updateAnimal = () => {
+    const updateSchedule = () => {
         schedule.scheduleId = scheduleId;
 
         const init = {
@@ -128,17 +128,17 @@ function ScheduleForm() {
                 <div className="form-group">
                     <label htmlFor='dateTime'>Date and Time</label>
                     <input id="dateTime" name="dateTime" type="text" className="form-control"
-                    value={schedule.dateTime} onChange={handleChange} />
+                        value={schedule.dateTime} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor='appUserId'>User Id</label>
                     <input id="appUserId" name="appUserId" type="text" className="form-control"
-                    value={schedule.dateTime} onChange={handleChange}  />
+                        value={schedule.dateTime} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor='animalId'>Animal Id</label>
                     <input id="animalId" name="animalId" type="text" className="form-control"
-                    value={schedule.dateTime} onChange={handleChange}  />
+                        value={schedule.dateTime} onChange={handleChange} />
                 </div>
                 <div>
                     <button className="btn btn-success mr-2" type="submit">

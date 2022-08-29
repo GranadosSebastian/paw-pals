@@ -9,13 +9,13 @@ function UserList() {
 
 
     useEffect(() => {
-        const init = {
-            headers: {
-                'Authorization': `Bearer ${auth.user.token}`
-            },
-        };
+        // const init = {
+        //     headers: {
+        //         'Authorization': `Bearer ${auth.user.token}`
+        //     },
+        // };
 
-        fetch('http://localhost:8080/api/animal/appuser', init)
+        fetch('http://localhost:8080/api/animal/appuser')
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
@@ -23,7 +23,8 @@ function UserList() {
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
             })
-            .then(data => setAppUsers(data))
+            .then(data => console.log("onFetch", data))
+            // .then(data => setAppUsers(data))
             .catch(console.log);
     }, [auth.user.token]);
 
@@ -32,11 +33,16 @@ function UserList() {
         const appUser = appUsers.find(appUser => appUser.appUserId === appUserId);
 
         if (window.confirm(`Delete user ${appUser.firtName} ${appUser.lastName}?`)) {
+            // const init = {
+            //     method: 'DELETE',
+            //     headers: {
+            //         'Authorization': `Bearer ${auth.user.token}`
+            //     },
+            // };
+
             const init = {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${auth.user.token}`
-                },
+                method: 'DELETE'
+
             };
 
             fetch(`http://localhost:8080/${appUserId}`, init)

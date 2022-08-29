@@ -8,7 +8,7 @@ const ANIMAL_DEFAULT = {
     breed: '',
     age: 0,
     size: '',
-    arrivalDate: 0,
+    arrivalDate: '',
     friendlinessLevel: '',
     isAvailable: false
 };

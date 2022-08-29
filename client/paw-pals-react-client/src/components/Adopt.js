@@ -55,9 +55,9 @@ function Adopt() {
 
     return (
 
-        <>
+        <div className="row">
             {animals.map((animal) =>
-                <div key={animal.animalId} className="card" style={{ width: "18rem" }}>
+                <div key={animal.animalId} className="card m-5" style={{ width: "18rem" }}>
                     <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{animal.animalName}</h5>
@@ -70,7 +70,7 @@ function Adopt() {
                         </ul>
 
                         <div>
-                            <Link className="btn btn-success ml-1" to={`/schedule`}>Visit</Link>
+                            <Link className="btn btn-success ml-1" to={`/schedule/add`}>Visit</Link>
                             {auth.user && auth.user.appUserId === animal.appUserId && (
                                 <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>
                                     <i className="bi bi-pencil-square"></i> Edit
@@ -86,7 +86,7 @@ function Adopt() {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
