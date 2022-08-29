@@ -97,19 +97,13 @@ values
 ('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 4),
 ('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
 
-<<<<<<< HEAD
-insert into `schedule` (`datetime`, animal_id, adopter_id)
-values
-			('2023-06-06 10:00:00', 4, 3),
-            ('2023-06-06 11:00:00', 1, 6),
-            ('2023-06-07 11:30:00', 2, 3);	
-=======
-insert into `schedule` (`time`, app_user_id, animal_id)
+
+insert into `schedule` (`datetime`, adopter_id, animal_id)
 values
 			('2023-06-06 10:00:00', 3, 4),
             ('2023-06-06 11:00:00', 6, 1),
             ('2023-06-07 11:30:00', 3, 2);
->>>>>>> deb4d282020566ba86aa3884ac2452cacdcee5f3
+
 
 
 

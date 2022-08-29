@@ -25,7 +25,7 @@ public class AppUserMapper implements RowMapper<AppUser> {
         rs.getString("last_name"),
         rs.getString("address"),
         rs.getString("phone"),
-        roles);
+                roles);
 
     }
 }
