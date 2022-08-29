@@ -37,6 +37,15 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
     }
 
     @Override
+    public Animal findById(int animalId) {
+        final String sql = "select animal_id, " + FULLANIMALSQLCOLS + "from animal " +
+                "where animal_id = ? ;";
+        return jdbcTemplate.query(sql, new AnimalMapper(), animalId).stream()
+                .findFirst().orElse(null);
+    }
+
+
+    @Override
     //@Transational
     public List<Animal> findBySpecies(String speciesString) {
 

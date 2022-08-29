@@ -32,8 +32,12 @@ public class AppUserService implements UserDetailsService {
         return repository.findAll();
     }
 
+    public List<AppUser> findByAppUserId(int appUserId) throws DataAccessException {
+        return repository.findByAppUserId(appUserId);
+    }
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public AppUser loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = repository.findByUsername(username);
 
         if (appUser == null || !appUser.isEnabled()) {

@@ -13,6 +13,7 @@ public interface AnimalRepository {
     //delete
     List<Animal> findAll();
 
+    Animal findById(int animalId);
 
     List<Animal> findBySpecies(String speciesString);
 

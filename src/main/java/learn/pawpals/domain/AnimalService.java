@@ -7,6 +7,7 @@ import learn.pawpals.models.Species;
 import org.springframework.stereotype.Service;
 
 
+import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,6 +21,10 @@ public class AnimalService {
 
     public List<Animal> findAll() throws DataAccessException {
         return animalRepository.findAll();
+    }
+
+    public List<Animal> findByAnimalId() throws DataAccessException {
+        return animalRepository.findByAnimalId();
     }
 
     public List<Animal> findBySpecies(String speciesString) throws DataAccessException {

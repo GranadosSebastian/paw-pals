@@ -30,11 +30,21 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Override
     public List<AppUser> findAll() {
 
-        List<String> roles = getRolesByAppUserId();
+        List<String> roles = getRolesByAppUserIds();
         final String sql = "select app_user_id," + APPUSERCOLS + "from app_user;";
 
         return jdbcTemplate.query(sql, new AppUserMapper(roles));
     }
+
+    @Override
+    public AppUser findById(int appUserId) {
+        final String sql = "select app_user_id, " + APPUSERCOLS + "from app_user " +
+                "where app_user_id = ? ;";
+        List<String> role = getRoleByAppUserId(appUserId);
+        return jdbcTemplate.query(sql, new AppUserMapper(role),appUserId ).stream()
+                .findFirst().orElse(null);
+    }
+
     @Transactional
     @Override
     public AppUser findByUsername(String username) {
@@ -115,7 +125,18 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
     }
 
-    private List<String> getRolesByAppUserId() {
+    private List<String> getRoleByAppUserId(int appUserId) {
+        final String sql = """
+                select r.name
+                from app_user_role ur
+                inner join app_role r on ur.app_role_id = r.app_role_id
+                inner join app_user au on ur.app_user_id = au.app_user_id
+                where au.app_user_id = ?
+                """;
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"));
+    }
+
+    private List<String> getRolesByAppUserIds() {
         final String sql = """
                 select
                     r.name
