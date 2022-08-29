@@ -156,11 +156,11 @@ function PetForm() {
                         value={animal.arrivalDate} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="friendlinessLevel">Friendliness Level:</label>
+                    <label htmlFor="friendlinessLevel">Friendliness Description:</label>
                     <input id="friendlinessLevel" name="friendlinessLevel" type="text" className="form-control"
                         value={animal.friendlinessLevel} onChange={handleChange} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label className="form-check-label" htmlFor="isAvailable">
                         Available:
                     </label>
@@ -180,6 +180,11 @@ function PetForm() {
                         <option value="7">Fish</option>
                         <option value="8">Reptile</option>
                     </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="appUserId">User ID:</label>
+                    <input id="appUserId" name="appUserId" type="number" className="form-control"
+                        value={auth.user.appUserId} onChange={handleChange} disabled readonly />
                 </div>
                 <div>
                     <button className="btn btn-success mr-2" type="submit">

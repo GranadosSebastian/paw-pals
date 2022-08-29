@@ -54,39 +54,51 @@ function Adopt() {
 
 
     return (
-
-        <div className="row">
-            {animals.map((animal) =>
-                <div key={animal.animalId} className="card m-5" style={{ width: "18rem" }}>
-                    <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">{animal.animalName}</h5>
-                        <ul>
-                            <li>{animal.age}</li>
-                            <li>{animal.breed}</li>
-                            <li>{animal.size}</li>
-                            <li>{animal.friendliness}</li>
-                            <li>{animal.arrivalDate}</li>
-                        </ul>
-
-                        <div>
-                            <Link className="btn btn-success ml-1" to={`/schedule/add`}>Visit</Link>
-                            {auth.user && auth.user.appUserId === animal.appUserId && (
-                                <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>
-                                    <i className="bi bi-pencil-square"></i> Edit
-                                </Link>
-                            )}
-                            {auth.user && auth.user.hasRole('ROLE_staff') && (
-                                <button className="btn btn-success ml-1" onClick={() => handleDeleteAnimal(animal.animalId)}>
-                                    <i className="bi bi-trash"></i> Delete
-                                </button>
-                            )}
-                        </div>
-
-                    </div>
+        <>
+            {auth.user && auth.user.hasRole('ROLE_staff') && (
+                <div className="text-center">
+                    <Link className="btn btn-success ml-1 mb-4" to={`/animals/add/${auth.user.appUserId}`}>
+                        <i className="bi bi-pencil-square"></i> Add New Animal
+                    </Link>
                 </div>
+
             )}
-        </div>
+            <div className="row">
+                {animals.map((animal) =>
+                    <div className="col-4">
+                        <div key={animal.animalId} className="card mb-4">
+                            <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle mx-auto" alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{animal.animalName}</h5>
+                                <ul>
+                                    <li>{animal.age}</li>
+                                    <li>{animal.breed}</li>
+                                    <li>{animal.size}</li>
+                                    <li>{animal.friendliness}</li>
+                                    <li>{animal.arrivalDate}</li>
+                                </ul>
+
+                                <div>
+                                    <Link className="btn btn-success ml-1" to={`/schedule/add`}>Visit</Link>
+                                    {auth.user && auth.user.appUserId === animal.appUserId && (
+                                        <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>
+                                            <i className="bi bi-pencil-square"></i> Edit
+                                        </Link>
+                                    )}
+                                    {auth.user && auth.user.hasRole('ROLE_staff') && (
+                                        <button className="btn btn-success ml-1" onClick={() => handleDeleteAnimal(animal.animalId)}>
+                                            <i className="bi bi-trash"></i> Delete
+                                        </button>
+                                    )}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+        </>
     );
 }
 
