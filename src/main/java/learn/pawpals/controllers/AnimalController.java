@@ -7,7 +7,6 @@ import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
 import learn.pawpals.models.Animal;
 import learn.pawpals.models.AppUser;
-import learn.pawpals.models.Species;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
