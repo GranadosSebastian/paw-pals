@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class AppUser extends User {
@@ -26,7 +27,7 @@ public class AppUser extends User {
     private String phone;
 
     public AppUser() {
-        this(0, "username", "", false, null, null, null, null, List.of());
+        this(0, "username", "", false, "firstName", "lastName", "address", "phone", List.of());
     }
 
     public AppUser(int appUserId, String username, String password,
@@ -147,17 +148,18 @@ public class AppUser extends User {
                 .collect(Collectors.toList());
     }
 
-        /*
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User that = (User) o;
-        return userId == that.userId && firstName == that.firstName && lastName == that.lastName && address == that.address && phone == that.phone && email == that.email && roleId == that.roleId;
+        AppUser that = (AppUser) o;
+        return appUserId == that.appUserId && firstName == that.firstName && lastName == that.lastName && address == that.address && phone == that.phone;
     }
+
     @Override
-    public int hashCode() { return Objects.hash(userId, firstName, lastName, address, phone, email, roleId); }
-    */
+    public int hashCode() { return Objects.hash(appUserId, firstName, lastName, address, phone); }
+
 
 
 }
