@@ -51,7 +51,6 @@ public class ScheduleController {
                 .collect(Collectors.toList());
     }
 
-
     @GetMapping("/appUserId/{appUserId}")
     public List<Schedule> findByAdopter(@PathVariable int appUserId) throws DataAccessException {
         return service.findByAdopter(appUserId);

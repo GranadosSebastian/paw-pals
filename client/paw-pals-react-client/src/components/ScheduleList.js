@@ -17,7 +17,7 @@ function ScheduleList() {
             },
         };
 
-        fetch('http://localhost:8080/api/schedule/user', init)
+        fetch('http://localhost:8080/api/animal/schedule')
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
