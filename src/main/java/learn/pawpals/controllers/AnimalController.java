@@ -31,7 +31,7 @@ public class AnimalController {
 
     @GetMapping("{/animalId}")
     public List<Animal> findByAnimalId(@PathVariable int animalId) throws DataAccessException {
-        return service.findByAnimalId(animalId)
+        return service.findByAnimalId(animalId);
     }
 
 
