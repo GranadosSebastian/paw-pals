@@ -22,6 +22,8 @@ public class Animal {
 
     private Species species;
 
+    private String speciesString;
+
     private int appUserId;
 
     private boolean isAvailable;
@@ -36,7 +38,7 @@ public class Animal {
 
     public Animal(int animalId, String animalName, String breed, int age, Size size,
                   LocalDate arrivalDate, String friendliness, Species species,
-                  int appUserId, boolean isAvailable, AppUser appUser) {
+                  String speciesString, int appUserId, boolean isAvailable, AppUser appUser) {
 
         this.animalId = animalId;
         this.animalName = animalName;
@@ -46,6 +48,7 @@ public class Animal {
         this.arrivalDate = arrivalDate;
         this.friendliness = friendliness;
         this.species = species;
+        this.speciesString = speciesString;
         this.appUserId = appUserId;
         this.isAvailable = isAvailable;
         this.appUser = appUser;
@@ -83,6 +86,8 @@ public class Animal {
     public Species getSpecies() {
         return species;
     }
+
+    public String getSpeciesString() { return speciesString; }
 
     public int getAppUserId() {
         return appUserId;
@@ -126,6 +131,7 @@ public class Animal {
         this.species = species;
     }
 
+    public void setSpeciesString(String speciesString) { this.speciesString = speciesString; }
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
@@ -152,9 +158,9 @@ public class Animal {
 
         return animalId == that.animalId && animalName == that.animalName && breed == that.breed && age == that.age && size == that.size
                 && arrivalDate == that.arrivalDate && friendliness == that.friendliness && isAvailable == that.isAvailable
-                && species == that.species && appUserId == that.appUserId && appUser == that.appUser;
+                && species == that.species && speciesString == that.speciesString && appUserId == that.appUserId && appUser == that.appUser;
     }
     @Override
-    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, isAvailable, species, appUserId, appUser); }
+    public int hashCode() { return Objects.hash(animalId, breed, age, size, arrivalDate, friendliness, isAvailable, species, speciesString, appUserId, appUser); }
 
 }
