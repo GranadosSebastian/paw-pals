@@ -35,9 +35,13 @@ public class AnimalMapper implements RowMapper<Animal> {
             animal.setAvailable(true);
         }
 
+        animal.setSpeciesString(rs.getString("species"));
+
+        /*
         String speciesInString = rs.getString("species");
         Species species = Species.valueOf(speciesInString);
         animal.setSpecies(species);
+        */
 
         animal.setAppUserId(rs.getInt("app_user_id"));
 
