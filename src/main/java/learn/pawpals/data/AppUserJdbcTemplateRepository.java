@@ -20,7 +20,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final String APPUSERCOLS = " username, password_hash, disabled," +
+    private final String APPUSERCOLS = " username, password_hash, disabled, " +
             "first_name, last_name, address, phone ";
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
