@@ -16,6 +16,8 @@ public interface ScheduleRepository {
 
     List<Schedule> findAll();
 
+    Schedule findById(int scheduleId);
+
     List<Schedule> findByAnimal(int animalId);
 
     List<Schedule> findByAdopter(int appUserId);

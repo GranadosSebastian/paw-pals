@@ -52,6 +52,14 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     }
 
     @Override
+    public Schedule findById(int scheduleId) {
+        final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
+                "where schedule_id = ?;";
+        return jdbcTemplate.query(sql, new ScheduleMapper(), scheduleId).stream()
+                .findFirst().orElse(null);
+    }
+
+    @Override
     public List<Schedule> findByAnimal(int animalId) {
         final String sql = "select schedule_id, " + SCHEDULESQLCOLS + "from `schedule` " +
                 "where animal_id = ?;";

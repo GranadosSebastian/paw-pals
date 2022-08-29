@@ -56,8 +56,8 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 .stream()
                 .findFirst().orElse(null);
     }
- // " app_user_id, username, password_hash, disabled," +
- //            "first_name, last_name, address, phone "
+
+
     @Transactional
     @Override
     public AppUser add(AppUser user) {
