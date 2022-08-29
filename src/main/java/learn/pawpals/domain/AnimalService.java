@@ -23,8 +23,8 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public List<Animal> findByAnimalId() throws DataAccessException {
-        return animalRepository.findByAnimalId();
+    public Animal findByAnimalId(int animalId) throws DataAccessException {
+        return animalRepository.findById(animalId);
     }
 
     public List<Animal> findBySpecies(String speciesString) throws DataAccessException {
