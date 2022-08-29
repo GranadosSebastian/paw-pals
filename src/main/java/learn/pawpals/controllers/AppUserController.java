@@ -33,7 +33,7 @@ public class AppUserController {
         return service.findByAppUserId(appUserId);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public AppUser findByUsername(@PathVariable String username) throws DataAccessException {
         return service.loadUserByUsername(username);
     }
