@@ -52,6 +52,7 @@ public class ScheduleService {
         }
         return result;
     }
+    
 
     public Result<Schedule> update(Schedule schedule) throws DataAccessException {
         Result<Schedule> result = validate(schedule);
