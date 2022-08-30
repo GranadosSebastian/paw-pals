@@ -38,25 +38,38 @@ public class AppUserJdbcRepositoryTest {
         assertNotNull(user);
         assertEquals(6, user.getAppUserId());
     }
-//    @Test
-//    void shouldAdd() {
-//        AppUser user = new AppUser("testingtest@gmail.com", "$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa",
-//                );
-//
-//
-//
-//
-//        AppUser actual = repository.add(user);
-//
-//        assertNotNull(actual);
-//        assertEquals("Test", actual.getFirstName());
-//
-//
-//    }
+    @Test
+    void shouldAdd() {
+        AppUser user = new AppUser();
+        String username = "TestingUsername";
+        String password = "$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa";
+
+        user.getUsername().equals(username);
+        user.getPassword().equals(password);
+        user.isEnabled();
+        user.setFirstName("Test");
+        user.setLastName("TestLast");
+        user.setAddress("123 nsodd");
+        user.setPhone("12345687");
+
+        AppUser actual = repository.add(user);
+
+        assertNotNull(actual);
+        assertEquals("Test", actual.getFirstName());
+
+    }
 
     @Test
     void shouldUpdateUser() {
+        AppUser user = new AppUser();
+        user.setPhone("5675675678");
+        user.setAddress("123 New Address");
+        user.setFirstName("Sebastian");
+        user.setLastName("Granados");
+        user.isEnabled();
+        user.setAppUserId(5);
 
+        assertTrue(repository.update(user));
 
     }
 

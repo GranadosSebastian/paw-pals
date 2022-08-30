@@ -18,7 +18,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
     @Autowired
     private final JdbcTemplate jdbcTemplate;
-    private final String SCHEDULESQLCOLS = "`time`, app_user_id, animal_id ";
+    private final String SCHEDULESQLCOLS = "`datetime`, adopter_id, animal_id ";
 
     public ScheduleJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

@@ -99,10 +99,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public boolean update(AppUser user) {
 
         final String sql = "update app_user set " +
-                            "username = ?," +
+                            "phone = ?, " +
+                            "address = ?, " +
+                            "first_name = ?, " +
+                            "last_name = ?, " +
                             "disabled = ? " +
                             "where app_user_id = ?";
-        boolean updated = jdbcTemplate.update(sql, user.getUsername(), !user.isEnabled(), user.getAppUserId()) > 0;
+        boolean updated = jdbcTemplate.update(sql, user.getPhone(), user.getAddress(), user.getFirstName(), user.getLastName(), !user.isEnabled(), user.getAppUserId()) > 0;
 
         if(updated) {
             updateRoles(user);
@@ -139,7 +142,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 inner join app_user au on ur.app_user_id = au.app_user_id
                 where au.app_user_id = ?;
                 """;
-        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"));
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), appUserId);
     }
 
     private List<String> getRolesByAppUserIds() {

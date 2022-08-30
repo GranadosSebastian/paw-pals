@@ -5,12 +5,15 @@ import learn.pawpals.models.Schedule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@SpringBootTest
 class ScheduleJdbcRepositoryTest {
 
     @Autowired
@@ -52,10 +55,6 @@ class ScheduleJdbcRepositoryTest {
 
     }
 
-    @Test
-    void shouldNotAdd() {
-
-    }
 
     @Test
     void shouldUpdate() {
@@ -67,9 +66,5 @@ class ScheduleJdbcRepositoryTest {
 
     }
 
-    @Test
-    void shouldNotDelete() {
-
-    }
 
 }
