@@ -17,13 +17,13 @@ public class AppUser extends User {
     private static final String AUTHORITY_PREFIX = "ROLE_";
     private int appUserId;
 
-    @JsonIgnore
+
     private String firstName;
-    @JsonIgnore
+
     private String lastName;
-    @JsonIgnore
+
     private String address;
-    @JsonIgnore
+
     private String phone;
 
     public AppUser() {
@@ -44,7 +44,7 @@ public class AppUser extends User {
         this.phone = phone;
     }
 
-    private List<String> roles = new ArrayList<>();
+    //private List<String> roles = new ArrayList<>();
 
     public int getAppUserId() {
         return appUserId;
@@ -54,13 +54,13 @@ public class AppUser extends User {
         this.appUserId = appUserId;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
+    //public List<String> getRoles() {
+    //    return roles;
+    //}
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
+    //public void setRoles(List<String> roles) {
+    //    this.roles = roles;
+    //}
 
     public String getFirstName() {
         return firstName;
@@ -100,11 +100,13 @@ public class AppUser extends User {
         return super.getPassword();
     }
 
+    /*
     @JsonIgnore
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return super.getAuthorities();
     }
+    */
 
     @JsonIgnore
     @Override

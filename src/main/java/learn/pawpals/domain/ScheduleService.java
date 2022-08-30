@@ -4,14 +4,22 @@ import learn.pawpals.data.DataAccessException;
 import learn.pawpals.data.ScheduleRepository;
 import learn.pawpals.models.Animal;
 import learn.pawpals.models.Schedule;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import javax.xml.crypto.Data;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 @Service
 public class ScheduleService {
+
+    LocalTime startTime = LocalTime.of(9, 0);
+
+    LocalTime endTime = LocalTime.of(17, 0);
 
     private final ScheduleRepository scheduleRepository;
 
@@ -78,6 +86,12 @@ public class ScheduleService {
         if (String.valueOf(schedule.getDateTime()).isBlank()) {
             result.addErrorMessage("Date and time are required", ResultType.INVALID);
         }
+        if (startTime.isAfter(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
+            result.addErrorMessage("Time cannot be before 9:00 A.M.", ResultType.INVALID);
+        }
+        if (endTime.isBefore(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
+            result.addErrorMessage("Time cannot be after 5:00 P.M.", ResultType.INVALID);
+        }
         if (schedule.getAnimalId() <= 0) {
             result.addErrorMessage("Animal ID is required.", ResultType.INVALID);
         }
@@ -85,11 +99,8 @@ public class ScheduleService {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
 
         }
-
         return result;
     }
-
-
 
 }
 
