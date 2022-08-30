@@ -8,7 +8,7 @@ function Adopt() {
     const auth = useContext(AuthContext);
 
     // TODO uncomment when security added
-    // const auth = useContext(AuthContext);
+
 
     useEffect(() => {
         fetch('http://localhost:8080/api/animal')
@@ -26,14 +26,13 @@ function Adopt() {
     const handleDeleteAnimal = (animalId) => {
         const animal = animals.find(animal => animal.animalId === animalId);
 
-        if (window.confirm(`Delete ${animal.Name}?`)) {
+        if (window.confirm(`Delete ${animal.animalName}?`)) {
             const init = {
                 method: 'DELETE',
-                // TODO uncomment when security added
-                // headers: {
-                //     'Authorization': `Bearer ${auth.user.token}`
+                headers: {
+                    'Authorization': `Bearer ${auth.user.token}`
 
-                // },
+                },
             };
 
             fetch(`http://localhost:8080/api/animal/${animalId}`, init)

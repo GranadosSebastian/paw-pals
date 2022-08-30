@@ -75,7 +75,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
             ps.setObject(5, animal.getArrivalDate());
             ps.setString(6, animal.getFriendliness());
             ps.setBoolean(7, animal.isAvailable());
-            ps.setString(8, animal.getSpecies().toString());
+            ps.setString(8, animal.getSpeciesString());
             ps.setInt(9, animal.getAppUserId());
             return ps;
         }, keyHolder);
@@ -108,7 +108,7 @@ public class AnimalJdbcTemplateRepository implements AnimalRepository {
                                         animal.getArrivalDate(),
                                         animal.getFriendliness(),
                                         animal.isAvailable(),
-                                        animal.getSpecies().toString(),
+                                        animal.getSpeciesString(),
                                         animal.getAnimalId()) > 0;
     }
 
