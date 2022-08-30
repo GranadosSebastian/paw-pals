@@ -8,6 +8,7 @@ import learn.pawpals.models.AppUser;
 import learn.pawpals.domain.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ValidationException;
@@ -35,7 +36,8 @@ public class AppUserController {
 
     @GetMapping("/username/{username}")
     public AppUser findByUsername(@PathVariable String username) throws DataAccessException {
-        return service.loadUserByUsername(username);
+        AppUser appUser = service.loadUserByUsername(username);
+        return appUser;
     }
 
     @PostMapping()
