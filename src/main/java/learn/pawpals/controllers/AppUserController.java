@@ -1,5 +1,6 @@
 package learn.pawpals.controllers;
 
+import learn.pawpals.App;
 import learn.pawpals.data.DataAccessException;
 import learn.pawpals.domain.Result;
 import learn.pawpals.domain.ResultType;
@@ -7,9 +8,11 @@ import learn.pawpals.models.AppUser;
 import learn.pawpals.domain.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ValidationException;
+import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Map;
 
@@ -21,13 +24,22 @@ public class AppUserController {
         this.service = service;
     }
 
-
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
         var thingy = service.findAll();
         return thingy;
     }
 
+    @GetMapping("/{appUserId}")
+    public AppUser findByAppUserId(@PathVariable int appUserId) throws DataAccessException {
+        return service.findByAppUserId(appUserId);
+    }
+
+    @GetMapping("/username/{username}")
+    public AppUser findByUsername(@PathVariable String username) throws DataAccessException {
+        AppUser appUser = service.loadUserByUsername(username);
+        return appUser;
+    }
 
     @PostMapping()
     public ResponseEntity<?> add(@RequestBody Map<String, String> body) throws DataAccessException {

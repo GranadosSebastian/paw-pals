@@ -77,34 +77,36 @@ function App() {
 
     <AuthContext.Provider value={auth}>
       <Navbar />
+      <div className="container">
 
-      <h1>Paw Pals</h1>
+        <h1 className="text-center">Paw Pals</h1>
 
-      <Routes>
-        <Route path='/' element={<Home />} exact />
+        <Routes>
+          <Route path='/' element={<Home />} exact />
 
-        <Route path='/login' element={<Login />} exact />
+          <Route path='/login' element={<Login />} exact />
 
-        <Route path='/register' element={<Register />} exact />
+          <Route path='/register' element={<Register />} exact />
 
-        <Route path='/animals/edit/:animalId' element={<PetForm />} />
+          <Route path='/animals/edit/:animalId' element={<PetForm />} />
 
-        <Route path='/animals/add' element={<PetForm />} />
+          <Route path='/animals/add/:appUserId' element={<PetForm />} />
 
-        <Route path='/animals' element={<Adopt />} />
+          <Route path='/animals' element={<Adopt />} />
 
-        <Route path='/users/edit/:userId' element={<UserForm />} />
+          <Route path='/users/edit/:userId' element={<UserForm />} />
 
-        <Route path='/users' element={<UserList />} />
+          <Route path='/users' element={<UserList />} />
 
-        <Route path='/schedule' element={<ScheduleList />} />
+          <Route path='/schedule' element={<ScheduleList />} />
 
-        <Route path='/schedule/add' element={<ScheduleForm />} />
+          <Route path='/schedule/add' element={<ScheduleForm />} />
 
-        <Route path='*' element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />
 
-        <Route path='/login' element={<Login />} />
-      </Routes>
+          <Route path='/login' element={<Login />} />
+        </Routes>
+      </div>
     </AuthContext.Provider>
 
 

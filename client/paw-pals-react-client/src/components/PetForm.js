@@ -8,7 +8,7 @@ const ANIMAL_DEFAULT = {
     breed: '',
     age: 0,
     size: '',
-    arrivalDate: 0,
+    arrivalDate: '',
     friendlinessLevel: '',
     isAvailable: false
 };
@@ -62,9 +62,9 @@ function PetForm() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${auth.user.token}`
             },
-            body: JSON.stringify(animal)
+            body: JSON.stringify({ ...animal, appUserId: auth.user.appUserId })
         };
-
+        console.log("animal object being sent: ", { ...animal, appUserId: auth.user.appUserId })
         fetch('http://localhost:8080/api/animal', init)
             .then(response => {
                 if (response.status === 201 || response.status === 400) {
@@ -118,12 +118,7 @@ function PetForm() {
     }
 
 
-
-
-
     return (
-
-
         <>
             <h2 className="mb-4">{animalId ? 'Update Pet' : 'Add Pet'}</h2>
 
@@ -161,11 +156,11 @@ function PetForm() {
                         value={animal.arrivalDate} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="friendlinessLevel">Friendliness Level:</label>
+                    <label htmlFor="friendlinessLevel">Friendliness Description:</label>
                     <input id="friendlinessLevel" name="friendlinessLevel" type="text" className="form-control"
                         value={animal.friendlinessLevel} onChange={handleChange} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label className="form-check-label" htmlFor="isAvailable">
                         Available:
                     </label>

@@ -1,5 +1,6 @@
 package learn.pawpals.data;
 
+import learn.pawpals.data.mappers.AppUserCollectionMapper;
 import learn.pawpals.data.mappers.AppUserMapper;
 import learn.pawpals.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,7 +21,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final String APPUSERCOLS = " username, password_hash, disabled," +
+    private final String APPUSERCOLS = " username, password_hash, disabled, " +
             "first_name, last_name, address, phone ";
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
@@ -30,10 +31,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Override
     public List<AppUser> findAll() {
 
-        List<String> roles = getRolesByAppUserIds();
-        final String sql = "select app_user_id," + APPUSERCOLS + "from app_user;";
+        final String sql = "select au.app_user_id," + APPUSERCOLS + ", " +
+              "ar.`name` role_name from app_user au" +
+        " inner join app_user_role aur on aur.app_user_id = au.app_user_id" +
+        " inner join app_role ar on ar.app_role_id = aur.app_role_id" +
+        " order by au.app_user_id;";
 
-        return jdbcTemplate.query(sql, new AppUserMapper(roles));
+        return jdbcTemplate.query(sql, new AppUserCollectionMapper());
     }
 
     @Override

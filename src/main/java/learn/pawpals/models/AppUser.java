@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class AppUser extends User {
@@ -16,17 +17,17 @@ public class AppUser extends User {
     private static final String AUTHORITY_PREFIX = "ROLE_";
     private int appUserId;
 
-    @JsonIgnore
+
     private String firstName;
-    @JsonIgnore
+
     private String lastName;
-    @JsonIgnore
+
     private String address;
-    @JsonIgnore
+
     private String phone;
 
     public AppUser() {
-        this(0, "username", "", false, null, null, null, null, List.of());
+        this(0, "username", "", false, "firstName", "lastName", "address", "phone", List.of());
     }
 
     public AppUser(int appUserId, String username, String password,
@@ -43,7 +44,7 @@ public class AppUser extends User {
         this.phone = phone;
     }
 
-    private List<String> roles = new ArrayList<>();
+    //private List<String> roles = new ArrayList<>();
 
     public int getAppUserId() {
         return appUserId;
@@ -53,13 +54,13 @@ public class AppUser extends User {
         this.appUserId = appUserId;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
+    //public List<String> getRoles() {
+    //    return roles;
+    //}
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
+    //public void setRoles(List<String> roles) {
+    //    this.roles = roles;
+    //}
 
     public String getFirstName() {
         return firstName;
@@ -99,11 +100,13 @@ public class AppUser extends User {
         return super.getPassword();
     }
 
+    /*
     @JsonIgnore
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return super.getAuthorities();
     }
+    */
 
     @JsonIgnore
     @Override
@@ -147,17 +150,18 @@ public class AppUser extends User {
                 .collect(Collectors.toList());
     }
 
-        /*
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User that = (User) o;
-        return userId == that.userId && firstName == that.firstName && lastName == that.lastName && address == that.address && phone == that.phone && email == that.email && roleId == that.roleId;
+        AppUser that = (AppUser) o;
+        return appUserId == that.appUserId && firstName == that.firstName && lastName == that.lastName && address == that.address && phone == that.phone;
     }
+
     @Override
-    public int hashCode() { return Objects.hash(userId, firstName, lastName, address, phone, email, roleId); }
-    */
+    public int hashCode() { return Objects.hash(appUserId, firstName, lastName, address, phone); }
+
 
 
 }

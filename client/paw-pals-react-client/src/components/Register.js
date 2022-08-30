@@ -170,10 +170,10 @@ function Register() {
                     <label htmlFor="roleId">Role: </label>
                     <select id="roleId" name="roleId" className="form-control"
                         onChange={(event) => setRoleId(event.target.value)} value={roleId}>
-                        <option value="1">Staff</option>
-                        <option value="2">Volunteer</option>
-                        <option value="3">Foster Parent</option>
                         <option value="4">Adopter</option>
+                        {/* <option value="1">Staff</option>
+                        <option value="2">Volunteer</option>
+                        <option value="3">Foster Parent</option> */}
                     </select>
                 </div>
                 <div className="mt-4">
