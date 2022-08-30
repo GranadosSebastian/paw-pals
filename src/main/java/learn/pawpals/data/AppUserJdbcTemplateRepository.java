@@ -99,10 +99,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public boolean update(AppUser user) {
 
         final String sql = "update app_user set " +
-                            "username = ?," +
+                            "phone = ?, " +
+                            "address = ?, " +
+                            "first_name = ?, " +
+                            "last_name = ?, " +
                             "disabled = ? " +
                             "where app_user_id = ?";
-        boolean updated = jdbcTemplate.update(sql, user.getUsername(), !user.isEnabled(), user.getAppUserId()) > 0;
+        boolean updated = jdbcTemplate.update(sql, user.getPhone(), user.getAddress(), user.getFirstName(), user.getLastName(), !user.isEnabled(), user.getAppUserId()) > 0;
 
         if(updated) {
             updateRoles(user);

@@ -15,9 +15,9 @@ public class ScheduleMapper implements RowMapper<Schedule> {
         Schedule schedule = new Schedule();
         schedule.setScheduleId(rs.getInt("schedule_id"));
 
-        schedule.setDateTime(rs.getTimestamp("time").toLocalDateTime());
+        schedule.setDateTime(rs.getTimestamp("datetime").toLocalDateTime());
 
-        schedule.setAppUserId(rs.getInt("app_user_id"));
+        schedule.setAppUserId(rs.getInt("adopter_id"));
         schedule.setAnimalId(rs.getInt("animal_id"));
         return schedule;
     }

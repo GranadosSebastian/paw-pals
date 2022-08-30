@@ -1,6 +1,6 @@
-drop database if exists paw_pals;
-create database paw_pals;
-use paw_pals;
+drop database if exists paw_pals_test;
+create database paw_pals_test;
+use paw_pals_test;
 
 create table app_user (
     app_user_id int primary key auto_increment,
@@ -53,15 +53,15 @@ create table animal (
 
 create table `schedule` (
 schedule_id int primary key auto_increment,
-`time` datetime not null,
-app_user_id int not null,
+`datetime` datetime not null,
 animal_id int not null,
-constraint fk_schedule_app_user_id
-	foreign key (app_user_id)
-	references app_user(app_user_id),
+adopter_id int not null,
 constraint fk_schedule_animal_id
 	foreign key (animal_id)
-	references animal(animal_id)
+    references animal(animal_id),
+constraint fk_schedule_adopter_id
+	foreign key (adopter_id)
+    references app_user(app_user_id)
 );
 
 delimiter //
@@ -110,16 +110,16 @@ values
 ('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 6),
 ('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
 
-insert into `schedule` (`time`, app_user_id, animal_id)
+insert into `schedule` (`datetime`, adopter_id, animal_id)
 values
 			('2023-06-06 10:00:00', 3, 4),
             ('2023-06-06 11:00:00', 6, 1),
             ('2023-06-07 11:30:00', 3, 2);
             	
-
 end //
 
 delimiter ;		
 
 set sql_safe_updates = 0;
 call set_known_good_state();
+
