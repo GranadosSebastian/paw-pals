@@ -5,3 +5,10 @@
     background-position: center center;
     background-repeat: no-repeat;
   }
+
+  .form-check-input {
+    left: 26px;
+    top: 1px;
+    position: relative !important;
+
+  }
