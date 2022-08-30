@@ -22,6 +22,7 @@ function ScheduleList() {
                 if (response.status === 200) {
                     return response.json();
                 } else {
+
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
             })
@@ -34,7 +35,8 @@ function ScheduleList() {
 
         if (window.confirm(`Delete meeting appointment with ${schedule.animalName}?`)) {
             const init = {
-                method: 'DELETE',
+                method: 'DELETE'
+                ,
                 headers: {
                     'Authorization': `Bearer ${auth.user.token}`
                 },
@@ -64,10 +66,10 @@ function ScheduleList() {
                     <tr>
                         <th>Pet Name</th>
                         <th>Appointment</th>
-                        <th>Foster Name</th>
-                        <th>Foster Phone</th>
                         <th>Adopter Name</th>
-                        <th>Foster Phone</th>
+                        <th>Adopter Phone</th>
+                        {/* <th>Foster Name</th>
+                        <th>Foster Phone</th> */}
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -76,10 +78,10 @@ function ScheduleList() {
                         <tr key={schedule.scheduleId}>
                             <td>{schedule.animalName}</td>
                             <td>{schedule.dateTime}</td>
-                            <td>{schedule.fosterFirstName} {schedule.fosterLastName}</td>
-                            <td>{schedule.fosterPhone}</td>
-                            <td>{schedule.adopterFirstName} {schedule.adopterLastName}</td>
-                            <td>{schedule.adopterPhone}</td>
+                            <td>{schedule.appUser.firstName} {schedule.appUser.lastName}</td>
+                            <td>{schedule.appUser.phone}</td>
+                            {/* <td>{schedule.adopterFirstName} {schedule.adopterLastName}</td>
+                            <td>{schedule.adopterPhone}</td> */}
                             <td>
                                 <div className="float-right mr-2">
                                     {auth.user && auth.user.appUserId === schedule.appUser.appUserId && (
