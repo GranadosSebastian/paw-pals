@@ -62,9 +62,9 @@ function PetForm() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${auth.user.token}`
             },
-            body: JSON.stringify(animal)
+            body: JSON.stringify({ ...animal, appUserId: auth.user.appUserId })
         };
-
+        console.log("animal object being sent: ", { ...animal, appUserId: auth.user.appUserId })
         fetch('http://localhost:8080/api/animal', init)
             .then(response => {
                 if (response.status === 201 || response.status === 400) {
@@ -180,11 +180,6 @@ function PetForm() {
                         <option value="7">Fish</option>
                         <option value="8">Reptile</option>
                     </select>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="appUserId">User ID:</label>
-                    <input id="appUserId" name="appUserId" type="number" className="form-control"
-                        value={auth.user.appUserId} onChange={handleChange} disabled readonly />
                 </div>
                 <div>
                     <button className="btn btn-success mr-2" type="submit">
