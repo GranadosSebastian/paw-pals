@@ -24,7 +24,8 @@ public class AppUserController {
 
     @GetMapping
     public List<AppUser> findAll() throws DataAccessException {
-        return service.findAll();
+        var thingy = service.findAll();
+        return thingy;
     }
 
 
