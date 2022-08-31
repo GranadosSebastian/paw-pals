@@ -57,7 +57,7 @@ public class AuthController {
 
     /*
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody String username, String password, String firstName, String lastName) {
+    public ResponseEntity<Object> register(@RequestBody Credentials credentials) {
         Result<AppUser> result = service.add(credentials);
         if (result.isSuccess()) {
             HashMap<String, Integer> map = new HashMap<>();
