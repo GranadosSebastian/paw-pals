@@ -100,7 +100,9 @@ function App() {
 
           <Route path='/schedule' element={<ScheduleList />} />
 
-          <Route path='/schedule/add' element={<ScheduleForm />} />
+          <Route path='/schedule/edit/:scheduleId' element={<ScheduleForm />} />
+
+          <Route path='/schedule/add/:animalId' element={<ScheduleForm />} />
 
           <Route path='*' element={<NotFound />} />
 

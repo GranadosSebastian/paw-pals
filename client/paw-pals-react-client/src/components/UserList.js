@@ -76,7 +76,7 @@ function UserList() {
                         <th>Address</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>Role</th>
+                        {/* <th>Role</th> */}
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -87,7 +87,7 @@ function UserList() {
                             <td>{appUser.address}</td>
                             <td>{appUser.phone}</td>
                             <td>{appUser.username}</td>
-                            <td>{appUser.roleId}</td>
+                            {/* <td>{appUser.roleId}</td> */}
                             <td>
                                 <div className="float-right mr-2">
                                     <Link className="btn btn-primary btn-sm mr-2" to={`/users/edit/${appUser.appUserId}`}>

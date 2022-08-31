@@ -7,10 +7,12 @@ const ANIMAL_DEFAULT = {
     animalName: '',
     breed: '',
     age: 0,
-    size: '',
+    size: 'SMALL',
     arrivalDate: '',
-    friendlinessLevel: '',
-    isAvailable: false
+    friendliness: '',
+    isAvailable: false,
+    speciesString: 'Cat',
+    species: ''
 };
 
 function PetForm() {
@@ -40,8 +42,11 @@ function PetForm() {
     const handleChange = (event) => {
         const newAnimal = { ...animal };
 
-        newAnimal[event.target.name] = event.target.value;
-
+        if (event.target.type === 'checkbox') {
+            newAnimal[event.target.name] = event.target.checked;
+        } else {
+            newAnimal[event.target.name] = event.target.value;
+        }
         setAnimal(newAnimal);
     }
 
@@ -58,7 +63,7 @@ function PetForm() {
     const addAnimal = () => {
         const init = {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${auth.user.token}`
             },
@@ -68,7 +73,9 @@ function PetForm() {
         fetch('http://localhost:8080/api/animal', init)
             .then(response => {
                 if (response.status === 201 || response.status === 400) {
+                    console.log("test: ", { ...animal, appUserId: auth.user.appUserId })
                     return response.json();
+
                 } else {
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
@@ -128,22 +135,22 @@ function PetForm() {
                 <div className="form-group">
                     <label htmlFor="animalName">Pet Name:</label>
                     <input id="animalName" name="animalName" type="text" className="form-control"
-                        value={animal.animalName} onChange={handleChange} />
+                        value={animal ? animal.animalName : ""} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="breed">Breed:</label>
                     <input id="breed" name="breed" type="text" className="form-control"
-                        value={animal.breed} onChange={handleChange} />
+                        value={animal ? animal.breed : ""} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="age">Age:</label>
                     <input id="age" name="age" type="number" className="form-control"
-                        value={animal.age} onChange={handleChange} />
+                        value={animal ? animal.age : ""} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="size">Size: </label>
                     <select id="size" name="size" className="form-control"
-                        value={animal.size} onChange={handleChange}>
+                        value={animal ? animal.size : ""} onChange={handleChange}>
                         <option value="SMALL">Small</option>
                         <option value="MEDIUM">Medium</option>
                         <option value="LARGE">Large</option>
@@ -153,32 +160,32 @@ function PetForm() {
                 <div className="form-group">
                     <label htmlFor="arrivalDate">Arrival Date:</label>
                     <input id="arrivalDate" name="arrivalDate" type="date" className="form-control"
-                        value={animal.arrivalDate} onChange={handleChange} />
+                        value={animal ? animal.arrivalDate : ""} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="friendlinessLevel">Friendliness Description:</label>
-                    <input id="friendlinessLevel" name="friendlinessLevel" type="text" className="form-control"
-                        value={animal.friendlinessLevel} onChange={handleChange} />
+                    <label htmlFor="friendliness">Friendliness Description:</label>
+                    <input id="friendliness" name="friendliness" type="text" className="form-control"
+                        value={animal ? animal.friendliness : ""} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label className="form-check-label" htmlFor="isAvailable">
+                    <label htmlFor="isAvailable">
                         Available:
                     </label>
-                    <input className="form-check-input" type="checkbox" id="isAvailable"
-                        value={animal.isAvailable} onChange={handleChange} />
+                    <input className="form-check-input" name="isAvailable" type="checkbox" id="isAvailable"
+                        checked={animal ? animal.isAvailable : ""} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="speciesId">Species: </label>
-                    <select id="speciesId" name="speciesId" className="form-control"
-                        value={animal.speciesId} onChange={handleChange}>
-                        <option value="1">Cat</option>
-                        <option value="2">Dog</option>
-                        <option value="3">Rabbit</option>
-                        <option value="4">Hamster</option>
-                        <option value="5">Guinea Pig</option>
-                        <option value="6">Bird</option>
-                        <option value="7">Fish</option>
-                        <option value="8">Reptile</option>
+                    <label htmlFor="speciesString">Species: </label>
+                    <select id="speciesString" name="speciesString" className="form-control"
+                        value={animal ? animal.speciesString : ""} onChange={handleChange}>
+                        <option value="cat">Cat</option>
+                        <option value="dog">Dog</option>
+                        <option value="rabbit">Rabbit</option>
+                        <option value="hamster">Hamster</option>
+                        <option value="guinea pig">Guinea Pig</option>
+                        <option value="bird">Bird</option>
+                        <option value="fish">Fish</option>
+                        <option value="reptile">Reptile</option>
                     </select>
                 </div>
                 <div>

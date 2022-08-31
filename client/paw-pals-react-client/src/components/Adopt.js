@@ -8,7 +8,7 @@ function Adopt() {
     const auth = useContext(AuthContext);
 
     // TODO uncomment when security added
-    // const auth = useContext(AuthContext);
+
 
     useEffect(() => {
         fetch('http://localhost:8080/api/animal')
@@ -26,14 +26,13 @@ function Adopt() {
     const handleDeleteAnimal = (animalId) => {
         const animal = animals.find(animal => animal.animalId === animalId);
 
-        if (window.confirm(`Delete ${animal.Name}?`)) {
+        if (window.confirm(`Delete ${animal.animalName}?`)) {
             const init = {
                 method: 'DELETE',
-                // TODO uncomment when security added
-                // headers: {
-                //     'Authorization': `Bearer ${auth.user.token}`
+                headers: {
+                    'Authorization': `Bearer ${auth.user.token}`
 
-                // },
+                },
             };
 
             fetch(`http://localhost:8080/api/animal/${animalId}`, init)
@@ -79,7 +78,7 @@ function Adopt() {
                                 </ul>
 
                                 <div>
-                                    <Link className="btn btn-success ml-1" to={`/schedule/add`}>Visit</Link>
+                                    <Link className="btn btn-success ml-1" to={`/schedule/add/${animal.animalId}`}>Visit</Link>
                                     {auth.user && auth.user.appUserId === animal.appUserId && (
                                         <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>
                                             <i className="bi bi-pencil-square"></i> Edit
