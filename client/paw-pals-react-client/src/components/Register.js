@@ -58,7 +58,7 @@ function Register() {
             body: JSON.stringify(appUser)
         };
 
-        fetch('http://localhost:8080/api/appuser', init)
+        fetch('http://localhost:8080/api/animal/appuser', init)
             .then(response => {
                 if (response.status === 201 || response.status === 400) {
                     return response.json();
@@ -166,19 +166,19 @@ function Register() {
                     <input id="phoneNumber" type="text" className="form-control"
                         onChange={(event) => setPhone(event.target.value)} value={phone} />
                 </div>
+                <div className="mt-4">
+                    <button className="btn btn-success mr-2" type="submit">Register</button>
+                    <Link to="/login">I have an existing account</Link>
+                </div>
                 <div className="form-group">
-                    <label htmlFor="roleId">Role: </label>
-                    <select id="roleId" name="roleId" className="form-control"
+                    <label htmlFor="roleId"></label>
+                    <select id="roleId" name="roleId" className="form-control invisible"
                         onChange={(event) => setRoleId(event.target.value)} value={roleId}>
                         <option value="4">Adopter</option>
                         {/* <option value="1">Staff</option>
                         <option value="2">Volunteer</option>
                         <option value="3">Foster Parent</option> */}
                     </select>
-                </div>
-                <div className="mt-4">
-                    <button className="btn btn-success mr-2" type="submit">Register</button>
-                    <Link to="/login">I have an existing account</Link>
                 </div>
             </form>
         </>

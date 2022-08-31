@@ -94,7 +94,7 @@ function App() {
 
           <Route path='/animals' element={<Adopt />} />
 
-          <Route path='/users/edit/:userId' element={<UserForm />} />
+          <Route path='/users/edit/:appUserId' element={<UserForm />} />
 
           <Route path='/users' element={<UserList />} />
 
