@@ -12,6 +12,7 @@ const ANIMAL_DEFAULT = {
     friendliness: '',
     isAvailable: false,
     speciesString: 'Cat',
+    species: ''
 };
 
 function PetForm() {

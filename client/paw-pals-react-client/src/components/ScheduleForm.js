@@ -16,6 +16,7 @@ function ScheduleForm() {
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const { scheduleId } = useParams();
+    const { animalId } = useParams();
 
     //add
     //update
@@ -127,17 +128,7 @@ function ScheduleForm() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor='dateTime'>Date and Time</label>
-                    <input id="dateTime" name="dateTime" type="text" className="form-control"
-                        value={schedule.dateTime} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor='appUserId'>User Id</label>
-                    <input id="appUserId" name="appUserId" type="text" className="form-control"
-                        value={schedule.dateTime} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor='animalId'>Animal Id</label>
-                    <input id="animalId" name="animalId" type="text" className="form-control"
+                    <input id="dateTime" name="dateTime" type="datetime-local" className="form-control"
                         value={schedule.dateTime} onChange={handleChange} />
                 </div>
                 <div>
@@ -147,6 +138,16 @@ function ScheduleForm() {
                     <Link className="btn btn-warning" to="/animal/schedule">
                         Cancel
                     </Link>
+                </div>
+                <div className="form-group">
+                    <label htmlFor='appUserId'></label>
+                    <input id="appUserId" name="appUserId" type="text" className="form-control invisible"
+                        value={auth.user.appUserId} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor='animalId'></label>
+                    <input id="animalId" name="animalId" type="text" className="form-control invisible"
+                        value={animalId} onChange={handleChange} />
                 </div>
             </form>
         </>
