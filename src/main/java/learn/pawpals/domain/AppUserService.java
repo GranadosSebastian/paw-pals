@@ -46,13 +46,13 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
-    public AppUser add(String username, String password, String firstName, String lastName) {
+    public AppUser add(String username, String password, String firstName, String lastName, String address, String phone, List<String> roles) {
         validate(username);
         validatePassword(password);
 
         password = encoder.encode(password);
 
-        AppUser appUser = new AppUser(0, username, password, false, firstName, lastName, null, null, List.of());
+        AppUser appUser = new AppUser(0, username, password, false, firstName, lastName, address, phone, List.of(roles.toString()));
 
         return repository.add(appUser);
     }
