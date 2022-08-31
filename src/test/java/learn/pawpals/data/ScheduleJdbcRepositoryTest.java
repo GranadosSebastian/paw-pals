@@ -63,12 +63,8 @@ class ScheduleJdbcRepositoryTest {
 
         assertNotNull(actual);
         assertEquals(2, actual.getAnimalId());
-
-
-
-
-
-    }
+        }
+  
 
 
     @Test
