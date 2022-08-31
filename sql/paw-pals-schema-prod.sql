@@ -39,7 +39,7 @@ create table animal (
     age int null,
     size char(10) not null,
     arrival_date date not null,
-    friendliness_level varchar(10) null,
+    friendliness_level varchar(250) null,
     is_available int not null,
     species varchar(20) not null,
     app_user_id int not null,

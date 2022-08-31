@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -62,14 +63,8 @@ class ScheduleJdbcRepositoryTest {
 
         assertNotNull(actual);
         assertEquals(2, actual.getAnimalId());
-
-    }
-
-
-    @Test
-    void shouldAdd() {
-
-    }
+        }
+  
 
 
     @Test

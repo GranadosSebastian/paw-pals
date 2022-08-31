@@ -18,7 +18,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
     @Autowired
     private final JdbcTemplate jdbcTemplate;
-    private final String SCHEDULESQLCOLS = "`datetime`, adopter_id, animal_id ";
+    private final String SCHEDULESQLCOLS = " `datetime`, adopter_id, animal_id ";
 
     public ScheduleJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -116,7 +116,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
 
         final String sql = "insert into `schedule` (`datetime`, animal_id, adopter_id) " +
-                "values (?, ?, ?, ?);";
+                "values (?, ?, ?);";
 
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -140,7 +140,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     @Override
     public boolean update(Schedule schedule) {
         final String sql = "update `schedule` set " +
-                "`time` = ?, " +
+                "`datetime` = ?, " +
                 "app_user_id = ?, " +
                 "animal_id = ? " +
                 "where schedule_id = ?;";
