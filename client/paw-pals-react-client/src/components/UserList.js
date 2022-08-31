@@ -23,8 +23,8 @@ function UserList() {
                     return Promise.reject(`Unexpected status code: ${response.status}`);
                 }
             })
-            .then(data => console.log("onFetch", data))
-            // .then(data => setAppUsers(data))
+            // .then(data => console.log("onFetch", data))
+            .then(data => setAppUsers(data))
             .catch(console.log);
     }, [auth.user.token]);
 
@@ -33,17 +33,17 @@ function UserList() {
         const appUser = appUsers.find(appUser => appUser.appUserId === appUserId);
 
         if (window.confirm(`Delete user ${appUser.firtName} ${appUser.lastName}?`)) {
-            // const init = {
-            //     method: 'DELETE',
-            //     headers: {
-            //         'Authorization': `Bearer ${auth.user.token}`
-            //     },
-            // };
-
             const init = {
-                method: 'DELETE'
-
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${auth.user.token}`
+                },
             };
+
+            // const init = {
+            //     method: 'DELETE'
+
+            // };
 
             fetch(`http://localhost:8080/api/animal/appuser/${appUserId}`, init)
                 .then(response => {
@@ -65,9 +65,9 @@ function UserList() {
     return (
         <>
             <h2 className="mb-4">Users</h2>
-            <Link className="btn btn-primary my-4" to="/register">
+            {/* <Link className="btn btn-primary my-4" to="/register">
                 <i className="bi bi-plus-circle"></i> Add User
-            </Link>
+            </Link> */}
 
             <table className="table table-striped table-sm table-hover">
                 <thead className="thead-dark">

@@ -15,17 +15,17 @@ const USER_DEFAULT = {
 };
 
 function UserForm() {
-    const [user, setUser] = useState(USER_DEFAULT);
+    const [appUser, setAppUser] = useState(USER_DEFAULT);
     const [errors, setErrors] = useState([]);
 
     const auth = useContext(AuthContext);
 
     const navigate = useNavigate();
-    const { userId } = useParams();
+    const { appUserId } = useParams();
 
     useEffect(() => {
-        if (userId) {
-            fetch(`http://localhost:8080/api/user/${userId}`)
+        if (appUserId) {
+            fetch(`http://localhost:8080/api/animal/appuser/${appUserId}`)
                 .then(response => {
                     if (response.status === 200) {
                         return response.json();
@@ -33,24 +33,24 @@ function UserForm() {
                         return Promise.reject(`Unexpected status code: ${response.status}`);
                     }
                 })
-                .then(data => setUser(data))
+                .then(data => setAppUser(data))
                 .catch(console.log);
         }
-    }, [userId]);
+    }, [appUserId]);
 
 
     const handleChange = (event) => {
-        const newUser = { ...user };
+        const newAppUser = { ...appUser };
 
-        newUser[event.target.name] = event.target.value;
+        newAppUser[event.target.name] = event.target.value;
 
-        setUser(newUser);
+        setAppUser(newAppUser);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (userId) {
+        if (appUserId) {
             updateUser();
         } else {
             addUser();
@@ -64,10 +64,10 @@ function UserForm() {
                 'Content-Type': 'application/json',
                 // 'Authorization': `Bearer ${auth.user.token}`
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(appUser)
         };
 
-        fetch('http://localhost:8080/api/user', init)
+        fetch('http://localhost:8080/api/animal/appuser', init)
             .then(response => {
                 if (response.status === 201 || response.status === 400) {
                     return response.json();
@@ -88,7 +88,7 @@ function UserForm() {
     }
 
     const updateUser = () => {
-        user.userId = userId;
+        appUser.appUserId = appUserId;
 
 
         const init = {
@@ -97,10 +97,10 @@ function UserForm() {
                 'Content-Type': 'application/json',
                 // 'Authorization': `Bearer ${auth.user.token}`
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(appUser)
         };
 
-        fetch(`http://localhost:8080/api/user/${userId}`, init)
+        fetch(`http://localhost:8080/api/animal/appuser/${appUserId}`, init)
             .then(response => {
                 if (response.status === 204) {
                     return null;
@@ -131,32 +131,32 @@ function UserForm() {
                 <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input id="firstName" name="firstName" type="text" className="form-control"
-                        value={user.firstName} onChange={handleChange} />
+                        value={appUser.firstName} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="lastName">Last Name:</label>
                     <input id="lastName" name="lastName" type="text" className="form-control"
-                        value={user.lastName} onChange={handleChange} />
+                        value={appUser.lastName} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="address">Address:</label>
                     <input id="address" name="address" type="text" className="form-control"
-                        value={user.address} onChange={handleChange} />
+                        value={appUser.address} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="phone">Phone:</label>
                     <input id="phone" name="phone" type="text" className="form-control"
-                        value={user.phone} onChange={handleChange} />
+                        value={appUser.phone} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="username">Email:</label>
                     <input id="username" name="username" type="text" className="form-control"
-                        value={user.email} onChange={handleChange} />
+                        value={appUser.username} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="roleId">Role: </label>
                     <select id="roleId" name="roleId" className="form-control"
-                        value={user.roleId} onChange={handleChange}>
+                        value={appUser.roleId} onChange={handleChange}>
                         <option value="1">Staff</option>
                         <option value="2">Volunteer</option>
                         <option value="3">Foster Parent</option>

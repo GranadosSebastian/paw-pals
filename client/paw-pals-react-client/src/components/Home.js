@@ -10,11 +10,11 @@ function Home() {
 
 
     return (
-        <>
+        <div className="text-center">
             <h2>Welcome to Paw Pals!</h2>
             <p></p>
             <button className="btn btn-success mr-2 ml-3" type='button' onClick={navigateToAdopt}>Adopt</button>
-        </>
+        </div>
     );
 }
 
