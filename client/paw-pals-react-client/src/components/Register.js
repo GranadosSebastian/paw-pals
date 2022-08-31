@@ -12,7 +12,7 @@ function Register() {
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
-    const [roleId, setRoleId] = useState(0);
+    const [roleId, setRoleId] = useState(1);
     const [errors, setErrors] = useState([]);
 
     const auth = useContext(AuthContext);
@@ -22,30 +22,19 @@ function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Make sure that the user didn't make a mistake in entering their password.
+
         if (password !== confirmPassword) {
             setErrors(['your passwords don\'t match']);
             return;
         }
 
-        /*
-    
-        POST http://localhost:8080/api/appuser HTTP/1.1
-        Content-Type: application/json
-    
-        {
-          "username": "test@test.com",
-          "password": "P@ssw0rd!",
-          "phoneNumber": "555-555-5555"
-        }
-    
-        */
 
         const appUser = {
             username,
             password,
             firstName,
             lastName,
+            address,
             phone,
             roleId
         };
@@ -68,12 +57,6 @@ function Register() {
             })
             .then(data => {
                 if (data.appUserId) {
-
-                    // HAPPY PATH :)
-
-                    // Option 1: Send the user to the Home page... or a "Success" page
-
-                    // Option 2: We can log them in automatically
 
                     const authAttempt = {
                         username,
@@ -100,20 +83,18 @@ function Register() {
                         })
                         .then(data => {
                             if (data) {
-                                // {
-                                //   "jwt_token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjYWxvcmllLXRyYWNrZXIiLCJzdWIiOiJzbWFzaGRldjUiLCJhdXRob3JpdGllcyI6IlJPTEVfVVNFUiIsImV4cCI6MTYwNTIzNDczNH0.nwWJtPYhD1WlZA9mGo4n5U0UQ3rEW_kulilO2dEg7jo"
-                                // }
+
                                 auth.login(data.jwt_token);
                                 navigate('/');
                             } else {
-                                // we have error messages
+
                                 setErrors(['login failure']);
                             }
                         })
                         .catch(console.log);
 
                 } else {
-                    // UNHAPPY PATH :(
+
                     setErrors(data);
                 }
             })
