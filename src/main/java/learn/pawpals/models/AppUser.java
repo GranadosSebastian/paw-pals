@@ -100,13 +100,13 @@ public class AppUser extends User {
         return super.getPassword();
     }
 
-    /*
+
     @JsonIgnore
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return super.getAuthorities();
     }
-    */
+
 
     @JsonIgnore
     @Override

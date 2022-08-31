@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ScheduleJdbcRepositoryTest {
@@ -63,21 +62,25 @@ class ScheduleJdbcRepositoryTest {
 
         assertNotNull(actual);
         assertEquals(2, actual.getAnimalId());
-
-
-
-
-
-    }
+        }
 
 
     @Test
     void shouldUpdate() {
+        Schedule schedule = new Schedule();
+        schedule.setAnimalId(2);
+        schedule.setAppUserId(6);
+        schedule.setDateTime(LocalDateTime.now());
+        schedule.setScheduleId(1);
+
+        assertTrue(repository.update(schedule));
 
     }
 
     @Test
     void shouldDelete() {
+        assertTrue(repository.delete(3));
+        assertFalse(repository.delete(3));
 
     }
 

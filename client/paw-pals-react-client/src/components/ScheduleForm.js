@@ -18,9 +18,6 @@ function ScheduleForm() {
     const { scheduleId } = useParams();
     const { animalId } = useParams();
 
-    //add
-    //update
-
     useEffect(() => {
         if (scheduleId) {
             fetch(`http://localhost:8080/api/animal/schedule/${scheduleId}`)

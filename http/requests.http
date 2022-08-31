@@ -91,8 +91,8 @@ Authorization: Bearer {{token}}
 
 {
     "animalId": 12,
-    "animalName": "Bob",
-    "breed": "Silver Tabby",
+    "animalName": "George",
+    "breed": "mutt",
     "age": 2,
     "size": "SMALL",
     "arrivalDate": "2021-10-01",

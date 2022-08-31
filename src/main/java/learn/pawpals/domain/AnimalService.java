@@ -80,10 +80,10 @@ public class AnimalService {
             return result;
         }
 
-//        if (animal.getSpecies() == null) {
-//            result.addErrorMessage("Animal 'species' is required.", ResultType.INVALID);
-//
-//        }
+
+        if (animal.getSpeciesString() == null) {
+            result.addErrorMessage("Animal 'species' is required.", ResultType.INVALID);
+        }
 
         if (animal.getAnimalName().isBlank() || animal.getAnimalName() == null) {
             result.addErrorMessage("Animal name cannot be empty.", ResultType.INVALID);

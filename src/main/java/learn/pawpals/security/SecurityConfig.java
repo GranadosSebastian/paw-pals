@@ -27,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/authenticate", "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/refresh-token").authenticated()
                 .antMatchers(HttpMethod.POST,"/api/animal/appuser").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/animal", "/api/animal/*", "/api/animal/schedule", "/api/animal/schedule/*", "/api/animal/schedule/animalId/*", "/api/animal/schedule/appUserId/*", "/api/animal/appuser").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/animal", "/api/animal/schedule", "/api/animal/appuser").hasAnyRole("staff", "volunteer", "foster_parent", "adopter")
