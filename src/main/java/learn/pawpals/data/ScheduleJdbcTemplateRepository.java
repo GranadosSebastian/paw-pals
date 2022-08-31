@@ -116,7 +116,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
 
         final String sql = "insert into `schedule` (`datetime`, animal_id, adopter_id) " +
-                "values (?, ?, ?, ?);";
+                "values (?, ?, ?);";
 
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
