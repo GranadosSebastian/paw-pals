@@ -30,12 +30,10 @@ public class ScheduleController {
         return service.findAll();
     }
 
-    /*
-    @GetMapping("/schedule/{dateTime}")
-    public List<Schedule> findByDateTime(@PathVariable LocalDateTime dateTime) {
-        return service.findByDateTime(dateTime);
+    @GetMapping("/{scheduleId}")
+    public Schedule findByScheduleId(@PathVariable int scheduleId) throws DataAccessException {
+        return service.findByScheduleId(scheduleId);
     }
-    */
 
     @GetMapping("/animalId/{animalId}")
     public List<Schedule> findByAnimal(@PathVariable int animalId) throws DataAccessException {
