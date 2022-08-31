@@ -87,12 +87,12 @@ public class ScheduleService {
         if (String.valueOf(schedule.getDateTime()).isBlank()) {
             result.addErrorMessage("Date and time are required", ResultType.INVALID);
         }
-        if (startTime.isAfter(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
-            result.addErrorMessage("Time cannot be before 9:00 A.M.", ResultType.INVALID);
-        }
-        if (endTime.isBefore(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
-            result.addErrorMessage("Time cannot be after 5:00 P.M.", ResultType.INVALID);
-        }
+//        if (startTime.isAfter(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
+//            result.addErrorMessage("Time cannot be before 9:00 A.M.", ResultType.INVALID);
+//        }
+//        if (endTime.isBefore(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
+//            result.addErrorMessage("Time cannot be after 5:00 P.M.", ResultType.INVALID);
+//        }
         if (schedule.getAnimalId() <= 0) {
             result.addErrorMessage("Animal ID is required.", ResultType.INVALID);
         }
