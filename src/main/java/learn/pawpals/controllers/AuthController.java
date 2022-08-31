@@ -54,9 +54,11 @@ public class AuthController {
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
+
+    /*
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody String username, String password, String firstName, String lastName) {
-        Result<AppUser> result = service.add(username, password, firstName, lastName);
+        Result<AppUser> result = service.add(credentials);
         if (result.isSuccess()) {
             HashMap<String, Integer> map = new HashMap<>();
             map.put("appUserId", result.getPayload().getAppUserId());
@@ -73,5 +75,6 @@ public class AuthController {
         map.put("jwt_token", jwtToken);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+    */
 
 }
