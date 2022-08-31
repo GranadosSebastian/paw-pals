@@ -26,6 +26,8 @@ public class AppUser extends User {
 
     private String phone;
 
+    private List<String> roles;
+
     public AppUser() {
         this(0, "username", "", false, "firstName", "lastName", "address", "phone", List.of());
     }
@@ -54,13 +56,13 @@ public class AppUser extends User {
         this.appUserId = appUserId;
     }
 
-    //public List<String> getRoles() {
-    //    return roles;
-    //}
+    public List<String> getRoles() {
+        return roles;
+    }
 
-    //public void setRoles(List<String> roles) {
-    //    this.roles = roles;
-    //}
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -100,13 +102,13 @@ public class AppUser extends User {
         return super.getPassword();
     }
 
-    /*
+
     @JsonIgnore
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return super.getAuthorities();
     }
-    */
+
 
     @JsonIgnore
     @Override

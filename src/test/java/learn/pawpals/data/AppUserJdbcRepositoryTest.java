@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -51,6 +52,12 @@ public class AppUserJdbcRepositoryTest {
         user.setLastName("TestLast");
         user.setAddress("123 nsodd");
         user.setPhone("12345687");
+
+
+        ArrayList<String> roles = new ArrayList<>(1);
+        roles.add(0, "staff");
+
+        user.setRoles(roles);
 
         AppUser actual = repository.add(user);
 

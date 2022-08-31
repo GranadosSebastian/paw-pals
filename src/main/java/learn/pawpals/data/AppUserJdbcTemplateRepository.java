@@ -12,8 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.awt.geom.GeneralPath;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class AppUserJdbcTemplateRepository implements AppUserRepository {
@@ -23,6 +25,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     private final String APPUSERCOLS = " username, password_hash, disabled, " +
             "first_name, last_name, address, phone ";
+    private static final String AUTHORITY_PREFIX = "ROLE_";
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -89,6 +92,17 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         }
 
         user.setAppUserId((keyHolder.getKey().intValue()));
+
+//        Collection<GrantedAuthority> roles = user.getAuthorities();
+//        user.setRoles(roles.stream()
+//                .map(a -> a.getAuthority().substring(AUTHORITY_PREFIX.length()))
+//                .collect(Collectors.toList()));
+        ArrayList<String> roles = new ArrayList<>(1);
+        roles.add(0, "staff");
+
+        user.setRoles(roles);
+        AppUser.convertRolesToAuthorities(roles);
+
         updateRoles(user);
 
         return user;
@@ -165,17 +179,15 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
         Collection<GrantedAuthority> authorities = user.getAuthorities();
 
-        if (authorities == null) {
-            return;
-        }
+//        if (authorities == null) {
+//            return;
+//        }
 
         for (String role : AppUser.convertAuthoritiesToRoles(authorities)) {
             String sql = """
                     insert into app_user_role (app_user_id, app_role_id)
-                    select
-                        ?,
-                        app_role_id
-                    from app_role where `name` = ?;
+                    values
+                    (?, ?);
                     """;
             jdbcTemplate.update(sql, user.getAppUserId(), role);
         }
