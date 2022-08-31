@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import './Slider.css'
-import SliderBtn from './SliderBtn.js'
-import SliderData from './SliderData.js'
+import React, {useState} from 'react';
+import './Slider.css';
+import SliderBtn from './SliderBtn.js';
+import SliderData from './SliderData.js';
 
 export default function Slider() {
 
@@ -27,7 +27,6 @@ export default function Slider() {
     setSlideIndex(index)
   }
 
-  console.log(Array.from)
   return (
     <div className="container-slider">
         {SliderData.map((obj, index) => {
@@ -36,15 +35,13 @@ export default function Slider() {
             className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
               
             <img 
-              src={'public/imgs/img${index + 1}.jpg'}
+              src={process.env.PUBLIC_URL + '/imgs/img${index + 1}.jpg'}
               />
-              <p>{obj.title}</p>
-
               </div>
           )
         })}
         <SliderBtn moveSlide={nextSlide} direction={"next"} />
-        <SliderBtn moveSlide={nextSlide} direction={"prev"} />
+        <SliderBtn moveSlide={prevSlide} direction={"prev"} />
 
         <div className="container-dots">
             {Array.from({length: 5}).map((item, index) => (

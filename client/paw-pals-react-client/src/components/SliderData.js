@@ -20,8 +20,8 @@ const SliderData = [
         id: uuidv4(),
         title: "Lorem ipsum",
         subTitle: "Lorem"
-    }
+    },
    
-]
+];
 
 export default SliderData;

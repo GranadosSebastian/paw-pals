@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Slider from './Slider.js'
+import Slider from './Slider.js';
 
 function Home() {
 
