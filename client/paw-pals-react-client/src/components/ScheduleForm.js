@@ -104,7 +104,7 @@ function ScheduleForm() {
             })
             .then(data => {
                 if (!data) {
-                    navigate('/animal/schedule')
+                    navigate('/schedule')
                 } else {
                     setErrors(data);
                 }
