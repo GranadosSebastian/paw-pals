@@ -30,7 +30,6 @@ export default function Slider() {
     setSlideIndex(index)
   }
 
-
   return (
     <div className="container-slider">
         {SliderData.map((obj, index) => {
@@ -38,7 +37,7 @@ export default function Slider() {
             <div key={obj.id} 
             className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
               <img 
-              src={img1} 
+              src={window.location.origin + img1} 
               />;
               </div>
           )
