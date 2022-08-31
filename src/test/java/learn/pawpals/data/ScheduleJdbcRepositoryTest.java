@@ -36,19 +36,35 @@ class ScheduleJdbcRepositoryTest {
 
     }
     @Test
-    void shouldFindByDate() {
+    void shouldFindById2() {
+        Schedule schedule = repository.findById(2);
+        assertNotNull(schedule);
+        assertEquals(1, schedule.getAnimalId());
 
     }
 
     @Test
     void shouldFindByAnimal() {
+        List<Schedule> schedules = repository.findByAnimal(1);
+        assertNotNull(schedules);
+        assertEquals(1, schedules.size());
 
     }
 
     @Test
-    void shouldFindByAdopter() {
+    void shouldAdd() {
+        Schedule schedule = new Schedule();
+        schedule.setDateTime(LocalDateTime.now());
+        schedule.setAppUserId(2);
+        schedule.setAnimalId(2);
+        schedule.setScheduleId(4);
+        Schedule actual = repository.add(schedule);
+
+        assertNotNull(actual);
+        assertEquals(2, actual.getAnimalId());
 
     }
+
 
     @Test
     void shouldAdd() {
