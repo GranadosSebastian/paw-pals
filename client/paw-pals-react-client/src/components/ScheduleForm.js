@@ -54,7 +54,7 @@ function ScheduleForm() {
     const addSchedule = () => {
         const init = {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${auth.user.token}`
             },
@@ -137,12 +137,12 @@ function ScheduleForm() {
                 <div className="form-group">
                     <label htmlFor='appUserId'></label>
                     <input id="appUserId" name="appUserId" type="text" className="form-control invisible"
-                        value={auth.user.appUserId} onChange={handleChange} />
+                        value={auth.user.appUserId} onChange={handleChange} disabled readonly />
                 </div>
                 <div className="form-group">
                     <label htmlFor='animalId'></label>
                     <input id="animalId" name="animalId" type="text" className="form-control invisible"
-                        value={animalId} onChange={handleChange} />
+                        value={animalId} onChange={handleChange} disabled readonly />
                 </div>
             </form>
         </>
