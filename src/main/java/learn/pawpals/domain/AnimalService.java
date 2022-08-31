@@ -80,9 +80,8 @@ public class AnimalService {
             return result;
         }
 
-        if (animal.getSpecies() == null) {
+        if (animal.getSpeciesString() == null) {
             result.addErrorMessage("Animal 'species' is required.", ResultType.INVALID);
-
         }
 
         if (animal.getAnimalName().isBlank() || animal.getAnimalName() == null) {

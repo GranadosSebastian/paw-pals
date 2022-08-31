@@ -17,9 +17,6 @@ function ScheduleForm() {
     const navigate = useNavigate();
     const { scheduleId } = useParams();
 
-    //add
-    //update
-
     useEffect(() => {
         if (scheduleId) {
             fetch(`http://localhost:8080/api/animal/schedule/${scheduleId}`)

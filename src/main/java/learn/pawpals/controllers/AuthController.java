@@ -54,4 +54,24 @@ public class AuthController {
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
+    @PostMapping("/register")
+    public ResponseEntity<Object> register(@RequestBody Credentials credentials) {
+        Result<AppUser> result = service.add(credentials);
+        if (result.isSuccess()) {
+            HashMap<String, Integer> map = new HashMap<>();
+            map.put("appUserId", result.getPayload().getAppUserId());
+            return new ResponseEntity<>(map, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(result.getErrorMessages(), HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<Object> refresh(UsernamePasswordAuthenticationToken principal) {
+        AppUser appUser = new AppUser(principal.getName(), principal.getName(), principal.getAuthorities());
+        String jwtToken = jwtConverter.getTokenFromUser(appUser);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("jwt_token", jwtToken);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
 }
