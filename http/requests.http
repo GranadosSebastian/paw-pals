@@ -27,10 +27,10 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "username": "George@test.com",
+  "username": "catlover@test.com",
   "password": "P@ssw0rd!",
-  "firstName": "Bob",
-  "lastName": "Bobson"
+  "firstName": "Mable",
+  "lastName": "Catloversons"
 }
 
 ### 

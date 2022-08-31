@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "ax-react-lib": "^1.6.4"
+    "ax-react-lib": "^1.6.4",
+    "uuidv4": "^6.2.13"
   }
 }

@@ -5,6 +5,7 @@ import learn.pawpals.data.ScheduleRepository;
 import learn.pawpals.models.Animal;
 import learn.pawpals.models.Schedule;
 import org.springframework.cglib.core.Local;
+import org.springframework.scheduling.config.SchedulerBeanDefinitionParser;
 import org.springframework.stereotype.Service;
 
 import javax.xml.crypto.Data;
@@ -29,6 +30,10 @@ public class ScheduleService {
 
     public List<Schedule> findAll() throws DataAccessException {
         return scheduleRepository.findAll();
+    }
+
+    public Schedule findByScheduleId(int scheduleId) throws DataAccessException {
+        return scheduleRepository.findById(scheduleId);
     }
 
     public List<Schedule> findByAnimal(int animalId) throws DataAccessException {
