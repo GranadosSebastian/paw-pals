@@ -55,8 +55,8 @@ public class AuthController {
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody Credentials credentials) {
-        Result<AppUser> result = service.add(credentials);
+    public ResponseEntity<Object> register(@RequestBody String username, String password, String firstName, String lastName) {
+        Result<AppUser> result = service.add(username, password, firstName, lastName);
         if (result.isSuccess()) {
             HashMap<String, Integer> map = new HashMap<>();
             map.put("appUserId", result.getPayload().getAppUserId());
