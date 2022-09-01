@@ -49,6 +49,7 @@ public class AnimalJdbcRepositoryTest {
         animal.setSize(Size.SMALL);
         animal.setArrivalDate(LocalDate.now());
         animal.setSpecies(Species.bird);
+        animal.setSpeciesString("bird");
         animal.setAppUserId(5);
 
         Animal actual = repository.add(animal);
@@ -68,6 +69,7 @@ public class AnimalJdbcRepositoryTest {
         animal.setArrivalDate(LocalDate.now());
         animal.setAvailable(true);
         animal.setSpecies(Species.dog);
+        animal.setSpeciesString("dog");
         assertTrue(repository.update(animal));
 
     }

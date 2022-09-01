@@ -38,7 +38,7 @@ class AnimalServiceTest {
     @Test
     void shouldNotAddNullName() throws DataAccessException {
         Animal animal = new Animal();
-        animal.setAnimalName(null);
+        animal.setAnimalName("");
         animal.setAppUserId(2);
         animal.setAvailable(true);
         animal.setSpecies(Species.dog);
@@ -49,10 +49,13 @@ class AnimalServiceTest {
         Result<Animal> result = service.add(animal);
 
         assertFalse(result.isSuccess());
-        assertEquals(1, result.getErrorMessages().size());
-
-
 
     }
 
+    @Test
+    void shouldNotDeleteInvalidId() throws DataAccessException {
+        Result<Animal> result = service.delete(1000);
+
+        assertFalse(result.isSuccess());
+    }
 }
