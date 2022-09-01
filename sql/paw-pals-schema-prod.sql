@@ -95,7 +95,9 @@ values
 ('Zazu', 'tabby', 1, 'small', '2022-02-15', 'friendly, loves people but not cars', 1, 'cat', 1),
 ('Missy', 'calico', 6, 'small', '2008-09-09','good with kids', 0, 'cat', 5),
 ('Bruno', 'chihuahua', 5,'small', '2010-10-23', 'tempermental but loving', 1, 'dog', 4),
-('Rocky', 'german shepard', 10,'large', '2016-12-24', 'very active, loves other dogs', 1, 'reptile', 1);
+('Rocky', 'german shepard', 10,'large', '2016-12-24', 'very active, loves other dogs', 1, 'reptile', 1),
+('Hilde', 'germain shepard', 0, 'large', '2022-08-20', 'loves to bite', 1, 'dog', 4),
+('Triscuit', 'chihuahua', 4, 'small', '2022-08-15', 'loves to play with people', 1, 'dog', 6);
 
 
 insert into `schedule` (`datetime`, app_user_id, animal_id)
