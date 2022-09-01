@@ -89,8 +89,9 @@ public class ScheduleService {
             result.addErrorMessage("Schedule cannot be null.", ResultType.INVALID);
             return result;
         }
-        if (String.valueOf(schedule.getDateTime()).isBlank()) {
+        if (String.valueOf(schedule.getDateTime()).isBlank() || String.valueOf(schedule.getDateTime()) == null) {
             result.addErrorMessage("Date and time are required", ResultType.INVALID);
+            return result;
         }
 //        if (startTime.isAfter(LocalTime.ofSecondOfDay(schedule.getDateTime().getHour()))) {
 //            result.addErrorMessage("Time cannot be before 9:00 A.M.", ResultType.INVALID);
@@ -100,9 +101,11 @@ public class ScheduleService {
 //        }
         if (schedule.getAnimalId() <= 0) {
             result.addErrorMessage("Animal ID is required.", ResultType.INVALID);
+            return result;
         }
         if (schedule.getAppUserId() <= 0) {
             result.addErrorMessage("User ID is required.", ResultType.INVALID);
+            return result;
 
         }
         return result;
