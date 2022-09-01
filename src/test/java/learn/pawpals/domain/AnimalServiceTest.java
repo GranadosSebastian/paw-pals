@@ -49,10 +49,13 @@ class AnimalServiceTest {
         Result<Animal> result = service.add(animal);
 
         assertFalse(result.isSuccess());
-        assertEquals(1, result.getErrorMessages().size());
-
-
 
     }
 
+    @Test
+    void shouldNotDeleteInvalidId() throws DataAccessException {
+        Result<Animal> result = service.delete(1000);
+
+        assertFalse(result.isSuccess());
+    }
 }
