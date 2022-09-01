@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +16,6 @@ public class AppUser extends User {
     private static final String AUTHORITY_PREFIX = "ROLE_";
     private int appUserId;
 
-
     private String firstName;
 
     private String lastName;
@@ -29,7 +27,7 @@ public class AppUser extends User {
     private List<String> roles;
 
     public AppUser() {
-        this(0, "username", "", false, "firstName", "lastName", "address", "phone", List.of());
+        this(0, "username", "password", false, "firstName", "lastName", "address", "phone", List.of());
     }
 
     public AppUser(int appUserId, String username, String password,
@@ -102,13 +100,11 @@ public class AppUser extends User {
         return super.getPassword();
     }
 
-
     @JsonIgnore
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return super.getAuthorities();
     }
-
 
     @JsonIgnore
     @Override
@@ -152,7 +148,6 @@ public class AppUser extends User {
                 .collect(Collectors.toList());
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -163,7 +158,5 @@ public class AppUser extends User {
 
     @Override
     public int hashCode() { return Objects.hash(appUserId, firstName, lastName, address, phone); }
-
-
 
 }
