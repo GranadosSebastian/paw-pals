@@ -1,14 +1,8 @@
 package learn.pawpals.domain;
 
-import learn.pawpals.App;
 import learn.pawpals.data.AppUserRepository;
 import learn.pawpals.data.DataAccessException;
-import learn.pawpals.domain.Result;
-import learn.pawpals.domain.ResultType;
-import learn.pawpals.models.Animal;
 import learn.pawpals.models.AppUser;
-import learn.pawpals.models.Credentials;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;

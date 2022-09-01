@@ -1,8 +1,6 @@
 package learn.pawpals.controllers;
 
-import learn.pawpals.domain.Result;
 import learn.pawpals.models.AppUser;
-import learn.pawpals.models.Credentials;
 import learn.pawpals.domain.AppUserService;
 import learn.pawpals.security.JwtConverter;
 import org.springframework.http.HttpStatus;
@@ -11,7 +9,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
