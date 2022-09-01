@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 import './Slider.css';
 import SliderBtn from './SliderBtn.js';
 import SliderData from './SliderData.js';
-import img1 from './imgs/img1.jpg'
-import img2 from './imgs/img2.jpg'
-import img3 from './imgs/img3.jpg'
 
 export default function Slider() {
 
@@ -30,6 +27,7 @@ export default function Slider() {
     setSlideIndex(index)
   }
 
+  
   return (
     <div className="container-slider">
         {SliderData.map((obj, index) => {
@@ -37,8 +35,8 @@ export default function Slider() {
             <div key={obj.id} 
             className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
               <img 
-              src={window.location.origin + img1} 
-              />;
+              src={window.location.origin + `/imgs/img${index + 1}.jpg`}
+              />
               </div>
           )
         })}
