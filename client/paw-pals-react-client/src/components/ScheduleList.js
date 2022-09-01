@@ -159,7 +159,7 @@ function ScheduleList() {
                             <td>{fullSchedule.animal.appUser.phone}</td>
                             <td>
                                 <div className="float-right mr-2">
-                                    {auth.user && auth.user.appUserId === fullSchedule.appUser.appUserId && (
+                                    {auth.user && (auth.user.appUserId === fullSchedule.appUser.appUserId || auth.user.hasRole('ROLE_staff')) && (
                                         <Link className="btn btn-primary btn-sm mr-2" to={`/schedule/edit/${fullSchedule.scheduleId}`}>
                                             <i className="bi bi-pencil-square"></i> Edit
                                         </Link>

@@ -77,16 +77,16 @@ function Login() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     {/* Includes for/id attributes for basic HTML accessibility ♿. */}
-                    <label htmlFor="username">Username: fitchyfetch@gmail.com   mozippeezagg@yahoo.com</label>
+                    <label htmlFor="username">Username: </label>
                     <input id="username" type="text" className="form-control" onChange={(event) => setUsername(event.target.value)} value={username} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password: P@ssw0rd!</label>
+                    <label htmlFor="password">Password: </label>
                     <input id="password" type="password" className="form-control" onChange={(event) => setPassword(event.target.value)} value={password} />
                 </div>
                 <div className="mt-4">
                     <button className="btn btn-success mr-2" type="submit">Login</button>
-                    <Link to="/register">I don't have an account</Link>
+                    {/* <Link to="/register">I don't have an account</Link> */}
                 </div>
             </form>
         </>

@@ -134,7 +134,7 @@ function ScheduleForm() {
                     <button className="btn btn-success mr-2" type="submit">
                         {scheduleId ? 'Update Schedule' : 'Add Schedule'}
                     </button>
-                    <Link className="btn btn-warning" to="/animals">
+                    <Link className="btn btn-danger" to="/schedule">
                         Cancel
                     </Link>
                 </div>

@@ -153,7 +153,7 @@ function UserForm() {
                     <input id="username" name="username" type="text" className="form-control"
                         value={appUser.username} onChange={handleChange} />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="roleId">Role: </label>
                     <select id="roleId" name="roleId" className="form-control"
                         value={appUser.roleId} onChange={handleChange}>
@@ -162,7 +162,7 @@ function UserForm() {
                         <option value="3">Foster Parent</option>
                         <option value="4">Adopter</option>
                     </select>
-                </div>
+                </div> */}
                 <div className="mt-4">
                     <button className="btn btn-success mr-2" type="submit">
                         <i className="bi bi-file-earmark-check"></i> Update User
