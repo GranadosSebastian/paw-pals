@@ -101,7 +101,7 @@ function ScheduleList() {
     const handleDeleteSchedule = (scheduleId) => {
         const schedule = schedules.find(schedule => schedule.id === scheduleId);
 
-        if (window.confirm(`Delete meeting appointment with ${schedule.animalName}?`)) {
+        if (window.confirm(`Delete meeting appointment with ${fullSchedules.animal.animalName}?`)) {
             const init = {
                 method: 'DELETE'
                 ,
@@ -164,11 +164,11 @@ function ScheduleList() {
                                             <i className="bi bi-pencil-square"></i> Edit
                                         </Link>
                                     )}
-                                    {auth.user && auth.user.hasRole('ROLE_staff') && (
+                                    {/* {auth.user && auth.user.hasRole('ROLE_staff') && (
                                         <button className="btn btn-danger btn-sm" onClick={() => handleDeleteSchedule(fullSchedule.scheduleId)}>
                                             <i className="bi bi-trash"></i> Delete
                                         </button>
-                                    )}
+                                    )} */}
                                 </div>
                             </td>
                         </tr>

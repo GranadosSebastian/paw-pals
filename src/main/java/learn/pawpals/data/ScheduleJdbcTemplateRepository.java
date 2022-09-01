@@ -18,7 +18,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
 
     @Autowired
     private final JdbcTemplate jdbcTemplate;
-    private final String SCHEDULESQLCOLS = " `datetime`, adopter_id, animal_id ";
+    private final String SCHEDULESQLCOLS = " `datetime`, app_user_id, animal_id ";
 
     public ScheduleJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -115,7 +115,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     public Schedule add(Schedule schedule) {
 
 
-        final String sql = "insert into `schedule` (`datetime`, animal_id, adopter_id) " +
+        final String sql = "insert into `schedule` (`datetime`, animal_id, app_user_id) " +
                 "values (?, ?, ?);";
 
 
@@ -123,8 +123,8 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setTimestamp(1, Timestamp.valueOf(schedule.getDateTime()));
-            ps.setInt(2, schedule.getAppUserId());
-            ps.setInt(3, schedule.getAnimalId());
+            ps.setInt(2, schedule.getAnimalId());
+            ps.setInt(3, schedule.getAppUserId());
             return ps;
         }, keyHolder);
 
@@ -141,7 +141,7 @@ public class ScheduleJdbcTemplateRepository implements ScheduleRepository {
     public boolean update(Schedule schedule) {
         final String sql = "update `schedule` set " +
                 "`datetime` = ?, " +
-                "adopter_id = ?, " +
+                "app_user_id = ?, " +
                 "animal_id = ? " +
                 "where schedule_id = ?;";
 

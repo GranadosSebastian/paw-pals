@@ -12,7 +12,7 @@ function Register() {
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
-    const [roleId, setRoleId] = useState(1);
+    const [roles, setRoles] = useState('adopter');
     const [errors, setErrors] = useState([]);
 
     const auth = useContext(AuthContext);
@@ -36,7 +36,7 @@ function Register() {
             lastName,
             address,
             phone,
-            roleId
+            roles
         };
 
         const init = {
@@ -152,10 +152,10 @@ function Register() {
                     <Link to="/login">I have an existing account</Link>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="roleId"></label>
-                    <select id="roleId" name="roleId" className="form-control invisible"
-                        onChange={(event) => setRoleId(event.target.value)} value={roleId}>
-                        <option value="4">Adopter</option>
+                    <label htmlFor="roles"></label>
+                    <select id="roles" name="roles" className="form-control invisible"
+                        onChange={(event) => setRoles(event.target.value)} value={roles}>
+                        <option value="adopter">Adopter</option>
                         {/* <option value="1">Staff</option>
                         <option value="2">Volunteer</option>
                         <option value="3">Foster Parent</option> */}

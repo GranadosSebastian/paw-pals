@@ -52,12 +52,12 @@ create table schedule (
 schedule_id int primary key auto_increment,
 `datetime` datetime not null,
 animal_id int not null,
-adopter_id int not null,
+app_user_id int not null,
 constraint fk_schedule_animal_id
 	foreign key (animal_id)
     references animal(animal_id),
-constraint fk_schedule_adopter_id
-	foreign key (adopter_id)
+constraint fk_schedule_app_user_id
+	foreign key (app_user_id)
     references app_user(app_user_id)
 
 
@@ -98,7 +98,7 @@ values
 ('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
 
 
-insert into `schedule` (`datetime`, adopter_id, animal_id)
+insert into `schedule` (`datetime`, app_user_id, animal_id)
 values
 			('2023-06-06 10:00:00', 3, 4),
             ('2023-06-06 11:00:00', 6, 1),

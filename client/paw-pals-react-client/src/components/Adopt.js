@@ -78,7 +78,9 @@ function Adopt() {
                                 </ul>
 
                                 <div>
-                                    <Link className="btn btn-success ml-1" to={`/schedule/add/${animal.animalId}`}>Visit</Link>
+                                    {auth.user && (
+                                        <Link className="btn btn-success ml-1" to={`/schedule/add/${animal.animalId}`}>Visit</Link>
+                                    )}
                                     {auth.user && auth.user.appUserId === animal.appUserId && (
                                         <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>
                                             <i className="bi bi-pencil-square"></i> Edit

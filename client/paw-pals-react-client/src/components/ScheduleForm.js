@@ -5,8 +5,8 @@ import Errors from './Errors';
 
 const SCHEDULE_DEFAULT = {
     dateTime: '',
-    appUserId: 0,
-    animalId: 0
+    animalId: 0,
+    appUserId: 0
 };
 
 function ScheduleForm() {
@@ -19,6 +19,7 @@ function ScheduleForm() {
     const { animalId } = useParams();
 
     useEffect(() => {
+
         if (scheduleId) {
             fetch(`http://localhost:8080/api/animal/schedule/${scheduleId}`)
                 .then(response => {
@@ -30,7 +31,10 @@ function ScheduleForm() {
                 })
                 .then(data => setSchedule(data))
                 .catch(console.log)
+        } else {
+            setSchedule({ ...schedule, appUserId: auth.user.appUserId, animalId: parseInt(animalId) })
         }
+
     }, [scheduleId]);
 
     const handleChange = (event) => {
@@ -71,7 +75,7 @@ function ScheduleForm() {
             .then(data => {
                 if (data.scheduleId) {
 
-                    navigate('/animal/schedule');
+                    navigate('/schedule');
                 } else {
 
                     setErrors(data);
@@ -116,7 +120,7 @@ function ScheduleForm() {
         <>
             <h2>Schedule</h2>
 
-            <h2 className="mb-4">{scheduleId ? 'Update Schedule' : 'Add Schedule'}</h2>
+            <h2 className="mb-4">{scheduleId ? 'Update Appointment' : 'Add Appointment'}</h2>
 
             <Errors erros={errors} />
 
@@ -130,7 +134,7 @@ function ScheduleForm() {
                     <button className="btn btn-success mr-2" type="submit">
                         {scheduleId ? 'Update Schedule' : 'Add Schedule'}
                     </button>
-                    <Link className="btn btn-warning" to="/animal/schedule">
+                    <Link className="btn btn-warning" to="/animals">
                         Cancel
                     </Link>
                 </div>
