@@ -42,7 +42,7 @@ public class AppUserJdbcRepositoryTest {
     @Test
     void shouldAdd() {
         AppUser user = new AppUser();
-        String username = "TestingUsername";
+        String username = "Take 2";
         String password = "$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa";
 
         user.getUsername().equals(username);
@@ -59,7 +59,7 @@ public class AppUserJdbcRepositoryTest {
 
         user.setRoles(roles);
 
-        AppUser actual = repository.add(user);
+        AppUser actual = repository.add(user, roles);
 
         assertNotNull(actual);
         assertEquals("Test", actual.getFirstName());

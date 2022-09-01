@@ -48,7 +48,7 @@ public class AppUserService implements UserDetailsService {
 
         AppUser appUser = new AppUser(0, username, password, false, firstName, lastName, address, phone, List.of(roles.toString()));
 
-        return repository.add(appUser);
+        return repository.add(appUser, roles);
     }
 
     public Result<AppUser> update(AppUser appUser) throws DataAccessException {

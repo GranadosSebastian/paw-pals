@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -69,7 +70,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     @Transactional
     @Override
-    public AppUser add(AppUser user) {
+    public AppUser add(AppUser user, List<String> roles) {
 
         final String sql = "insert into app_user (" + APPUSERCOLS + ") " +
                 "values (?, ?, ?, ?, ?, ?, ?);";
@@ -93,15 +94,9 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
         user.setAppUserId((keyHolder.getKey().intValue()));
 
-//        Collection<GrantedAuthority> roles = user.getAuthorities();
-//        user.setRoles(roles.stream()
-//                .map(a -> a.getAuthority().substring(AUTHORITY_PREFIX.length()))
-//                .collect(Collectors.toList()));
-        ArrayList<String> roles = new ArrayList<>(1);
-        roles.add(0, "staff");
 
         user.setRoles(roles);
-        AppUser.convertRolesToAuthorities(roles);
+//        AppUser.convertRolesToAuthorities(roles);
 
         updateRoles(user);
 
@@ -177,19 +172,35 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         // delete all roles, then re-create
         jdbcTemplate.update("delete from app_user_role where app_user_id = ?;", user.getAppUserId());
 
-        Collection<GrantedAuthority> authorities = user.getAuthorities();
+        List<String> roles = user.getRoles();
+        Collection<GrantedAuthority> authorities = AppUser.convertRolesToAuthorities(roles);
 
-//        if (authorities == null) {
-//            return;
-//        }
+        ArrayList<Integer> roleIds = new ArrayList<>();
 
-        for (String role : AppUser.convertAuthoritiesToRoles(authorities)) {
+        for (String role : roles) {
+            if (role.equals("staff")) {
+                roleIds.add(1);
+            }
+            if (role.equals("volunteer")) {
+                roleIds.add(2);
+            }
+            if (role.equals("foster_parent")) {
+                roleIds.add(3);
+            }
+            if (role.equals("adopter")) {
+                roleIds.add(4);
+            }
+        }
+
+        for(int roleId : roleIds) {
+
             String sql = """
                     insert into app_user_role (app_user_id, app_role_id)
                     values
                     (?, ?);
-                    """;
-            jdbcTemplate.update(sql, user.getAppUserId(), role);
+                      """;
+            jdbcTemplate.update(sql, user.getAppUserId(), roleId);
+
         }
     }
 }
