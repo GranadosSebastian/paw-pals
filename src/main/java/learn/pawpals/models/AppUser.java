@@ -44,6 +44,7 @@ public class AppUser extends User {
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
+        this.roles = roles;
     }
 
     //private List<String> roles = new ArrayList<>();

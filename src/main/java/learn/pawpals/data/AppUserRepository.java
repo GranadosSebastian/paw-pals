@@ -13,7 +13,7 @@ public interface AppUserRepository {
 
     AppUser findByUsername(String username);
 
-    AppUser add(AppUser user);
+    AppUser add(AppUser user, List<String> roles);
 
     boolean update(AppUser user);
 
