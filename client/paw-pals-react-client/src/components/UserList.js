@@ -93,11 +93,11 @@ function UserList() {
                                     <Link className="btn btn-primary btn-sm mr-2" to={`/users/edit/${appUser.appUserId}`}>
                                         <i className="bi bi-pencil-square"></i> Edit
                                     </Link>
-                                    {auth.user && auth.user.hasRole('ROLE_staff') && (
+                                    {/* {auth.user && auth.user.hasRole('ROLE_staff') && (
                                         <button className="btn btn-danger btn-sm" onClick={() => handleDeleteUser(appUser.appUserId)}>
                                             <i className="bi bi-trash"></i> Delete
                                         </button>
-                                    )}
+                                    )} */}
                                 </div>
                             </td>
                         </tr>

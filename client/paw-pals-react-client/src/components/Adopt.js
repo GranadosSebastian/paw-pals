@@ -54,34 +54,34 @@ function Adopt() {
 
     return (
         <>
-            {auth.user && auth.user.hasRole('ROLE_staff') && (
+            {/* {auth.user && auth.user.hasRole('ROLE_staff') && (
                 <div className="text-center">
                     <Link className="btn btn-success ml-1 mb-4" to={`/animals/add/${auth.user.appUserId}`}>
                         <i className="bi bi-pencil-square"></i> Add New Animal
                     </Link>
                 </div>
 
-            )}
+            )} */}
             <div className="row">
                 {animals.map((animal) =>
                     <div className="col-4">
                         <div key={animal.animalId} className="shadow card mb-4">
-                            <img src="https://cdn.pixabay.com/photo/2017/08/07/18/57/dog-2606759_960_720.jpg" className="card-img-top center-cropped rounded-circle mx-auto" alt="..." />
+                            <img src={process.env.PUBLIC_URL + `./images/${animal.animalId}.jpg`} className="card-img-top center-cropped rounded-circle mx-auto" alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title">{animal.animalName}</h5>
-                                <ul>
-                                    <li>{animal.age}</li>
-                                    <li>{animal.breed}</li>
-                                    <li>{animal.size}</li>
-                                    <li>{animal.friendliness}</li>
-                                    <li>{animal.arrivalDate}</li>
-                                </ul>
+
+                                <p><strong>Age: </strong>{animal.age}</p>
+                                <p><strong>Species: </strong>{animal.speciesString}</p>
+                                <p><strong>Breed: </strong>{animal.breed}</p>
+                                <p><strong>Size: </strong>{animal.size}</p>
+                                <p><strong>Friendliness: </strong>{animal.friendliness}</p>
+                                <p><strong>Arrival Date: </strong>{animal.arrivalDate}</p>
 
                                 <div>
                                     {auth.user && (
                                         <Link className="btn btn-success ml-1" to={`/schedule/add/${animal.animalId}`}>Visit</Link>
                                     )}
-                                    {auth.user && auth.user.appUserId === animal.appUserId && (
+                                    {auth.user && auth.user.hasRole('ROLE_staff') && (
                                         <Link className="btn btn-success ml-1" to={`/animals/edit/${animal.animalId}`}>
                                             <i className="bi bi-pencil-square"></i> Edit
                                         </Link>
