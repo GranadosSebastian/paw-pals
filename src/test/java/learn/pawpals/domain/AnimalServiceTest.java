@@ -38,7 +38,7 @@ class AnimalServiceTest {
     @Test
     void shouldNotAddNullName() throws DataAccessException {
         Animal animal = new Animal();
-        animal.setAnimalName(null);
+        animal.setAnimalName("");
         animal.setAppUserId(2);
         animal.setAvailable(true);
         animal.setSpecies(Species.dog);
