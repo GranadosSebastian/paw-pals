@@ -89,13 +89,13 @@ insert into app_user_role
     (5, 4),
     (6, 3);
 
-insert into animal (animal_name, breed, age, size, arrival_date, is_available, species, app_user_id)
+insert into animal (animal_name, breed, age, size, arrival_date, friendliness_level, is_available, species, app_user_id)
 values
-('Bella', 'mixed', 8, 'medium', '2020-04-03', 1, 'dog', 2),
-('Zazu', 'tabby', 1, 'small', '2022-02-15', 1, 'cat', 1),
-('Missy', 'calico', 6, 'small', '2008-09-09', 0, 'cat', 5),
-('Bruno', 'chihuahua', 5,'small', '2010-10-23', 1, 'dog', 4),
-('Rocky', 'german shepard', 10,'large', '2016-12-24', 1, 'reptile', 1);
+('Bella', 'mixed', 8, 'medium', '2020-04-03', 'is basically a cat', 1, 'dog', 2),
+('Zazu', 'tabby', 1, 'small', '2022-02-15', 'friendly, loves people but not cars', 1, 'cat', 1),
+('Missy', 'calico', 6, 'small', '2008-09-09','good with kids', 0, 'cat', 5),
+('Bruno', 'chihuahua', 5,'small', '2010-10-23', 'tempermental but loving', 1, 'dog', 4),
+('Rocky', 'german shepard', 10,'large', '2016-12-24', 'very active, loves other dogs', 1, 'reptile', 1);
 
 
 insert into `schedule` (`datetime`, app_user_id, animal_id)
